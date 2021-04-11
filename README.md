@@ -27,3 +27,6 @@
 
 #マーケット
   20-40代のキャンプに興味のある人
+
+#画面遷移図
+https://www.figma.com/file/H2ye86l3LBI1RLh53rhAYu/Set_Camp?node-id=0%3A1
