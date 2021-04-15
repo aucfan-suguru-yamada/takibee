@@ -30,3 +30,6 @@
 
 # 画面遷移図
 https://www.figma.com/file/H2ye86l3LBI1RLh53rhAYu/Set_Camp?node-id=0%3A1
+
+# ER図
+https://drive.google.com/file/d/151HFhMJHgMk-I2dBADSiXb5LYa1DHn7A/view?usp=sharing
