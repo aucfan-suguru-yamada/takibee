@@ -1,0 +1,145 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    post: '投稿'
+    profile: 'プロフィール'
+    submit: '送信'
+    update: '更新する'
+    message:
+      require_login: 'ログインしてください'
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+    update:
+      success: 'ユーザーを更新しました'
+      fail: 'ユーザーを更新できませんでした'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  boards:
+    index:
+      title: '掲示板一覧'
+      no_result: '掲示板がありません'
+    new:
+      title: '掲示板作成'
+      submit: '登録する'
+    show:
+      title: '掲示板詳細'
+    create:
+      success: '掲示板を作成しました'
+      fail: '掲示板を作成できませんでした'
+    edit:
+      title: '掲示板編集'
+      submit: '更新する'
+    update:
+      success: '掲示板を更新しました'
+      fail: '掲示板を更新できませんでした'
+    destroy:
+      success: '掲示板を削除しました'
+    bookmarks:
+      title: 'ブックマーク一覧'
+      no_result: 'ブックマーク中の掲示板がありません'
+  comments:
+    create:
+      success: 'コメントを作成しました'
+      fail: 'コメントを作成できませんでした'
+  bookmarks:
+    create:
+      success: 'ブックマークしました'
+    destroy:
+      success: 'ブックマークを外しました'
+  profiles:
+    show:
+      title: 'プロフィール'
+    edit:
+      title: 'プロフィール編集'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+  admin:
+    users:
+      index:
+        title: 'ユーザー一覧'
+      show:
+        title: 'ユーザー詳細'
+      edit:
+        title: 'ユーザー編集'
+      update:
+        success: 'ユーザーを更新しました'
+        fail: 'ユーザーを更新できませんでした'
+      destroy:
+        success: 'ユーザーを削除しました'
+    boards:
+      index:
+        title: '掲示板一覧'
+        no_result: '掲示板がありません'
+      new:
+        title: '掲示板作成'
+        submit: '登録する'
+      show:
+        title: '掲示板詳細'
+      edit:
+        title: '掲示板編集'
+        submit: '更新する'
+      update:
+        success: '掲示板を更新しました'
+        fail: '掲示板を更新できませんでした'
+      destroy:
+        success: '掲示板を削除しました'
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'
+        '0': '一般'
+        '1': '管理者'
