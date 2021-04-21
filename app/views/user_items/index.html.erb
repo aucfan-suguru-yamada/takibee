@@ -1,0 +1,13 @@
+<h1>Myアイテム</h1>
+<div class='content'>
+  <div id='item_list'>
+    <% if @items.present? %>
+      <%= render partial: 'item_list' %>
+    <% else %>
+      <h2> Myアイテムはまだありません</h2>
+    <% end %>
+    <div class='row justify-content-center'>
+      <a><%= link_to 'アイテムを探す！', serch_user_items_path, class: 'btn btn-success'%></a>
+    </div>
+  </div>
+</div>

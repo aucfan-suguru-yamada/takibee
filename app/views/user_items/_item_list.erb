@@ -1,0 +1,26 @@
+<% if @items.present? %>
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th>Img</th>
+          <th>Name</th>
+          <th>user_id</th>
+          <th>Shop</th>
+          <th>Genre</th>
+          <th>Url</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td></td>
+          <td><%= "#{item.name[0..20] ...}" %></td>
+          <td><%= item.users.name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<% end %>
