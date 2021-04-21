@@ -1,0 +1,26 @@
+<% if @items.present? %>
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th>Img</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Shop</th>
+          <th>Genre</th>
+          <th>Url</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= image_tag(item['mediumImageUrls'][0], style: "width: 100px;height: 100px;display: inline-block;") %></td>
+          <td><%= "#{item['itemName'][0..20] ...}" %></td>
+          <td>¥<%= item.price %></td>
+          <td><%= item['shopName'] %></td>
+          <td><%= item['catchcopy'] %></td>
+          <td><%= link_to '商品をみる', item.url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<% end %>

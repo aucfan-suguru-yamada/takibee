@@ -99,6 +99,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    json (2.5.1)
     jwt (2.2.2)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -181,6 +182,8 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.3)
+    rakuten_web_service (1.13.0)
+      json (~> 2.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -289,6 +292,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   rails-i18n
+  rakuten_web_service
   rspec-rails
   rubocop
   rubocop-rails

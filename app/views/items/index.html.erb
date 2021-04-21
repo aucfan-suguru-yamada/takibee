@@ -1,0 +1,12 @@
+<h1>Rakuserach</h1>
+<div class='content'>
+  <div id="search-box">
+    <%= form_tag(items_path, method: :get) do %>
+        <%= text_field_tag :item, "",  id: "item_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"%><button title="検索" type="submit">検索</button>
+    <% end %>
+  </div>
+  <h2>検索結果</h2>
+  <div id='item_list'>
+    <%= render partial: 'item_list' %>
+  </div>
+</div>

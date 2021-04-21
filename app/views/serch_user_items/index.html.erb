@@ -1,0 +1,16 @@
+<div class='container'>
+  <h1>Myアイテムの登録</h1>
+  <div class='col-4'>
+    <div id="search-box">
+      <%= form_tag(serch_user_items_path, method: :get) do %>
+        <%= text_field_tag :item, "",  id: "item_search", name: "keyword", placeholder: '検索ワードを入力', class: 'form-control'%>
+        <%= submit_tag "検索", class: 'btn btn-primary mt-2'%>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <h2>検索結果</h2>
+  <div id='item_list'>
+    <%= render partial: 'item_list' %>
+  </div>
+</div>
