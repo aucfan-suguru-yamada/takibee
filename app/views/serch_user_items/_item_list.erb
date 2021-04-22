@@ -18,7 +18,7 @@
           <td>¥<%= item.price %></td>
           <td><%= item['shopName'] %></td>
           <td><%= link_to '商品をみる', item.url %></td>
-          <td><%= link_to 'Myアイテムに追加', items_path(name: item['itemName'], user_id: current_user.id), method: :post %></td>
+          <td><%= link_to 'Myアイテムに追加', items_path(name: item['itemName'], image_url: item['mediumImageUrls'][0], user_id: current_user.id), method: :post %></td>
         </tr>
       <% end %>
     </tbody>
