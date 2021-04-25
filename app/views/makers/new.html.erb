@@ -1,0 +1,19 @@
+<% content_for(:title, "#{t '.title'}") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1>メーカーの登録</h1>
+      <%= form_with model: @maker, local:true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label 'メーカー名' %>
+          <input class="form-control" type="text" name="maker[name]" id="maker_name" />
+        </div>
+        <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+      <% end %>
+      <div class='text-center'>
+        <%= link_to 'メーカー一覧', makers_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,22 +3,24 @@
     <thead>
         <tr>
           <th>Img</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Shop</th>
-          <th>Genre</th>
+          <th>ProductName</th>
+          <th>makerName</th>
+          <th>ProductNo</th>
+          <th>brandName</th>
+          <th>Review</th>
           <th>Url</th>
         </tr>
     </thead>
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= image_tag(item['mediumImageUrls'][0], style: "width: 100px;height: 100px;display: inline-block;") %></td>
-          <td><%= "#{item['itemName'][0..20] ...}" %></td>
-          <td>¥<%= item.price %></td>
-          <td><%= item['shopName'] %></td>
-          <td><%= link_to '商品をみる', item.url %></td>
-          <td><%= link_to 'Myアイテムに追加', items_path(name: item['itemName'], image_url: item['mediumImageUrls'][0], user_id: current_user.id), method: :post %></td>
+          <td><%= image_tag(item['mediumImageUrl'], style: "width: 100px;height: 100px;display: inline-block;") %></td>
+          <td><%= item['productName'] %></td>
+          <td><%= item['makerName'].present? ? item['makerName'] : '-' %></td>
+          <td><%= item['productNo'] %></td>
+          <td><%= item['brandName'] %></td>
+          <td><%= item['reviewAverage'] %></td>
+          <td><%= link_to 'Myアイテムに追加', items_path(name: item['productName'], image_url: item['mediumImageUrl'], user_id: current_user.id, maker_name: item['makerName']), method: :post %></td>
         </tr>
       <% end %>
     </tbody>
