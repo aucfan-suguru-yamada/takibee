@@ -1,0 +1,13 @@
+<h1>Myアイテム</h1>
+<div class='content'>
+  <div id='maker_list'>
+    <% if @makers.present? %>
+      <%= render partial: 'maker_list' %>
+    <% else %>
+      <h2> メーカーはまだありません</h2>
+    <% end %>
+    <div class='row justify-content-center'>
+      <a><%= link_to 'メーカーを追加！', new_maker_path, class: 'btn btn-success'%></a>
+    </div>
+  </div>
+</div>

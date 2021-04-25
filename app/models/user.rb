@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  has_many :user_items
+  has_many :user_items, dependent: :destroy
   has_many :items, class_name: 'Item', foreign_key: 'item_id', through: :user_items, source: 'item'
 
 

@@ -4,7 +4,7 @@
         <tr>
           <th>Img</th>
           <th>Name</th>
-          <th>user_id</th>
+          <th>Maker</th>
           <th>Shop</th>
           <th>Genre</th>
           <th>Url</th>
@@ -19,8 +19,8 @@
           <td></td>
           <% end %>
           <td><%= "#{item.name[0..20] ...}" %></td>
-          <td><%= item.users.name %></td>
-          <td></td>
+          <td><%= item.maker.name if item.maker.present? %></td>
+          <td><%= link_to '削除', user_item_path(item.id), method: :delete, class: 'btn btn-danger'%></td>
           <td></td>
           <td></td>
         </tr>

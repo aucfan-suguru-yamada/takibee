@@ -1,0 +1,16 @@
+<% if @makers.present? %>
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @makers.each do |maker| %>
+        <tr>
+          <td><%= maker.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<% end %>
