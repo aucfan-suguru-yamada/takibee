@@ -1,0 +1,31 @@
+<% content_for(:title, "#{t '.title'}") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1>キャンプのキロク</h1>
+      <%= form_with model: @camp, local:true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label 'キャンプのタイトル' %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label '日付' %>
+          <%= f.date_field :camped_on, class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label '人数' %>
+          <%= f.number_field :number_of_people, min: 1, default: 1, placeholder: 1, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'コメント' %>
+          <%= f.text_area :note, class: 'form-control' %>
+        </div>
+        <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+      <% end %>
+      <div class='text-center'>
+        <%= link_to 'キャンプのキロク一覧', camps_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,8 +3,9 @@
     <h1>Set Camp</h1>
     <div class='row justify-content-center'>
       <h1 class='btn btn-success mx-2'>キャンプをハジメル！</h1>
-      <h1 class='btn btn-success mx-2'>キャンプをキロク！</h1>
+      <a><%= link_to 'キャンプをキロク！', camps_path, class: 'btn btn-success mx-2' %></a>
     </div>
+    <br>
     <div class='row justify-content-center'>
       <a><%= link_to 'アイテムをトウロク！', user_items_path, class: 'btn btn-success mx-2' %></a>
       <h1 class='btn btn-success mx-2'>みんなのキャンプ！</h1>
