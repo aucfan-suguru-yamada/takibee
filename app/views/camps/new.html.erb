@@ -16,7 +16,15 @@
           <%= f.label '人数' %>
           <%= f.number_field :number_of_people, min: 1, default: 1, placeholder: 1, class: 'form-control' %>
         </div>
-
+        <div class="form-group">
+          <%= f.label '画像' %>
+          <%= f.file_field :images, multiple: true, id: :camp_image %>
+        </div>
+        <div class="row">
+          <div class="image_box" id='image-box__container'>
+          </div>
+        </div>
+        <br>
         <div class="form-group">
           <%= f.label 'コメント' %>
           <%= f.text_area :note, class: 'form-control' %>

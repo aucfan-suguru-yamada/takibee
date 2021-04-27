@@ -7,6 +7,10 @@ class CampsController < ApplicationController
     @camp = Camp.new
   end
 
+  def show
+    @camp = Camp.find(params[:id])
+  end
+
   def create
     if current_user.camps.create(camp_params)
       redirect_to camps_path
@@ -15,9 +19,10 @@ class CampsController < ApplicationController
     end
   end
 
+
   private
 
   def camp_params
-    params.require(:camp).permit(:title, :camped_on, :number_of_people, :note)
+    params.require(:camp).permit(:title, :camped_on, :number_of_people, :note, images:[])
   end
 end

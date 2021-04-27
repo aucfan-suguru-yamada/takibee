@@ -7,18 +7,20 @@
           <th>Area</th>
           <th>Date</th>
           <th>Comment</th>
-          <th>Url</th>
         </tr>
     </thead>
     <tbody>
       <% @camps.each do |camp| %>
-        <tr>
+        <tr class="clickable-row", data-link="<%= camp_path(camp) %>">
+          <% if camp.images.present? %>
+          <td><%= image_tag(camp.images[0], style: "width: 100px;height: 100px;display: inline-block;") %></td>
+          <% else %>
           <td></td>
+          <% end %>
           <td><%= camp.title %></td>
           <td></td>
           <td><%= camp.camped_on %></td>
           <td><%= camp.note %></td>
-          <td></td>
         </tr>
       <% end %>
     </tbody>
