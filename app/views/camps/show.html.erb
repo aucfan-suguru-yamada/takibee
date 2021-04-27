@@ -1,0 +1,42 @@
+<div class='container'>
+  <h1><%=@camp.title%></h1>
+  <br>
+  <br>
+
+  <h2>pictures</h2>
+  <div class='row'>
+    <% if @camp.images.present? %>
+      <% @camp.images.each do |image| %>
+      <div class="col">
+        <%= image_tag(image, style: "width: 100px;height: 100px;display: inline-block;") %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <br>
+  <br>
+  <h2>アイテム</h2>
+  <div class="col">
+    <%= 'キャンプアイテム' %>
+  </div>
+
+  <br>
+  <br>
+  <h2>キャンプ地</h2>
+  <div class="col">
+    <%= 'キャンプ地' %>
+  </div>
+
+  <br>
+  <br>
+  <h2>Note</h2>
+  <div class="col">
+    <%= @camp.note %>
+  </div>
+
+
+  <div class='row justify-content-center'>
+    <a><%= link_to 'キャンプ一覧', camps_path, class: 'btn btn-success'%></a>
+  </div>
+</div>
