@@ -9,6 +9,7 @@ class CampsController < ApplicationController
 
   def show
     @camp = Camp.find(params[:id])
+    @items = @camp.items
   end
 
   def create
