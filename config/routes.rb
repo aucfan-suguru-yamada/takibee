@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'camp/index'
-  get 'camp/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -11,7 +9,10 @@ Rails.application.routes.draw do
   resources :user_items, only: %i[index create destroy]
   resources :serch_user_items, only: %i[index]
   resources :makers, only: %i[index new create update destroy]
-  resources :camps, only: %i[index new create show update destroy]
-  resources :camp_items, only: %i[index new create show destroy]
-  get 'makers/api', to: 'makers#api'
+  resources :camps, only: %i[index new create show update destroy] do
+    resources :camp_items, only: %i[index new create show destroy]
+    get 'search_items', to: 'camp_items#search_items'
+    get 'my_items', to: 'camp_items#my_items'
+    post 'add_my_items', to: 'camp_items#add_my_items'
+  end
 end

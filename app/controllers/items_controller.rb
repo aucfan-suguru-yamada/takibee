@@ -16,7 +16,11 @@ class ItemsController < ApplicationController
       maker = Maker.create(name: params[:maker_name])
     end
 
-    if current_user.items.create(name: params[:name], maker_id: maker.id)
+    if Item.find_by(name: params[:name])
+      current_user.items << Item.find_by(name: params[:name])
+      redirect_to user_items_path
+
+    elsif current_user.items.create(name: params[:name], maker_id: maker.id)
       current_user.items.last.small_image.attach(io: io, filename: "#{current_user.id}")
 
       redirect_to user_items_path

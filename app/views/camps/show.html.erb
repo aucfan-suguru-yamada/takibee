@@ -18,8 +18,17 @@
   <br>
   <h2>アイテム</h2>
   <div class="col">
-    <%= 'キャンプアイテム' %>
+    <% if @items.present? %>
+      <%= render partial: 'item_list' %>
+    <% else %>
+      <h3> アイテムはまだありません</h3>
+    <% end %>
   </div>
+  <div class='row justify-content-center'>
+    <a><%= link_to 'アイテム検索から追加', camp_search_items_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
+    <a><%= link_to 'マイアイテムから追加', camp_my_items_path(@camp.id), class: 'btn btn-success mx-2'%></a>
+  </div>
+
 
   <br>
   <br>
@@ -36,6 +45,8 @@
   </div>
 
 
+  <br>
+  <br>
   <div class='row justify-content-center'>
     <a><%= link_to 'キャンプ一覧', camps_path, class: 'btn btn-success'%></a>
   </div>
