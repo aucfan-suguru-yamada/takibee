@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'areas/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -14,5 +15,6 @@ Rails.application.routes.draw do
     get 'search_items', to: 'camp_items#search_items'
     get 'my_items', to: 'camp_items#my_items'
     post 'add_my_items', to: 'camp_items#add_my_items'
+    resources :areas, only: %i[index create destroy]
   end
 end

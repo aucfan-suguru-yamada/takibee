@@ -34,7 +34,15 @@
   <br>
   <h2>キャンプ地</h2>
   <div class="col">
-    <%= 'キャンプ地' %>
+    <% if @camp.area.present? %>
+      <%= @camp.area.name %><br>
+      <%= @camp.area.address %><br>
+    <% else %>
+      <h3> キャンプ地はまだありません</h3>
+    <% end %>
+    <div class='row justify-content-center'>
+      <a><%= link_to 'キャンプ地を登録', camp_areas_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
+    </div>
   </div>
 
   <br>
