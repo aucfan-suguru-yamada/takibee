@@ -4,14 +4,18 @@
   <br>
 
   <h2>pictures</h2>
-  <div class='row'>
-    <% if @camp.images.present? %>
-      <% @camp.images.each do |image| %>
-      <div class="col">
-        <%= image_tag(image, style: "width: 100px;height: 100px;display: inline-block;") %>
+  <div class='col'>
+    <div class="container container-m">
+      <% if @camp.images.present? %>
+      <div class="row">
+        <% @camp.images.each do |image| %>
+          <div class="col-md-4">
+            <%= image_tag(image, style: "width: 200px;height: 200px;display: inline-block;", class: "img-thumbnail") %>
+          </div>
+        <% end %>
       </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
   <br>
@@ -24,6 +28,7 @@
       <h3> アイテムはまだありません</h3>
     <% end %>
   </div>
+  <br>
   <div class='row justify-content-center'>
     <a><%= link_to 'アイテム検索から追加', camp_search_items_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
     <a><%= link_to 'マイアイテムから追加', camp_my_items_path(@camp.id), class: 'btn btn-success mx-2'%></a>

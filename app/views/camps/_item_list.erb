@@ -1,30 +1,20 @@
 <% if @items.present? %>
-<table class="table table-hover">
-    <thead>
-        <tr>
-          <th>Img</th>
-          <th>Name</th>
-          <th>Maker</th>
-          <th>Shop</th>
-          <th>Genre</th>
-          <th>Url</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container container-m">
+  <div class="row">
       <% @items.each do |item| %>
-        <tr>
-          <% if item.small_image.present? %>
-          <td><%= image_tag(item.small_image, style: "width: 100px;height: 100px;display: inline-block;") %></td>
-          <% else %>
-          <td></td>
-          <% end %>
-          <td><%= "#{item.name[0..20] ...}" %></td>
-          <td><%= item.maker.name if item.maker.present? %></td>
-          <td><%= link_to '削除', camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'btn btn-danger'%></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <div class="col-md-4 card-group">
+          <div class="card justify-content-around">
+            <% if item.small_image.present? %>
+              <%= image_tag(item.small_image, style: "width: 128px;height: 128px;", class: "card-img-top mx-auto d-block") %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= "#{item.name[0..20] ...}" %></h5>
+              <p class="card-text"><%= item.maker.name if item.maker.present? %></p>
+              <%= link_to '削除', camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'btn btn-danger'%>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </tbody>
-</table>
+    </div>
+</div>
 <% end %>
