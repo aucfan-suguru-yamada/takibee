@@ -10,7 +10,7 @@
             <div class="card-body">
               <h5 class="card-title"><%= "#{item.name[0..20] ...}" %></h5>
               <p class="card-text"><%= item.maker.name if item.maker.present? %></p>
-              <%= link_to '削除', camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'btn btn-danger'%>
+              <%= link_to '削除', camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'btn btn-danger delete_button', style: "display: none;" %>
             </div>
           </div>
         </div>

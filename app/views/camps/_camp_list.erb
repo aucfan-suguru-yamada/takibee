@@ -18,7 +18,11 @@
           <td></td>
           <% end %>
           <td><%= camp.title %></td>
+          <% if camp.area.present? %>
+          <td><%= camp.area.name %></td>
+          <% else %>
           <td></td>
+          <% end %>
           <td><%= camp.camped_on %></td>
           <td><%= camp.note %></td>
         </tr>
