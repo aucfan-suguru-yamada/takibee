@@ -7,13 +7,17 @@
     <div class="row">
       <i class="fas fa-camera fa-2x"></i>
       <h2>pictures</h2>
+      <div class="ml-auto">
+        <i class="fas fa-ellipsis-h fa-2x" id="picture_edit_button"></i>
+      </div>
     </div>
     <div class="container container-m">
       <% if @camp.images.present? %>
       <div class="row">
         <% @camp.images.each do |image| %>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <%= image_tag(image, style: "width: 200px;height: 200px;display: inline-block;", class: "img-thumbnail") %>
+            <%= link_to '削除', camp_path(camp_id: @camp.id, image_id: image.id), method: :patch, class: 'btn btn-danger picture_delete_button', style: "display: none;" %>
           </div>
         <% end %>
       </div>
@@ -28,7 +32,7 @@
       <i class="fas fa-campground fa-2x"></i>
       <h2>アイテム</h2>
       <div class="ml-auto">
-      <i class="fas fa-ellipsis-h fa-2x" id="slideDown"></i>
+        <i class="fas fa-ellipsis-h fa-2x" id="item_edit_button"></i>
     </div>
     <% if @items.present? %>
       <%= render partial: 'item_list' %>

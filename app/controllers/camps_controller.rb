@@ -20,6 +20,14 @@ class CampsController < ApplicationController
     end
   end
 
+  def update
+    @camp = Camp.find(params[:id])
+    image = @camp.images.find(params[:image_id])
+    image.purge
+    @items = @camp.items
+    redirect_to camp_path(@camp)
+  end
+
 
   private
 

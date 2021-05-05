@@ -1,6 +1,11 @@
 $(function () {
-    $('#slideDown').on('click', () => {
-        $('.delete_button').toggle("slow");
+    $('#picture_edit_button').on('click', () => {
+        $('.picture_delete_button').toggle("slow");
+        console.log("クリック！");
+    });
+
+    $('#item_edit_button').on('click', () => {
+        $('.item_delete_button').toggle("slow");
         console.log("クリック！");
     });
 });
