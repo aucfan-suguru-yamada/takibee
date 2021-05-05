@@ -3,8 +3,11 @@
   <br>
   <br>
 
-  <h2>pictures</h2>
-  <div class='col'>
+  <div class="col">
+    <div class="row">
+      <i class="fas fa-camera fa-2x"></i>
+      <h2>pictures</h2>
+    </div>
     <div class="container container-m">
       <% if @camp.images.present? %>
       <div class="row">
@@ -20,8 +23,13 @@
 
   <br>
   <br>
-  <h2>アイテム</h2>
   <div class="col">
+    <div class="row">
+      <i class="fas fa-campground fa-2x"></i>
+      <h2>アイテム</h2>
+      <div class="ml-auto">
+      <i class="fas fa-ellipsis-h fa-2x" id="slideDown"></i>
+    </div>
     <% if @items.present? %>
       <%= render partial: 'item_list' %>
     <% else %>
@@ -37,14 +45,18 @@
 
   <br>
   <br>
-  <h2>キャンプ地</h2>
+  <div class="row">
+    <i class="fas fa-map-signs fa-2x"></i>
+    <h2>キャンプ地</h2>
+  </div>
   <div class="col">
     <% if @camp.area.present? %>
       <%= @camp.area.name %><br>
-      <%= @camp.area.address %><br>
+      <%= @camp.area.address[13..50] %><br>
     <% else %>
       <h3> キャンプ地はまだありません</h3>
     <% end %>
+    <br>
     <div class='row justify-content-center'>
       <a><%= link_to 'キャンプ地を登録', camp_areas_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
     </div>
@@ -52,7 +64,10 @@
 
   <br>
   <br>
-  <h2>Note</h2>
+  <div class="row">
+    <i class="fas fa-comment-dots fa-2x fa-flip-horizontal"></i>
+    <h2>Note</h2>
+  </div>
   <div class="col">
     <%= @camp.note %>
   </div>
@@ -64,3 +79,5 @@
     <a><%= link_to 'キャンプ一覧', camps_path, class: 'btn btn-success'%></a>
   </div>
 </div>
+
+<%= javascript_pack_tag 'camp/button_display' %>
