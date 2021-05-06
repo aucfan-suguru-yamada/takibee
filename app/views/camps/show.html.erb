@@ -8,32 +8,40 @@
       <i class="fas fa-camera fa-2x"></i>
       <h2>pictures</h2>
       <div class="ml-auto">
-        <i class="fas fa-plus fa-2x"></i>
+        <%= form_with model: @camp, local:true do |f| %>
+          <div class="form-group">
+            <%= f.label :camp_image do %>
+              <i class="fas fa-plus fa-2x"></i>
+              <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
+            <% end %>
+
+            <!-- modal -->
+            <div id="modal01" class="c-modal js-modal">
+              <div class="c-modal_bg js-modal-close">
+              </div>
+              <div class="c-modal_content _lg">
+                <div class="c-modal_content_inner">
+                  <div class="row">
+                    <div id="modal_image_box">
+                    <!--ここにモーダルウィンドウの内容が入ります-->
+                    </div>
+                  </div>
+                  <br>
+                  <div class="d-flex justify-content-center">
+                    <%= f.submit (t 'defaults.register'), class: 'btn btn-success mx-2' %>
+                    <a class="js-modal-close c-modal_close btn btn-danger mx-2" href=""><span>キャンセル</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- ./modal -->
+          </div>
+        <% end %>
         <i class="fas fa-ellipsis-h fa-2x" id="picture_edit_button"></i>
       </div>
     </div>
     <div class="container container-m">
-      <% if @camp.images.present? %>
-      <div class="row">
-        <% @camp.images.each do |image| %>
-          <div class="col-md-3">
-            <%= image_tag(image, style: "width: 200px;height: 200px;display: inline-block;", class: "img-thumbnail") %>
-            <%= link_to '削除', camp_path(camp_id: @camp.id, image_id: image.id), method: :patch, class: 'btn btn-danger picture_delete_button', style: "display: none;" %>
-          </div>
-        <% end %>
-      </div>
-      <% end %>
-        <%= form_with model: @camp, local:true do |f| %>
-          <div class="form-group">
-            <%= f.label :camp_image do %>
-            <i class="fas fa-plus fa-2x"></i>
-            <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
-            <% end %>
-            <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-        <div class="image_box" id='image-box__container'>
-        </div>
+      <%= render partial: 'camp_image_list' %>
     </div>
   </div>
 

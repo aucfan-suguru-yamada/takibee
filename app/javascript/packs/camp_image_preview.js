@@ -1,10 +1,11 @@
 $(document).on('turbolinks:load',function(){
+  console.log("camp_image");
   //DataTransferオブジェクトで、データを格納する箱を作る
   var dataBox = new DataTransfer();
   //querySelectorでfile_fieldを取得
   var file_field = document.querySelector('input[type=file]')
   //fileが選択された時に発火するイベント
-  $('#camp_image').change(function(){
+  $('#camp_camp_image').change(function(){
 
     //選択したfileのオブジェクトをpropで取得
     var files = $('input[type="file"]').prop('files')[0];
@@ -26,20 +27,22 @@ $(document).on('turbolinks:load',function(){
       //読み込みが完了すると、srcにfileのURLを格納
       fileReader.onloadend = function() {
         var src = fileReader.result
-        var html= `<div class='item-image col' data-image="${file.name}">
-                    <div class=' item-image__content'>
-                      <div class='item-image__content--icon'>
-                        <img src=${src} width="100" height="100" >
+        var html= `
+                      <div class='item-image col-md-4' data-image="${file.name}">
+                        <div class=' item-image__content'>
+                          <div class='item-image__content--icon'>
+                            <img src=${src} width="100" height="100" >
+                          </div>
+                        </div>
+                        <br>
+                        <div class='item-image__operetion'>
+                          <div class='item-image__operetion--delete btn btn-danger'>削除</div>
+                        </div>
                       </div>
-                    </div>
-                    <br>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete btn btn-danger'>削除</div>
-                    </div>
-                  </div>
-                  <br>`
+                      <br>
+                      `
         //image_box__container要素の前にhtmlを差し込む
-        $('#image-box__container').before(html);
+        $('#modal_image_box').after(html);
       };
       //image-box__containerのクラスを変更し、CSSでドロップボックスの大きさを変えてやる。
       //$('#image-box__container').attr('class', `item-num-${num}`)
@@ -49,6 +52,12 @@ $(document).on('turbolinks:load',function(){
     var modal = document.getElementById( 'modal01' );
     $( modal ).fadeIn( 300 );
     console.log(modal);
+    return false;
+  });
+
+  // モーダルウィンドウを閉じる
+  $( '.js-modal-close' ).on( 'click', function() {
+    $( '.js-modal' ).fadeOut( 300 );
     return false;
   });
 

@@ -1,3 +1,55 @@
 // Place all the styles related to the camp controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+// モーダルウィンドウ全体のレイアウト（画面いっぱいに表示）
+.c-modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+// 黒背景の設定
+.c-modal_bg {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100vh;
+  width: 100%;
+}
+
+// ウィンドウの設定
+.c-modal_content {
+  background: #fff;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+
+  &._sm {
+      width: 30%;
+  }
+
+  &._md {
+      width: 50%;
+  }
+
+  &._lg {
+      width: 70%;
+  }
+}
+
+.c-modal_content_inner {
+  position: relative;
+  padding: 24px;
+}
+
+// 閉じるボタン
+//.c-modal_close {
+  //position: absolute;
+  //top: 13px;
+  //right: 10px;
+//}
