@@ -35,6 +35,6 @@ module SetCamp
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-
+    config.active_storage.replace_on_assign_to_many = false
   end
 end
