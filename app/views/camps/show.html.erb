@@ -8,6 +8,7 @@
       <i class="fas fa-camera fa-2x"></i>
       <h2>pictures</h2>
       <div class="ml-auto">
+        <i class="fas fa-plus fa-2x"></i>
         <i class="fas fa-ellipsis-h fa-2x" id="picture_edit_button"></i>
       </div>
     </div>
@@ -22,6 +23,17 @@
         <% end %>
       </div>
       <% end %>
+        <%= form_with model: @camp, local:true do |f| %>
+          <div class="form-group">
+            <%= f.label :camp_image do %>
+            <i class="fas fa-plus fa-2x"></i>
+            <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
+            <% end %>
+            <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <div class="image_box" id='image-box__container'>
+        </div>
     </div>
   </div>
 
