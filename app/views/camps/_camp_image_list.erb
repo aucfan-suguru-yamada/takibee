@@ -1,0 +1,10 @@
+<% if @camp.images.present? %>
+  <div class="row">
+    <% @camp.images.each do |image| %>
+      <div class="col-md-3">
+        <%= image_tag(image, style: "width: 200px;height: 200px;display: inline-block;", class: "img-thumbnail") %>
+        <%= link_to '削除', camp_path(camp_id: @camp.id, image_id: image.id), method: :patch, class: 'btn btn-danger picture_delete_button', style: "display: none;" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
