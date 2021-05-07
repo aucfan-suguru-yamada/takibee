@@ -4,13 +4,15 @@
       <% @items.each do |item| %>
         <div class="col-md-4 card-group">
           <div class="card justify-content-around">
+              <%= link_to camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'item_delete_button', style: "display: none;" do %>
+                <i class="fas fa-backspace fa-2x float-right"></i>
+              <%end%>
             <% if item.small_image.present? %>
               <%= image_tag(item.small_image, style: "width: 128px;height: 128px;", class: "card-img-top mx-auto d-block") %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= "#{item.name[0..20] ...}" %></h5>
               <p class="card-text"><%= item.maker.name if item.maker.present? %></p>
-              <%= link_to '削除', camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'btn btn-danger item_delete_button', style: "display: none;" %>
             </div>
           </div>
         </div>

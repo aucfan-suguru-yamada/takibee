@@ -36,7 +36,7 @@ $(document).on('turbolinks:load',function(){
                         </div>
                         <br>
                         <div class='item-image__operetion'>
-                          <div class='item-image__operetion--delete btn btn-danger'>削除</div>
+                          <i class="fas fa-backspace fa-2x item-image__operetion--delete"></i>
                         </div>
                       </div>
                       <br>
