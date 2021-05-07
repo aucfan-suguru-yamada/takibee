@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'sorcery'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 gem 'rails-i18n'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -33,6 +33,7 @@ gem 'bootstrap', '~> 4.3.1'
 # rakuten API
 gem 'rakuten_web_service'
 gem "figaro"
+gem 'mini_magick', '~> 4.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
