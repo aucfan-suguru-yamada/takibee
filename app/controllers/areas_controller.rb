@@ -20,6 +20,6 @@ class AreasController < ApplicationController
   end
 
   def area_params
-    params.permit(:name, :address, :camp_id)
+    params.permit(:name, :address, :latlng, :camp_id)
   end
 end
