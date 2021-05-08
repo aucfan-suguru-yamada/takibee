@@ -55,12 +55,13 @@
       <div class="ml-auto">
         <i class="fas fa-ellipsis-h fa-2x" id="item_edit_button"></i>
     </div>
+    </div><br>
     <% if @items.present? %>
       <%= render partial: 'item_list' %>
     <% else %>
       <h3> アイテムはまだありません</h3>
     <% end %>
-  </div>
+
   <br>
   <div class='row justify-content-center'>
     <a><%= link_to 'アイテム検索から追加', camp_search_items_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
@@ -76,8 +77,13 @@
   </div>
   <div class="col">
     <% if @camp.area.present? %>
+      <div id="map" style="height: 300px; width: 500px;"></div>
       <%= @camp.area.name %><br>
-      <%= @camp.area.address[13..50] %><br>
+      <%= @camp.area.address[13..50] %>
+          <% if @camp.area.latlng.present? %>
+          <input type="text" id="lat" value="<%= split_lat(@camp.area.latlng)%>" style="display: none;">
+          <input type="text" id="lng" value="<%= split_lng(@camp.area.latlng)%>" style="display: none;">
+          <% end %>
     <% else %>
       <h3> キャンプ地はまだありません</h3>
     <% end %>
@@ -106,3 +112,23 @@
 </div>
 
 <%= javascript_pack_tag 'camp/button_display' %>
+<script src=<%="http://maps.google.com/maps/api/js?key=#{ENV["google_api_key"]}&libraries=places&language=ja"%>></script>
+<script>
+    var map;
+    function initMap() {
+        var lat_value = document.getElementById('lat').value;
+        var lng_value = document.getElementById('lng').value;
+        var latlng = new google.maps.LatLng(lat_value, lng_value);
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: latlng,
+            zoom: 15
+        });
+        console.log("map");
+
+        var marker = new google.maps.Marker({
+        position: latlng,
+        map: map
+        });
+    }
+    initMap();
+</script>

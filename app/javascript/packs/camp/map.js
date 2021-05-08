@@ -111,22 +111,27 @@ function result_search(results, status) {
             var cell_name= table.rows[i+1].cells[0];
             var cell_address= table.rows[i+1].cells[1];
             var cell_button= table.rows[i+1].cells[2];
+            var cell_lat= table.rows[i+1].cells[3];
+            var cell_lng= table.rows[i+1].cells[4];
             cell_name.innerHTML = results[i].name;
             cell_address.innerHTML = results[i].formatted_address;
             cell_button.innerHTML = `<form action="/camps/${camp_id}/areas" method="post">
                                     <input type="hidden" name="name" value="${results[i].name}" id="area_name">
                                     <input type="hidden" name="address" value="${results[i].formatted_address}" id="area_address">
+                                    <input type="hidden" name="latlng" value="${results[i].geometry.location}" id="area_latlng">
                                     <input type="submit" name="commit" value="追加" class="btn btn-primary" data-disable-with="追加">
                                     </form>`;
         } else {
         var cell_name=rows[i+1].insertCell(0);
         var cell_address=rows[i+1].insertCell(1);
         var cell_button=rows[i+1].insertCell(2);
+        var cell_lat= rows[i+1].insertCell(3);
         cell_name.innerHTML = results[i].name;
         cell_address.innerHTML = results[i].formatted_address;
         cell_button.innerHTML = `<form action="/camps/${camp_id}/areas" method="post">
                                 <input type="hidden" name="name" value="${results[i].name}" id="area_name">
                                 <input type="hidden" name="address" value="${results[i].formatted_address}" id="area_address">
+                                <input type="hidden" name="latlng" value="${results[i].geometry.location}" id="area_latlng">
                                 <input type="submit" name="commit" value="追加" class="btn btn-primary" data-disable-with="追加">
                                 </form>`;
         };
