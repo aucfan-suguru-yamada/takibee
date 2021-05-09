@@ -1,0 +1,11 @@
+<% content_for(:title, "#{t '.title'}") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "rounded-circle" %>
+      <h1><%= t '.title' %></h1>
+      <%= @user.name %>
+    </div>
+  </div>
+  <%= link_to "編集", edit_user_path(current_user), class: "btn btn-success"%>
+</div>
