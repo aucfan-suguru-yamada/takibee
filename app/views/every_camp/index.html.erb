@@ -1,0 +1,10 @@
+<h1>みんなのキャンプ！</h1>
+<div class='container'>
+  <div id='camp_list'>
+    <% if @camps.present? %>
+      <%= render partial: 'camp_list' %>
+    <% else %>
+      <h2> キャンプのキロクはまだありません</h2>
+    <% end %>
+  </div>
+</div>
