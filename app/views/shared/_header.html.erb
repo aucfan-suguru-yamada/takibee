@@ -10,20 +10,18 @@
 
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
       <ul class='navbar-nav ml-auto main-nav align-items-center'>
+        <%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"), user_path(current_user)%>
         <li class='nav-item dropdown dropdown-slide'>
           <a href='#' class='nav-link dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
             <%= User.model_name.human %>
           </a>
-
           <div class='dropdown-menu dropdown-menu-right'>
             <%= link_to (t 'boards.index.title'), "#", class: 'dropdown-item' %>
             <%= link_to (t 'boards.new.title'), "#", class: 'dropdown-item' %>
-            <%= link_to (t 'defaults.profile'), "#", class: 'dropdown-item' %>
+            <%= link_to (t 'defaults.profile'), user_path(current_user), class: 'dropdown-item' %>
             <%= link_to (t 'defaults.logout'), logout_path, class: 'dropdown-item', method: :delete  %>
           </div>
         </li>
-
-
       </ul>
     </div>
   </nav>

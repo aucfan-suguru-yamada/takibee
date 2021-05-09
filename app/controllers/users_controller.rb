@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @user = current_user
   end
 
   # GET /users/new
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /users or /users.json
@@ -32,6 +34,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.update(user_params)
+    redirect_to user_path(@user)
+  end
+
 
 
   private
@@ -42,6 +49,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
     end
 end
