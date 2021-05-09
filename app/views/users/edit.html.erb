@@ -6,10 +6,10 @@
     <div class="image-box">
       <%= f.label :avatar do %>
         <i class="fas fa-camera avatar-edit rounded-circle fa-border"></i>
-        <%= f.file_field :avatar, id: :user_avatar, style: "display: none;" %>
+        <%= f.file_field :avatar, id: :user_avatar, onChange:"imgPreView(event)", style: "display: none;" %>
       <% end %>
       <%if @user.avatar.present?%>
-        <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "rounded-circle" %>
+        <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "rounded-circle", id: :preview_avatar, style:"height: 200px; width: 200px;" %>
       <% end %>
     </div>
   </div>
@@ -24,3 +24,14 @@
   <%= f.submit "更新", class: 'btn btn-primary' %>
   <% end %>
 </div>
+
+<script>
+  function imgPreView(event){
+    var fileReader = new FileReader();
+    fileReader.onload = (function() {
+      document.getElementById('preview_avatar').src = fileReader.result;
+    });
+    fileReader.readAsDataURL(event.target.files[0]);
+    console.log("avatar")
+  };
+</script>
