@@ -8,7 +8,7 @@
     <br>
     <div class='row justify-content-center'>
       <a><%= link_to 'アイテムをトウロク！', user_items_path, class: 'btn btn-success mx-2' %></a>
-      <h1 class='btn btn-success mx-2'>みんなのキャンプ！</h1>
+      <a><%= link_to 'みんなのキャンプ！', user_every_camp_index_path(current_user), class: 'btn btn-success mx-2' %></a>
     </div>
   </div>
 </div>
