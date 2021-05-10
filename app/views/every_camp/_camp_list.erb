@@ -7,16 +7,18 @@
                         user_path(camp.user), style: "display: inline-block;" %>
             <%= camp.user.name%>
           </div>
+          <%= link_to camp_path(camp.id), style:"text-decoration:none; color:black;" do %>
           <% if camp.images.present? %>
             <%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "card-img-top mx-auto d-block") %>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= camp.title %></h5>
-            <p class="card-text"><%= camp.note %></p>
+              <h5 class="card-title"><%= camp.title %></h5>
+              <p class="card-text"><%= camp.note %></p>
             <div class="row">
               <%= render partial: 'camp_item_list', locals: {camp: camp} %>
             </div>
           </div>
+          <%end%>
         </div>
       </div>
     <% end %>
