@@ -3,12 +3,10 @@
     <% @camp.images.each do |image| %>
       <div class="col-md-3">
         <div class="image-box">
-          <% if current_user == @camp.user %>
             <%= link_to camp_path(camp_id: @camp.id, image_id: image.id),
                         method: :patch, class: 'picture_delete_button', style: "display: none;" do %>
               <i class="fas fa-backspace fa-2x"></i>
             <%end%>
-          <%end%>
           <%= image_tag image.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "img-thumbnail" %>
         </div>
       </div>

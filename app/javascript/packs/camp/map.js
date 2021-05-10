@@ -65,20 +65,6 @@ $(document).on('click', '#search_btn', function(){
     service.textSearch(request, result_search);
 });
 
-
-//tableの削除ボタン
-//$(document).on('click', '#delete_btn', function(){
-//    var table = document.getElementById("table");
-  //var tbody = document.getElementsByTagName("tbody");
-//    console.log("tableの削除");
-  //tableの削除
-  //table.removeChild(tbody)
-//    while (table.firstChild) {
-//    table.removeChild(table.firstChild);
-//  };
-//});
-
-
 //tableの作成
 var rows=[];
 var table = document.createElement("table");
@@ -107,7 +93,6 @@ function result_search(results, status) {
         //tableに行を追加
         rows.push(table.insertRow(-1));  // 行の追加
         if (table.rows[i+1].cells[0]) {
-            console.log(table.rows[i+1].cells[0])
             var cell_name= table.rows[i+1].cells[0];
             var cell_address= table.rows[i+1].cells[1];
             var cell_button= table.rows[i+1].cells[2];
@@ -158,6 +143,7 @@ function createMarker(options) {
 };
 
 // ページ読み込み完了後、Googleマップを表示
-google.maps.event.addDomListener(window, 'load', initialize);
-//initialize();
+//google.maps.event.addDomListener(window, 'load', initialize);
+initialize();
+console.log("map.load");
 });
