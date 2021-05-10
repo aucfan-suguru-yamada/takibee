@@ -12,7 +12,9 @@
         <%= form_with model: @camp, local:true do |f| %>
           <div class="form-group">
             <%= f.label :camp_image do %>
-              <i class="fas fa-plus fa-2x"></i>
+              <% if current_user == @camp.user %>
+                <i class="fas fa-plus fa-2x"></i>
+              <%end%>
               <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
             <% end %>
 
@@ -38,7 +40,9 @@
           <!-- ./modal -->
           </div>
         <% end %>
-        <i class="fas fa-ellipsis-h fa-2x" id="picture_edit_button"></i>
+        <% if current_user == @camp.user %>
+          <i class="fas fa-ellipsis-h fa-2x" id="picture_edit_button"></i>
+        <% end %>
       </div>
     </div>
     <div class="container container-m">
@@ -52,22 +56,24 @@
     <div class="row">
       <i class="fas fa-campground fa-2x"></i>
       <h2>アイテム</h2>
-      <div class="ml-auto">
-        <i class="fas fa-ellipsis-h fa-2x" id="item_edit_button"></i>
-    </div>
+      <% if current_user == @camp.user %>
+        <div class="ml-auto">
+          <i class="fas fa-ellipsis-h fa-2x" id="item_edit_button"></i>
+        </div>
+      <%end%>
     </div><br>
     <% if @items.present? %>
       <%= render partial: 'item_list' %>
     <% else %>
       <h3> アイテムはまだありません</h3>
     <% end %>
-
   <br>
-  <div class='row justify-content-center'>
-    <a><%= link_to 'アイテム検索から追加', camp_search_items_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
-    <a><%= link_to 'マイアイテムから追加', camp_my_items_path(@camp.id), class: 'btn btn-success mx-2'%></a>
-  </div>
-
+  <% if current_user == @camp.user %>
+    <div class='row justify-content-center'>
+      <a><%= link_to 'アイテム検索から追加', camp_search_items_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
+      <a><%= link_to 'マイアイテムから追加', camp_my_items_path(@camp.id), class: 'btn btn-success mx-2'%></a>
+    </div>
+  <%end%>
 
   <br>
   <br>
@@ -88,9 +94,11 @@
       <h3> キャンプ地はまだありません</h3>
     <% end %>
     <br>
-    <div class='row justify-content-center'>
-      <a><%= link_to 'キャンプ地を登録', camp_areas_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
-    </div>
+    <% if current_user == @camp.user %>
+      <div class='row justify-content-center'>
+        <a><%= link_to 'キャンプ地を登録', camp_areas_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
+      </div>
+    <% end %>
   </div>
 
   <br>
@@ -106,9 +114,11 @@
 
   <br>
   <br>
-  <div class='row justify-content-center'>
-    <a><%= link_to 'キャンプ一覧', camps_path, class: 'btn btn-success'%></a>
-  </div>
+  <% if current_user == @camp.user %>
+    <div class='row justify-content-center'>
+      <a><%= link_to 'キャンプ一覧', camps_path, class: 'btn btn-success'%></a>
+    </div>
+  <% end %>
 </div>
 
 <%= javascript_pack_tag 'camp/button_display' %>
