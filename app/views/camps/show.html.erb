@@ -1,6 +1,9 @@
 <div class='container'>
-  <h1><%=@camp.title%></h1>
-  <h1><%=@camp.camped_on%></h1>
+  <%= link_to 'javascript:history.back()' do %>
+  <i class="fas fa-angle-left fa-2x"></i>
+  <%end%>
+  <h3><%=@camp.title%></h3>
+  <h3><%=@camp.camped_on%></h3>
   <br>
   <br>
 
