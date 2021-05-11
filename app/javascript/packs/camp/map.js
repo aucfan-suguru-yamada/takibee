@@ -5,7 +5,7 @@ var service;
 // マップの初期設定
 function initialize() {
     // Mapクラスのインスタンスを作成（緯度経度は池袋駅に設定）
-    var initPos = new google.maps.LatLng(35.729756, 139.711069);
+    var initPos = new google.maps.LatLng(35.3336671, 139.8928535);
     // 地図のプロパティを設定（倍率、マーカー表示位置、地図の種類）
     var myOptions = {
         zoom: 15,
@@ -16,12 +16,15 @@ function initialize() {
     myMap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     // 検索の条件を指定（緯度経度、半径、検索の分類）
     var request = {
-        location: initPos,
-        radius: 1000,      // ※１ 表示する半径領域を設定(1 = 1M)
-        types: ['cafe']    // ※２ typesプロパティの施設タイプを設定
+        //location: initPos,
+        query : `神奈川　キャンプ場`,
+        radius: 5000,      // ※１ 表示する半径領域を設定(1 = 1M)
+        location : myMap.getCenter()
+        //types: ['camp']    // ※２ typesプロパティの施設タイプを設定
     };
     var service = new google.maps.places.PlacesService(myMap);
-    service.search(request, Result_Places);
+    //service.search(request, Result_Places);
+    service.textSearch(request, result_search);
 }
 
 // 検索結果を受け取る
