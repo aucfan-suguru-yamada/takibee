@@ -105,3 +105,4 @@ yarn-debug.log*
 
 # Ignore application configuration
 /config/application.yml
+MacBook-Pro.local.pid
