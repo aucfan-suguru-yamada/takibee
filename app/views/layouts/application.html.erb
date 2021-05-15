@@ -21,7 +21,9 @@
           <%= render "/shared/before_login_header" %>
         <% end %>
         <%= render "/shared/flash_message" %>
+        <% if logged_in? %>
         <%= render "/shared/sidebar_lte" %>
+        <% end %>
         <div class="content-wrapper bg-dark">
           <%= yield %>
           <%= render "/shared/footer" %>

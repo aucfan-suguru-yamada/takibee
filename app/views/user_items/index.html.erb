@@ -1,4 +1,6 @@
-<h1>Myアイテム</h1>
+<% content_for :title do%>
+<%= t '.title' %>
+<% end %>
 <div class='content'>
   <div id='item_list'>
     <% if @items.present? %>

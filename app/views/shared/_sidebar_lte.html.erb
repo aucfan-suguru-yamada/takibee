@@ -11,7 +11,9 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
+      <% if current_user.avatar.present? %>
         <%= image_tag current_user.avatar, class: 'img-circle elevation-2' %>
+      <% end %>
       </div>
       <div class="info">
         <a class="d-block"><%= link_to current_user.name , user_path(current_user) %></a>
