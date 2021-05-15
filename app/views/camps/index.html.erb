@@ -1,4 +1,6 @@
-<h1>キャンプのキロク！</h1>
+<% content_for :title do%>
+<%= t '.title' %>
+<% end %>
 <div class='content'>
   <div id='camp_list'>
     <% if @camps.present? %>

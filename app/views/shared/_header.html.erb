@@ -7,8 +7,8 @@
         <a class="nav-link" data-widget="pushmenu" href="#" data-turbolinks="false" ><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-    <a class='navbar-brand' href='/'>
-      <%= image_tag 'logo.png'  %>
+    <a class='text-light'>
+      <%= yield(:title) %>
     </a>
     <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent'
       aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -17,7 +17,7 @@
 
       <ul class='navbar-nav ml-auto main-nav align-items-center'>
         <% if current_user.avatar.present? %>
-        <%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"), user_path(current_user)%>
+        <!--<%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"), user_path(current_user)%>-->
         <% end %>
         <li class='nav-item dropdown dropdown-slide'>
           <a href='#' class='nav-link dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

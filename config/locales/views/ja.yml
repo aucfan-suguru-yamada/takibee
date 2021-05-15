@@ -50,6 +50,15 @@ ja:
     update:
       success: 'ユーザーを更新しました'
       fail: 'ユーザーを更新できませんでした'
+  every_camp:
+    index:
+      title: 'みんなのキャンプ!'
+  camps:
+    index:
+      title: 'マイキャンプ'
+  user_items:
+    index:
+      title: 'マイアイテム'
   user_sessions:
     new:
       title: 'ログイン'
