@@ -1,7 +1,7 @@
 <% if @camps.present? %>
     <% @camps.each do |camp| %>
       <div class="col-md-9 card-group">
-        <div class="card bg-dark border border-light">
+        <div class="card bg-dark border border-secondary">
           <div class="card-header">
             <%= link_to image_tag(camp.user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"),
                         user_path(camp.user), style: "display: inline-block;" %>
