@@ -1,0 +1,7 @@
+<%= link_to user_every_camp_like_path(current_user,camp,current_user.likes.find_by(camp_id: camp.id)),
+    id: "js-like-button-#{camp.id}",
+    method: :delete,
+    class: "float-right",
+    remote: true do %>
+      <div class="heart HeartAnimation"></div>
+<% end %>

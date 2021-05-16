@@ -1,0 +1,37 @@
+// Place all the styles related to the likes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.heart {
+  width: 60px;
+  height: 60px;
+  background: url(heart_animation.png) no-repeat;
+  background-size: 2800*0.6px 100*0.6px;
+  background-position: 0 0;
+  cursor: pointer;
+}
+
+//アニメーションの開始と終了の定義
+@keyframes heartBlast {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+//HeartAnimationクラスを持つ要素へアニメーションを付与
+.HeartAnimation {
+  display: inline-block;
+  background-position: right;
+  -webkit-animation-name: heartBlast;
+  animation-name: heartBlast;
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-timing-function: steps(28);
+  animation-timing-function: steps(28);
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_090448) do
+ActiveRecord::Schema.define(version: 2021_05_16_064512) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2021_05_08_090448) do
     t.integer "maker_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "camp_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["camp_id"], name: "index_likes_on_camp_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "makers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_05_08_090448) do
   add_foreign_key "camp_items", "camps"
   add_foreign_key "camp_items", "items"
   add_foreign_key "camps", "users"
+  add_foreign_key "likes", "camps"
+  add_foreign_key "likes", "users"
   add_foreign_key "user_items", "items"
   add_foreign_key "user_items", "users"
 end
