@@ -1,0 +1,3 @@
+console.log("jsが呼び出された");
+
+$("#js-like-button-<%= @camp.id %>").replaceWith("<%= j(render('every_camp/unlike', camp: @camp)) %>");

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   root 'static_pages#top'
   resources :users, only: %i[new create show edit update] do
-    resources :every_camp, only: %i[index]
+    resources :every_camp, only: %i[index] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
   resources :items, only: %i[index new create destroy]
   resources :user_items, only: %i[index create destroy]

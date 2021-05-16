@@ -1,0 +1,7 @@
+<%= link_to user_every_camp_likes_path(current_user,camp),
+            id: "js-like-button-#{camp.id}",
+            method: :post,
+            class: "float-right",
+            remote: true do %>
+  <div class="heart"></div>
+<% end %>
