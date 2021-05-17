@@ -3,5 +3,7 @@
     method: :delete,
     class: "float-right",
     remote: true do %>
-      <div class="heart HeartAnimation"></div>
+      <div class="heart HeartAnimation">
+        <span class="heart_count"><%= camp.likes.count %></span>
+      </div>
 <% end %>

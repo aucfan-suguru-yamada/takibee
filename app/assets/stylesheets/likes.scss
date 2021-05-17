@@ -41,18 +41,33 @@
   position: relative;                  /* 指定した分だけ相対的に移動 */
 }
 .heart:hover .heart_hover {
-  display: inline;                     /* インライン要素として表示 */
+  transition: 0.8s;                 /* インライン要素として表示 */
+  display: inline;
+  background-color: rgba(12, 12, 12, 0.6) ;  /* 背景色（透明度） */
+  color: rgba(255, 255, 255, 0.8);
 }
  /* --- 吹き出し ------------------ */
 .heart_hover {
-  display: none;                        /* 要素を非表示 */
+  //display: none;                        /* 要素を非表示 */
   position: absolute;                   /* 親要素を基準 */
   padding: 2px;                         /* テキストの前後の余白 */
-  background-color: rgba(12, 12, 12, 0.75) ;  /* 背景色（透明度） */
+  background-color: rgba(12, 12, 12, 0.0) ;  /* 背景色（透明度） */
   width:200%;                          /* 吹き出し全体の幅 */
   left : 30%;                           /* 表示位置 */
   top : 100%;                           /* 表示位置 */
   //margin-top : 12px;                    /* 表示位置 */
   font-size: 80%;                       /* 文字サイズ */
-  color: white;
+  color: rgba(255, 255, 255, 0.0);
+}
+
+.heart_count {
+  position: absolute;                   /* 親要素を基準 */
+  right : 0;                           /* 表示位置 */
+  top : 15px;                           /* 表示位置 */
+  color: rgb(148, 147, 145);
+}
+
+.heart:hover .heart_count {
+  color: rgb(226, 140, 28);
+  transition: 0.5s;
 }
