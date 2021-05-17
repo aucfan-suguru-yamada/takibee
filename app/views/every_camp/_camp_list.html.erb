@@ -10,9 +10,9 @@
                           user_path(camp.user), style: "display: inline-block;" %>
               <%= camp.user.name%>
                 <% if current_user.already_liked?(camp) %>
-                  <%= render partial: 'unlike', locals: {camp: camp} %>
+                  <%= render partial: 'every_camp/unlike', locals: {camp: camp} %>
                 <% else %>
-                  <%= render partial: 'like', locals: {camp: camp} %>
+                  <%= render partial: 'every_camp/like', locals: {camp: camp} %>
                 <% end %>
             </div>
             </div>
@@ -31,7 +31,7 @@
               <h5 class="card-title"><%= camp.title %></h5>
               <p class="card-text"><%= camp.note %></p>
             <div class="row">
-              <%= render partial: 'camp_item_list', locals: {camp: camp} %>
+              <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>
             </div>
           </div>
           <%end%>
