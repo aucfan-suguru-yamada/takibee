@@ -3,12 +3,65 @@
 <% end %>
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-4">
+      <br>
       <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "rounded-circle" %>
       <h1><%= t '.title' %></h1>
       <%= @user.name %>
     </div>
+    <div class="col-md-8">
+    <br>
+      <canvas id="myRaderChart" style="max-width:500px;"></canvas>
+    </div>
   </div>
   <%= link_to "編集", edit_user_path(current_user), class: "btn btn-success"%>
   <%= render partial: 'every_camp/camp_list', locals: {camps: @camps}%>
+  <%= render partial: 'every_camp/modal' %>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+<script>
+  Chart.defaults.global.defaultFontColor = 'RGBA(255,255,255, 0.7)';
+  var ctx = document.getElementById("myRaderChart");
+    var myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ["キャンプ", "アイテム", "焚き火", "おしゃれ", "ボランティア"],
+            datasets: [{
+                label: '',
+                data: [<%= @radar_camp *10 %>, <%= @radar_item %>, <%= @radar_favolite_camp*10 %>, 50, 86],
+                backgroundColor: 'RGBA(255,240,35, 0.6)',
+                borderColor: 'RGBA(255,240,35, 1)',
+                borderWidth: 1,
+                pointBorderColor: 'RGBA(255,240,35, 0.0)',
+                scaleLineColor: 'RGBA(255,255,255, 0.7)'
+            }]
+        },
+        options: {
+            scale:{
+                ticks:{
+                    display: false,
+                    fontColor: 'RGBA(255,255,255, 0.7)',
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    stepSize: 20,
+                    callback: function(value, index, values){
+                        return  value
+                    }
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    display: true,
+                    color: 'RGBA(255,255,255, 0.3)'
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: 'RGBA(255,255,255, 0.3)'
+                },
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+  </script>
