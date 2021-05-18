@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @camps = @user.camps
+    #レーダーチャートの変数
+    @radar_camp = @camps.count
+    @radar_item = @user.items.count
+    @radar_favolite_camp = @user.liked_camps.count
   end
 
   # GET /users/new
