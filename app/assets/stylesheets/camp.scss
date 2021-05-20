@@ -15,14 +15,14 @@
 
 // 黒背景の設定
 .c-modal_bg {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   height: 100vh;
   width: 100%;
 }
 
 // ウィンドウの設定
 .c-modal_content {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.6);
   left: 50%;
   position: absolute;
   top: 50%;

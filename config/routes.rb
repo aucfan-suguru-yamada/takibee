@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :items, only: %i[index new create destroy]
   resources :user_items, only: %i[index create destroy]
-  resources :serch_user_items, only: %i[index]
+  resources :search_user_items, only: %i[index]
   resources :makers, only: %i[index new create update destroy]
   resources :camps, only: %i[index new create show update destroy] do
     resources :camp_items, only: %i[index new create show destroy]
