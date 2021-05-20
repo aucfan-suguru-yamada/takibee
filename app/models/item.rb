@@ -8,4 +8,8 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  scope :by_maker, ->(maker_id) { where(maker_id: maker_id) }
+  scope :own_user, ->(user_id) {joins(:user_items).where('user_id = ?', user_id)}
+
 end

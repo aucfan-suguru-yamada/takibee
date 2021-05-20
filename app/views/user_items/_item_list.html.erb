@@ -1,17 +1,14 @@
-<% if @items.present? %>
-<table class="table table-hover">
+<table class="table table-hover "id="item_table">
     <thead>
         <tr>
           <th>Img</th>
           <th>Name</th>
           <th>Maker</th>
-          <th>Shop</th>
-          <th>Genre</th>
-          <th>Url</th>
+          <th>btn</th>
         </tr>
     </thead>
     <tbody>
-      <% @items.each do |item| %>
+      <% items.each do |item| %>
         <tr>
           <% if item.small_image.present? %>
           <td><%= image_tag(item.small_image, style: "width: 100px;height: 100px;display: inline-block;") %></td>
@@ -21,10 +18,7 @@
           <td><%= "#{item.name[0..20] ...}" %></td>
           <td><%= item.maker.name if item.maker.present? %></td>
           <td><%= link_to '削除', user_item_path(item.id), method: :delete, class: 'btn btn-danger'%></td>
-          <td></td>
-          <td></td>
         </tr>
       <% end %>
     </tbody>
 </table>
-<% end %>

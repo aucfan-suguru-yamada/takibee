@@ -2,14 +2,21 @@
 <%= t '.title' %>
 <% end %>
 <div class='content'>
+  <%= form_with model: @search_user_item_form, url: user_items_path, method: :get, html: { class: 'form-inline' } do |f|%>
+    <%= f.select :maker_id, Maker.pluck(:name, :id) , { include_blank: true }, class: 'form-control' %>
+    <span class="input-group-btn">
+      <%= f.submit '検索', class: %w[btn btn-default btn-flat] %>
+    </span>
+  <%end%>
+
   <div id='item_list'>
     <% if @items.present? %>
-      <%= render partial: 'item_list' %>
+      <%= render partial: 'item_list', locals: {items: @items} %>
     <% else %>
       <h2> Myアイテムはまだありません</h2>
     <% end %>
     <div class='row justify-content-center'>
-      <a><%= link_to 'アイテムを探す！', serch_user_items_path, class: 'btn btn-success'%></a>
+      <a><%= link_to 'アイテムを探す！', search_user_items_path, class: 'btn btn-success'%></a>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 class UserItemsController < ApplicationController
   def index
-    @items = current_user.items.uniq
+    @search_items_form = SearchUserItemForm.new(maker_id: params[:maker_id], user_id: current_user.id)
+    @items = @search_items_form.search
   end
 
   def destroy
