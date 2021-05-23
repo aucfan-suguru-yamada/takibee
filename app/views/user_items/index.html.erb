@@ -1,22 +1,42 @@
 <% content_for :title do%>
 <%= t '.title' %>
 <% end %>
-<div class='content'>
-  <%= form_with model: @search_user_item_form, url: user_items_path, method: :get, html: { class: 'form-inline' } do |f|%>
-    <%= f.select :maker_id, Maker.pluck(:name, :id) , { include_blank: true }, class: 'form-control' %>
-    <span class="input-group-btn">
-      <%= f.submit '検索', class: %w[btn btn-default btn-flat] %>
-    </span>
-  <%end%>
+<div class='container'>
+  <div class='row'>
+    <%= form_with model: @search_user_item_form, url: user_items_path, method: :get, html: { class: 'form-inline' } do |f|%>
+      <%= f.select :maker_id, Maker.pluck(:name, :id) , { include_blank: true }, class: 'form-control' %>
+        <span class="input-group-btn">
+          <%= f.submit '検索', class: %w[btn btn-default btn-flat] %>
+        </span>
+    <%end%>
 
+    <!--ドロップダウンリスト-->
+    <div class="float-right mx-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-ellipsis-h fa-lg text-right" id="item_edit_button"></i>
+        </button>
+      <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+        <%= link_to 'アイテムを追加', search_user_items_path, class: 'dropdown-item text-success'%>
+        <%= link_to 'アイテムを削除','#', class: 'dropdown-item text-danger doropdown-list-delete'%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
   <div id='item_list'>
+  <br>
+  <div class='row'>
+    <div class='btn btn-outline-danger item-delete-button mx-auto' style="display:none;">選択したアイテムを削除</div>
+    <div class='btn btn-outline-primary item-cancel-button mx-auto' style="display:none;">キャンセル</div>
+  </div>
+  <br>
     <% if @items.present? %>
       <%= render partial: 'item_list', locals: {items: @items} %>
     <% else %>
       <h2> Myアイテムはまだありません</h2>
     <% end %>
-    <div class='row justify-content-center'>
-      <a><%= link_to 'アイテムを探す！', search_user_items_path, class: 'btn btn-success'%></a>
-    </div>
   </div>
+</div>
 </div>
