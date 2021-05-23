@@ -7,6 +7,8 @@ $(document).on("click", '.doropdown-list-delete', function(){
   //ボタンを無効化しておく
   select_flag = 1
   item_ids_array = [];
+  //カーソルをポインターへ変更
+  $(".checkbox_row").css("cursor","pointer")
 });
 
     $(document).on("click", '.checkbox_row', function(){
@@ -64,4 +66,5 @@ $(document).on("click", '.doropdown-list-delete', function(){
       checkbox_icon.hide();
       item_ids_array = [];
       select_flag = 0;
+      $(".checkbox_row").css("cursor","default")
     });
