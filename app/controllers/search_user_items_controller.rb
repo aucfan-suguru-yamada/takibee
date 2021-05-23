@@ -1,4 +1,4 @@
-class SerchUserItemsController < ApplicationController
+class SearchUserItemsController < ApplicationController
 
   def index
     if params[:keyword]

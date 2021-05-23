@@ -13,6 +13,7 @@ require("./camp_image_preview");
 require("./admin");
 require("admin-lte");
 require("./modal");
+require("./table_checkbox");
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

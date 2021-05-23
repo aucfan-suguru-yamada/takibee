@@ -1,24 +1,25 @@
-<table class="table table-hover "id="item_table">
+
+<table class="table table-hover" id="item_table">
     <thead>
         <tr>
           <th>Img</th>
           <th>Name</th>
           <th>Maker</th>
-          <th>btn</th>
         </tr>
     </thead>
     <tbody>
-      <% items.each do |item| %>
-        <tr>
-          <% if item.small_image.present? %>
-          <td><%= image_tag(item.small_image, style: "width: 100px;height: 100px;display: inline-block;") %></td>
-          <% else %>
-          <td></td>
-          <% end %>
-          <td><%= "#{item.name[0..20] ...}" %></td>
-          <td><%= item.maker.name if item.maker.present? %></td>
-          <td><%= link_to '削除', user_item_path(item.id), method: :delete, class: 'btn btn-danger'%></td>
-        </tr>
-      <% end %>
+        <% items.each do |item| %>
+          <tr class="checkbox_row" id="<%=item.id%>">
+            <td class='image_cell'>
+              <i class="fas fa-check-circle fa-2x text-danger" style='display:none;'></i>
+            <% if item.small_image.present? %>
+            <%= image_tag(item.small_image, style: "width: 100px;height: 100px;display: inline-block;") %></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td><%= "#{item.name[0..20] ...}" %></td>
+            <td><%= item.maker.name if item.maker.present? %></td>
+          </tr>
+        <% end %>
     </tbody>
 </table>

@@ -5,7 +5,10 @@ class UserItemsController < ApplicationController
   end
 
   def destroy
-    UserItem.find_by(user_id: current_user.id, item_id:params[:id]).delete
-    redirect_to user_items_path
+    @item_ids = params[:item_ids]
+    @item_ids.each do |item_id|
+      UserItem.find_by(user_id: current_user.id, item_id:item_id).delete
+    end
+    @items = current_user.items
   end
 end

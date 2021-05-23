@@ -1,3 +1,21 @@
 // Place all the styles related to the user_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.image_cell {
+  position: relative;
+}
+
+.fa-check-circle {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.checkbox_hidden{
+  display: none;
+}
+
+.table-hover tbody tr:hover td {
+  background: rgb(240, 202, 34);
+}
