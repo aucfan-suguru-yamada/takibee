@@ -12,8 +12,10 @@
     </thead>
     <tbody>
       <% @items.each do |item| %>
-        <tr>
-          <td><%= image_tag(item['mediumImageUrl'], style: "width: 100px;height: 100px;display: inline-block;") %></td>
+        <tr class="checkbox_row" id="<%=item.id%>">
+          <td>
+            <i class="fas fa-check-circle fa-2x text-danger" style='display:none;'></i>
+            <%= image_tag(item['mediumImageUrl'], style: "width: 100px;height: 100px;display: inline-block;") %></td>
           <td><%= item['productName'] %></td>
           <td><%= item['makerName'].present? ? item['makerName'] : '-' %></td>
           <td><%= item['brandName'] %></td>

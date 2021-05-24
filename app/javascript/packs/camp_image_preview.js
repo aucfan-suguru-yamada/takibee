@@ -1,5 +1,4 @@
 $(function(){
-  console.log("camp_image");
   //DataTransferオブジェクトで、データを格納する箱を作る
   var dataBox = new DataTransfer();
   //querySelectorでfile_fieldを取得

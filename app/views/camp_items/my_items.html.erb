@@ -1,4 +1,4 @@
-<h1>Myアイテムから追加</h1>
+<h1 class='camp_id' id="<%= @camp.id %>">Myアイテムから追加</h1>
 <div class='content'>
   <div id='item_list'>
     <% if @items.present? %>
@@ -7,7 +7,8 @@
       <h2> Myアイテムはまだありません</h2>
     <% end %>
     <div class='row justify-content-center'>
-      <a><%= link_to '選択したアイテムを追加！', serch_user_items_path, class: 'btn btn-success'%></a>
+      <a class='add-item-button btn btn-warning text-dark'>選択したアイテムを追加</a>
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'table_add_item_to_camp' %>
