@@ -1,7 +1,7 @@
 class CampItemsController < ApplicationController
   before_action :set_camp, only: %i[index create destroy search_items my_items add_my_items]
   before_action :already_have?, only: %i[create]
-  before_action :already_have_camp_item?, only: %i[add_my_items]
+#  before_action :already_have_camp_item?, only: %i[add_my_items]
 
   def new
   end
@@ -21,7 +21,10 @@ class CampItemsController < ApplicationController
   end
 
   def add_my_items
-    @camp.items << current_user.items.find_by(name: params[:name])
+    @item_ids = params[:item_ids]
+    @item_ids.each do |item_id|
+      @camp.items << current_user.items.find(item_id)
+    end
     redirect_to camp_path(@camp)
   end
 

@@ -1,30 +1,14 @@
-var select_flag = 0;
+var select_flag = 1
 var item_ids_array = [];
-
-    ///CSRFトークンを取得・セット
-    function set_csrftoken() {
-      $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-          if (!options.crossDomain) {
-              const token = $('meta[name="csrf-token"]').attr('content');
-              if (token) {
-                  return jqXHR.setRequestHeader('X-CSRF-Token', token);
-              }
-          }
-      });
-    };
-
-    // ajax通信条件にCSRFトークンを入れる
-    set_csrftoken();
+var camp_id = $('.camp_id').attr('id');
+console.log(camp_id)
 
 $(document).on("click", '.doropdown-list-delete', function(){
   $('.item-delete-button').show();
   $('.item-cancel-button').show();
   //ボタンを無効化しておく
-  select_flag = 1;
+  select_flag = 1
   item_ids_array = [];
-  console.log(item_ids_array);
-  //削除ボタンの無効化
-  $('.item-delete-button').prop("disabled", true);
   //カーソルをポインターへ変更
   $(".checkbox_row").css("cursor","pointer")
 });
@@ -55,27 +39,6 @@ $(document).on("click", '.doropdown-list-delete', function(){
         }
     });
 
-    //ajaxで削除実行
-    $(document).on("click",'.item-delete-button', function(){
-      console.log('削除クリック')
-      if(!confirm('アイテムを削除しますか？')){
-        /* キャンセルの時の処理 */
-        return false;
-    }else{
-        /*　OKの時の処理 */
-        $.ajax({
-          url: '/user_items/' + 1,
-          type: 'POST',
-          data: {'item_ids': item_ids_array,
-                 '_method': 'DELETE'} // DELETE リクエストだよ！と教えてあげる。
-        });
-        $('.item-delete-button').hide();
-        $('.item-cancel-button').hide();
-        item_ids_array = [];
-        select_flag = 0;
-    };
-    });
-
     //cancelボタンのクリック
     $(document).on("click", '.item-cancel-button', function(){
       $('.item-delete-button').hide();
@@ -85,4 +48,42 @@ $(document).on("click", '.doropdown-list-delete', function(){
       item_ids_array = [];
       select_flag = 0;
       $(".checkbox_row").css("cursor","default")
+    });
+
+
+    ///CSRFトークンを取得・セット
+    function set_csrftoken() {
+      $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+          if (!options.crossDomain) {
+              const token = $('meta[name="csrf-token"]').attr('content');
+              if (token) {
+                  return jqXHR.setRequestHeader('X-CSRF-Token', token);
+              }
+          }
+      });
+    };
+
+    // ajax通信条件にCSRFトークンを入れる
+    set_csrftoken();
+
+    //ajaxでpost実行
+    $(document).on("click",'.add-item-button', function(){
+      console.log('追加クリック')
+      if(!confirm('アイテムを追加しますか？')){
+        /* キャンセルの時の処理 */
+        return false;
+      }else{
+        /*　OKの時の処理 */
+        $.ajax({
+          url: '/camps/' + camp_id + '/add_my_items',
+          type: 'POST',
+          data: {'item_ids': item_ids_array
+                }
+        }).done(function(){
+          console.log('ページ遷移')
+          location.href = './';
+        });
+        item_ids_array = [];
+        select_flag = 0;
+      };
     });
