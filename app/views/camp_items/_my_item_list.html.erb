@@ -5,6 +5,7 @@
           <th>Img</th>
           <th>Name</th>
           <th>Maker</th>
+          <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
           <% end %>
           <td><%= "#{item.name[0..20] ...}" %></td>
           <td><%= item.maker.name if item.maker.present? %></td>
+          <td class='added_status'><%= already_owned?(item) %></td>
         </tr>
       <% end %>
     </tbody>
