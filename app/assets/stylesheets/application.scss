@@ -23,3 +23,9 @@
 body {
   padding-top: 57px;
 }
+
+/* タブの色変更 */
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: gray;
+  background: rgb(240, 202, 34);;
+}

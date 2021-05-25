@@ -24,12 +24,12 @@
   </div>
 </div>
 
-<div class='row'>
-  <div id='item_list'>
-  <br>
-  <div class='row'>
-    <div class='btn btn-outline-danger item-delete-button mx-auto' style="display:none;">選択したアイテムを削除</div>
-    <div class='btn btn-outline-primary item-cancel-button mx-auto' style="display:none;">キャンセル</div>
+  <div class='row justify-content-center'>
+    <div class='col-md-9 ' id='item_list'>
+    <br>
+      <div class='btn btn-outline-danger item-delete-button' style="display:none;">選択したアイテムを削除</div>
+      <div class='btn btn-outline-primary item-cancel-button' style="display:none;">キャンセル</div>
+    </div>
   </div>
   <br>
     <% if @items.present? %>
@@ -37,7 +37,5 @@
     <% else %>
       <h2> Myアイテムはまだありません</h2>
     <% end %>
-  </div>
-</div>
 </div>
 <%= javascript_pack_tag 'table_checkbox' %>
