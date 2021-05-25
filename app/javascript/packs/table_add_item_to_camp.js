@@ -1,31 +1,24 @@
-var select_flag = 1
 var item_ids_array = [];
 var camp_id = $('.camp_id').attr('id');
-console.log(camp_id)
-
-$(document).on("click", '.doropdown-list-delete', function(){
-  $('.item-delete-button').show();
-  $('.item-cancel-button').show();
-  //ボタンを無効化しておく
-  select_flag = 1
-  item_ids_array = [];
-  //カーソルをポインターへ変更
-  $(".checkbox_row").css("cursor","pointer")
-});
+$('.add-item-button').prop("disabled", true);
+$(".checkbox_row").css("cursor","pointer");
 
     $(document).on("click", '.checkbox_row', function(){
         //tr要素をクリックでイベント発火
         var checkbox_icon = $(this).find('.fa-check-circle');
+        var added_status = $(this).find('.added_status').text();
+        console.log(added_status)
         //クリックした行のアイテムidを取得
         var item_ids = $(this).attr('id');
         //クリックしたアイテムidを検索
         var serch_array = $.inArray(item_ids, item_ids_array)
         console.log(serch_array)
         //arrayに含まれない場合-1が返る
-        if (serch_array === -1 && select_flag === 1) {
+        if (serch_array === -1 && added_status === '未登録') {
           item_ids_array.push(item_ids);
           checkbox_icon.show();
-        } else {
+        }
+        if (serch_array > -1 && added_status === '未登録') {
           item_ids_array.splice(serch_array,1);
           checkbox_icon.hide();
         }
@@ -33,9 +26,9 @@ $(document).on("click", '.doropdown-list-delete', function(){
 
         //削除ボタンの有効/無効の切り替え
         if (item_ids_array.length === 0) {
-            $('.item-delete-button').prop("disabled", true);
+            $('.add-item-button').prop("disabled", true);
         } else {
-            $('.item-delete-button').prop("disabled", false);
+            $('.add-item-button').prop("disabled", false);
         }
     });
 
@@ -46,7 +39,6 @@ $(document).on("click", '.doropdown-list-delete', function(){
       var checkbox_icon = $('.fa-check-circle');
       checkbox_icon.hide();
       item_ids_array = [];
-      select_flag = 0;
       $(".checkbox_row").css("cursor","default")
     });
 
@@ -84,6 +76,5 @@ $(document).on("click", '.doropdown-list-delete', function(){
           location.href = './';
         });
         item_ids_array = [];
-        select_flag = 0;
       };
     });
