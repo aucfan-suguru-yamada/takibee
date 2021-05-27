@@ -2,7 +2,7 @@
 <div class="container container-m">
   <div class="row">
       <% @items.each do |item| %>
-        <div class="col-md-3 card-group">
+        <div class="col-md-3 col-sm-6 card-group">
           <div class="card justify-content-around bg-dark border border-secondary mb-3">
               <%= link_to camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'item_delete_button', style: "display: none;" do %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" class="bi bi-x-square float-right" viewBox="0 0 16 16" >

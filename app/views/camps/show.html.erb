@@ -74,7 +74,6 @@
   <br>
   <% if current_user == @camp.user %>
     <div class='row justify-content-center'>
-      <a><%= link_to 'アイテム検索から追加', camp_search_items_path(camp_id: @camp.id), class: 'btn btn-success mx-2'%></a>
       <a><%= link_to 'マイアイテムから追加', camp_my_items_path(@camp.id), class: 'btn btn-success mx-2'%></a>
     </div>
   <%end%>

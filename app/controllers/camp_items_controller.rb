@@ -1,7 +1,6 @@
 class CampItemsController < ApplicationController
   before_action :set_camp, only: %i[index create destroy search_items my_items add_my_items]
   before_action :already_have?, only: %i[create]
-  #  before_action :already_have_camp_item?, only: %i[add_my_items]
 
   def new
   end
@@ -28,7 +27,8 @@ class CampItemsController < ApplicationController
     redirect_to camp_path(@camp)
   end
 
-
+  #キャンプアイテム追加を楽天apiから実施
+=begin
   def create
     io = open(params[:image_url])
     params[:maker_name] = '-' unless params[:maker_name].present?
@@ -55,6 +55,7 @@ class CampItemsController < ApplicationController
 
     redirect_to camp_path(@camp)
   end
+=end
 
   def destroy
     CampItem.find_by(camp_id: params[:camp_id], item_id:params[:item_id]).delete
@@ -71,16 +72,13 @@ class CampItemsController < ApplicationController
     params.permit(:name, :maker_name)
   end
 
+  # create用
+=begin
   def already_have?
     if @camp.items.find_by(name: params[:name])
       flash.now[:danger] = "#{params[:name][0..20]}...はすでに登録されています。"
       render 'search_items'
     end
   end
-
-  def already_have_camp_item?
-    if @camp.items.find_by(name: params[:name])
-      redirect_to camp_my_items_path, flash: {danger: "#{params[:name][0..20]}...はすでに登録されています。"}
-    end
-  end
+=end
 end
