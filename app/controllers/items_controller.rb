@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :already_have?, only: %i[create]
   require 'open-uri'
 
   def index
@@ -38,5 +39,12 @@ class ItemsController < ApplicationController
 
   def create_params
     params.permit(:name, :maker_name)
+  end
+
+  def already_have?
+    if current_user.items.find_by(name: params[:name])
+      flash.now[:warning] = "#{params[:name][0..20]}...はすでに登録されています。"
+      render 'search_user_items/index'
+    end
   end
 end

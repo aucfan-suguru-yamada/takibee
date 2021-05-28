@@ -1,6 +1,5 @@
 class CampItemsController < ApplicationController
   before_action :set_camp, only: %i[index create destroy search_items my_items add_my_items]
-  before_action :already_have?, only: %i[create]
 
   def new
   end
