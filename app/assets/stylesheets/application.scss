@@ -15,6 +15,7 @@
 @import "camp";
 @import "user";
 @import "likes";
+@import "camp_items";
 @import 'user_items';
 @import 'admin-lte/plugins/fontawesome-free/css/all.min';
 @import 'admin-lte/dist/css/adminlte.min';
@@ -26,6 +27,5 @@ body {
 
 /* タブの色変更 */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: gray;
   background: rgb(240, 202, 34);;
 }

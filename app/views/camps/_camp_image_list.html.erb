@@ -1,7 +1,7 @@
 <% if @camp.images.present? %>
   <div class="row">
     <% @camp.images.each do |image| %>
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-6">
         <div class="image-box">
             <%= link_to camp_path(camp_id: @camp.id, image_id: image.id),
                         method: :patch, class: 'picture_delete_button', style: "display: none;" do %>
