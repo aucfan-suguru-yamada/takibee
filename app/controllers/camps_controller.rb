@@ -13,7 +13,8 @@ class CampsController < ApplicationController
   end
 
   def create
-    if current_user.camps.create(camp_params)
+    @camp = current_user.camps.new(camp_params)
+    if @camp.save
       redirect_to camps_path
     else
       render 'new'

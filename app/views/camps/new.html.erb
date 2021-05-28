@@ -1,39 +1,60 @@
 <% content_for(:title, "#{t '.title'}") %>
+<%= form_with model: @camp, local:true do |f| %>
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1>キャンプのキロク</h1>
-      <%= form_with model: @camp, local:true do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-        <div class="form-group">
-          <%= f.label 'キャンプのタイトル' %>
-          <%= f.text_field :title, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label '日付' %>
-          <%= f.date_field :camped_on, class: 'form-control' %>
-        <div class="form-group">
-          <%= f.label '人数' %>
-          <%= f.number_field :number_of_people, min: 1, default: 1, placeholder: 1, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label '画像' %>
-          <%= f.file_field :images, multiple: true, id: :camp_image %>
-        </div>
-        <div class="row">
-          <div class="image_box" id='image-box__container'>
+    <div class='content'>
+      <div class="col-md-12 col card-group">
+        <div class="card bg-dark border border-secondary">
+          <div class="card-header">
+            <div class="contain">
+              <div class="row">
+                <div class="col align-items-center">
+                  <%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"),
+                              user_path(current_user), style: "display: inline-block;" %>
+                  <%= current_user.name%>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <div class="preview-box border rounded col-md-12">
+              <%= f.label :image do%>
+                <i class="far fa-images fa-lg"></i>
+                <%= f.file_field :images, multiple: true, id: :camp_image, style: 'display: none;' %>
+              <% end %>
+              <div class="row">
+                <div class="image_box" id='image-box__container'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+              <%= render 'shared/error_messages', object: f.object %>
+            <div class="form-group">
+              <%= f.label 'キャンプのタイトル' %>
+              <%= f.text_field :title, class: 'form-control bg-dark' %>
+            </div>
+            <div class="form-group">
+              <%= f.label 'コメント' %>
+              <%= f.text_area :note, class: 'form-control bg-dark' %>
+            </div>
+            <div class="form-group">
+              <%= f.label '日付' %>
+              <%= f.date_field :camped_on, class: 'form-control bg-dark' %>
+            </div>
+            <div class="form-group">
+              <%= f.label '人数' %>
+              <%= f.number_field :number_of_people, min: 1, default: 1, placeholder: 1, class: 'form-control bg-dark' %>
+            </div>
+            <br>
+            <div class='text-center'>
+              <%= f.submit (t 'defaults.register'), class: 'btn btn-outline-warning m-5' %>
+              <% end %>
+              <%= link_to 'マイキャンプへ戻る', camps_path, class: 'btn btn-outline-light' %>
+            </div>
           </div>
         </div>
-        <br>
-        <div class="form-group">
-          <%= f.label 'コメント' %>
-          <%= f.text_area :note, class: 'form-control' %>
-        </div>
-        <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to 'キャンプのキロク一覧', camps_path %>
       </div>
     </div>
-  </div>
 </div>

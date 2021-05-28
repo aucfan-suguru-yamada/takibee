@@ -30,11 +30,21 @@
 </ul>
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <%if @user == current_user %>
+      <div class='col-md-9'>
+        <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
+      </div>
+    <% end %>
     <%= render partial: 'every_camp/camp_list', locals: {camps: @camps}%>
     <%= render partial: 'every_camp/modal' %>
   </div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <%= render partial: 'user_items/item_list', locals: {items: @items}%>
+    <%if @user == current_user %>
+      <div class='col-md-9'>
+        <a><%= link_to '＋アイテムを追加', search_user_items_path, class: 'btn btn-outline-warning btn-block'%></a>
+      </div>
+    <% end %>
+    <%= render partial: 'user_items/item_list', locals: {items: @items}%>
   </div>
 </div>
 

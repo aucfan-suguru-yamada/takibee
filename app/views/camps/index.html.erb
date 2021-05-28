@@ -1,15 +1,13 @@
 <% content_for :title do%>
 <%= t '.title' %>
 <% end %>
-<div class='content'>
+  <div class='col-md-12'>
+    <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
+  </div>
   <div id='camp_list'>
     <% if @camps.present? %>
       <%= render partial: 'camp_list' %>
     <% else %>
       <h2> キャンプのキロクはまだありません</h2>
     <% end %>
-    <div class='row justify-content-center'>
-      <a><%= link_to 'キャンプをキロクする！', new_camp_path, class: 'btn btn-success'%></a>
-    </div>
   </div>
-</div>
