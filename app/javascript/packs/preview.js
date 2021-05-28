@@ -24,17 +24,21 @@ $(function(){
         $('#image-box__container').css('display', 'none')
       }
       //読み込みが完了すると、srcにfileのURLを格納
+      //<img src=${src} width="100" height="100" >
       fileReader.onloadend = function() {
         var src = fileReader.result
         var html= `<div class='item-image col' data-image="${file.name}">
-                    <div class=' item-image__content'>
+                    <div class='item-image__content'>
                       <div class='item-image__content--icon'>
-                        <img src=${src} width="100" height="100" >
+                      <img src=${src} style="max-width:90%; max-height:500px;">
                       </div>
                     </div>
                     <br>
                     <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete btn btn-danger'>削除</div>
+                      <div class='item-image__operetion--delete'>
+                      <i class="far fa-times-circle text-danger fa-lg"></i>
+                      <div class="fa-times-circle-bg"></div>
+                      </div>
                     </div>
                   </div>
                   <br>`
