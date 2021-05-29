@@ -8,8 +8,9 @@ class CampsController < ApplicationController
   end
 
   def show
-    @camp = Camp.find(params[:id])
-    @items = @camp.items
+    #@camp = Camp.find(params[:id])
+    @camp = Camp.with_attached_images.find(params[:id])
+    @items = @camp.items.includes(:maker).with_attached_small_image
   end
 
   def create
