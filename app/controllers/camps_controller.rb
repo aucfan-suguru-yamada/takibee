@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
   def index
-    @camps = current_user.camps.order(:camped_on)
+    @camps = current_user.camps.order(:camped_on).includes(:area).with_attached_images
   end
 
   def new
