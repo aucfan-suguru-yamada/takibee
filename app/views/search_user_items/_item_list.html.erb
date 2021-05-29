@@ -6,8 +6,8 @@
           <th style='width: 10%'>Img</th>
           <th style='width: 40%'>ProductName</th>
           <th style='width: 20%'>makerName</th>
-          <th style='width: 15%'>Review</th>
-          <th style='width: 15%'>Button</th>
+          <th style='width: 12%'>Review</th>
+          <th style='width: 18%'>Button</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
           <td><%= item['productName'] %></td>
           <td><%= item['makerName'].present? ? item['makerName'] : '-' %></td>
           <td><%= item['reviewAverage'] %></td>
-          <td><%= link_to 'Myアイテムに追加', items_path(name: item['productName'], image_url: item['mediumImageUrl'], user_id: current_user.id, maker_name: item['makerName']), method: :post, class:'btn btn-outline-info' %></td>
+          <td><%= link_to 'Myアイテムに追加', items_path(name: item['productName'], image_url: item['mediumImageUrl'], user_id: current_user.id, maker_name: item['makerName']), method: :post, class:'btn btn-outline-success' %></td>
         </tr>
       <% end %>
     </tbody>

@@ -15,7 +15,7 @@ class CampItemsController < ApplicationController
   end
 
   def my_items
-    @items = current_user.items
+    @items = current_user.items.includes(:maker).with_attached_small_image
   end
 
   def add_my_items
