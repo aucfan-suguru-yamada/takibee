@@ -1,6 +1,6 @@
 class AreasController < ApplicationController
   protect_from_forgery
-  before_action :set_camp, only: %i[index create]
+  before_action :set_camp, only: %i[index create destroy]
 
   def index
   end
@@ -11,6 +11,12 @@ class AreasController < ApplicationController
     else
       render 'index'
     end
+  end
+
+  def destroy
+    area = @camp.area
+    area.destroy!
+    redirect_to camp_path(@camp)
   end
 
   private
