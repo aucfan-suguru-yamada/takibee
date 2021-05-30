@@ -7,7 +7,7 @@
                 <div class="col align-items-center">
                   <%= link_to image_tag(camp.user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"),
                               user_path(camp.user), style: "display: inline-block;" %>
-                  <%= camp.user.name%>
+                  <%= camp.user.name%><span class="text-white-50"><%= "・#{camp.camped_on}"%></span>
                   <% if current_user.already_liked?(camp) %>
                     <%= render partial: 'every_camp/unlike', locals: {camp: camp} %>
                   <% else %>
@@ -27,8 +27,14 @@
             </div>
           <% end %>
           <div class="card-body">
-              <h5 class="card-title"><%= camp.title %></h5>
-              <p class="card-text"><%= camp.note %></p>
+            <% if camp.area.present? %>
+              <p class="text-white-50">
+                <i class="fas fa-map-marker-alt"></i>
+                <%= camp.area.name %>
+              </p>
+            <% end%>
+            <p class="card-title"><%= camp.title %></p>
+            <p class="card-text"><%= camp.note %></p>
             <div class="row">
               <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>
             </div>
