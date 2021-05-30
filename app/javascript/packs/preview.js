@@ -17,12 +17,7 @@ $(function(){
       //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
       file_field.files = dataBox.files
 
-      var num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
-　　　 //画像が10枚になったら超えたらドロップボックスを削除する
-      if (num == 10){
-        $('#image-box__container').css('display', 'none')
-      }
       //読み込みが完了すると、srcにfileのURLを格納
       //<img src=${src} width="100" height="100" >
       fileReader.onloadend = function() {
@@ -35,7 +30,7 @@ $(function(){
                     </div>
                     <br>
                     <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete'>
+                      <div class='item-image__operetion--delete1'>
                       <i class="far fa-times-circle text-danger fa-lg"></i>
                       <div class="fa-times-circle-bg"></div>
                       </div>
@@ -45,19 +40,12 @@ $(function(){
         //image_box__container要素の前にhtmlを差し込む
         $('#image-box__container').before(html);
       };
-      //image-box__containerのクラスを変更し、CSSでドロップボックスの大きさを変えてやる。
-      //$('#image-box__container').attr('class', `item-num-${num}`)
     });
-
-    //モーダル使えないかなあ
-    var modal = document.getElementById( 'modal01' );
-    $( modal ).fadeIn( 300 );
-    console.log(modal);
-    return false;
   });
 
+
   //削除ボタンをクリックすると発火するイベント
-  $(document).on("click", '.item-image__operetion--delete', function(){
+  $(document).on("click", '.item-image__operetion--delete1', function(){
   //削除を押されたプレビュー要素を取得
   var target_image = $(this).parent().parent()
   //削除を押されたプレビューimageのfile名を取得
@@ -73,7 +61,8 @@ $(function(){
     $.each(file_field.files, function(i,input){
       //削除を押された要素と一致した時、index番号に基づいてdataBoxに格納された要素を削除する
       if(input.name==target_name){
-        dataBox.items.remove(i)
+        dataBox.items.remove(i);
+        console.log(dataBox);
       }
     })
     //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に再度代入
@@ -81,9 +70,5 @@ $(function(){
   }
   //プレビューを削除
   target_image.remove()
-  //image-box__containerクラスをもつdivタグのクラスを削除のたびに変更
-  var num = $('.item-image').length
-  $('#image-box__container').show()
-  $('#image-box__container').attr('class', `item-num-${num}`)
-})
+});
 });
