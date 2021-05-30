@@ -5,7 +5,8 @@ $(function(){
   var file_field = document.querySelector('input[type=file]')
   //fileが選択された時に発火するイベント
   $('#camp_camp_image').change(function(){
-
+    //登録ボタンを有効
+    $('.item-submit-button').prop("disabled", false);
     //選択したfileのオブジェクトをpropで取得
     var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
@@ -17,12 +18,9 @@ $(function(){
       //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
       file_field.files = dataBox.files
 
-      var num = $('.item-image').length + 1 + i
+      //var num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
-　　　 //画像が10枚になったら超えたらドロップボックスを削除する
-      if (num == 10){
-        $('#image-box__container').css('display', 'none')
-      }
+
       //読み込みが完了すると、srcにfileのURLを格納
       fileReader.onloadend = function() {
         var src = fileReader.result
@@ -30,12 +28,14 @@ $(function(){
                       <div class='item-image col-md-4' data-image="${file.name}">
                         <div class=' item-image__content'>
                           <div class='item-image__content--icon'>
-                            <img src=${src} width="100" height="100" >
+                            <img src=${src} style="max-width:100%; max-height:500px;" >
                           </div>
                         </div>
                         <br>
                         <div class='item-image__operetion'>
-                          <i class="fas fa-backspace fa-2x item-image__operetion--delete"></i>
+                          <div class='item-image__operetion--delete'>
+                          <i class="far fa-times-circle text-danger fa-lg"></i>
+                        </div>
                         </div>
                       </div>
                       <br>
@@ -43,20 +43,21 @@ $(function(){
         //image_box__container要素の前にhtmlを差し込む
         $('#modal_image_box').after(html);
       };
-      //image-box__containerのクラスを変更し、CSSでドロップボックスの大きさを変えてやる。
-      //$('#image-box__container').attr('class', `item-num-${num}`)
     });
 
     //モーダル使えないかなあ
     var modal = document.getElementById( 'modal01' );
     $( modal ).fadeIn( 300 );
-    console.log(modal);
     return false;
   });
 
   // モーダルウィンドウを閉じる
   $( '.js-modal-close' ).on( 'click', function() {
     $( '.js-modal' ).fadeOut( 300 );
+    $('input[type=file]').val(null)
+    dataBox.clearData();
+    var target_image = $('.item-image');
+    target_image.remove();
     return false;
   });
 
@@ -71,23 +72,21 @@ $(function(){
     //inputタグに入ったファイルを削除
     $('input[type=file]').val(null)
     dataBox.clearData();
-    console.log(dataBox)
   }else{
     //プレビューが複数の場合
     $.each(file_field.files, function(i,input){
       //削除を押された要素と一致した時、index番号に基づいてdataBoxに格納された要素を削除する
       if(input.name==target_name){
-        dataBox.items.remove(i)
+        dataBox.items.remove(i);
       }
     })
     //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に再度代入
     file_field.files = dataBox.files
   }
   //プレビューを削除
-  target_image.remove()
-  //image-box__containerクラスをもつdivタグのクラスを削除のたびに変更
-  var num = $('.item-image').length
-  $('#image-box__container').show()
-  $('#image-box__container').attr('class', `item-num-${num}`)
-})
+  target_image.remove();
+  if(file_field.files.length==0){
+  $('.item-submit-button').prop("disabled", true);
+  };
+});
 });

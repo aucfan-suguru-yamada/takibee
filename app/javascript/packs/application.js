@@ -10,7 +10,7 @@ require("./preview");
 require("./camp_image_preview");
 require("./admin");
 require("admin-lte");
-require("./modal");
+//require("./modal");
 require("./table_link")
 
 
