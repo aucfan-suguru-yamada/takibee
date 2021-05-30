@@ -2,6 +2,21 @@
   <%= link_to 'javascript:history.back()' do %>
   <i class="fas fa-angle-left fa-2x"></i>
   <%end%>
+      <!--ドロップダウンリスト開始-->
+    <div class="float-right mx-auto">
+      <div class="dropleft">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-ellipsis-h fa-lg text-right"></i>
+        </button>
+      <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+        <%= link_to camp_path, method: :delete, data: { confirm: 'このキャンプを削除しますか？' }, class: 'dropdown-item text-danger doropdown-list-delete' do %>
+          <span><i class="fas fa-trash-alt"></i></span>  キャンプを削除
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!--ドロップダウンリスト終わり-->
+
   <h3><%=@camp.title%></h3>
   <h3><%=@camp.camped_on%></h3>
   <br>
@@ -9,18 +24,33 @@
 
   <div class="col">
     <div class="row">
-      <i class="fas fa-camera fa-2x"></i>
-      <h2>pictures</h2>
+      <i class="fas fa-camera fa-2x fa-fw"></i>
+      <h2>Pictures</h2>
       <div class="ml-auto">
           <i class="bi bi-x-square"></i>
-        <%= form_with model: @camp, local:true do |f| %>
-          <div class="form-group">
-            <%= f.label :camp_image do %>
-              <% if current_user == @camp.user %>
-                <i class="fas fa-plus fa-2x"></i>
-              <%end%>
-              <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
-            <% end %>
+        <% if current_user == @camp.user %>
+          <%= form_with model: @camp, local:true do |f| %>
+          <!--ドロップダウンリスト開始-->
+          <div class="float-right mx-auto">
+            <div class="dropleft">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-h fa-lg text-right"></i>
+              </button>
+              <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                <div class="form-group">
+                  <%= f.label :camp_image do %>
+                    <a class='dropdown-item text-success doropdown-list-delete'>
+                      <i class="fas fa-plus"></i>  写真を追加
+                    </a>
+                  <% end %>
+                  <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
+                  <p class='dropdown-item text-danger doropdown-list-delete' id="picture_edit_button">
+                    <span><i class="fas fa-trash-alt"></i></span>  写真を削除
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--ドロップダウンリスト終わり-->
 
             <!-- modal -->
             <div id="modal01" class="c-modal js-modal">
@@ -44,8 +74,8 @@
           <!-- ./modal -->
           </div>
         <% end %>
+        <%end%>
         <% if current_user == @camp.user %>
-          <i class="fas fa-ellipsis-h fa-2x" id="picture_edit_button"></i>
         <% end %>
       </div>
     </div>
@@ -58,12 +88,28 @@
   <br>
   <div class="col">
     <div class="row">
-      <i class="fas fa-campground fa-2x"></i>
+      <i class="fas fa-campground fa-2x fa-fw"></i>
       <h2>アイテム</h2>
       <% if current_user == @camp.user %>
         <div class="ml-auto">
-          <i class="fas fa-ellipsis-h fa-2x" id="item_edit_button"></i>
+          <!--ドロップダウンリスト開始-->
+          <div class="float-right mx-auto">
+            <div class="dropleft">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-h fa-lg text-right"></i>
+              </button>
+              <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                <%= link_to camp_my_items_path(@camp.id), class: 'dropdown-item text-success doropdown-list-delete' do%>
+                  <i class="fas fa-plus"></i>  アイテムを追加
+                <% end %>
+                <a class='dropdown-item text-danger doropdown-list-delete' id="item_edit_button">
+                  <i class="fas fa-trash-alt"></i>  アイテムを削除
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+        <!--ドロップダウンリスト終わり-->
       <%end%>
     </div><br>
     <% if @items.present? %>
@@ -72,16 +118,10 @@
       <h3> アイテムはまだありません</h3>
     <% end %>
   <br>
-  <% if current_user == @camp.user %>
-    <div class='row justify-content-center'>
-      <a><%= link_to 'マイアイテムから追加', camp_my_items_path(@camp.id), class: 'btn btn-success mx-2'%></a>
-    </div>
-  <%end%>
-
   <br>
   <br>
   <div class="row">
-    <i class="fas fa-map-signs fa-2x"></i>
+    <i class="fas fa-map-signs fa-2x fa-fw"></i>
     <h2>キャンプ地</h2>
   </div>
   <div class="col">
@@ -107,7 +147,7 @@
   <br>
   <br>
   <div class="row">
-    <i class="fas fa-comment-dots fa-2x fa-flip-horizontal"></i>
+    <i class="fas fa-comment-dots fa-2x fa-flip-horizontal fa-fw"></i>
     <h2>Note</h2>
   </div>
   <div class="col">
