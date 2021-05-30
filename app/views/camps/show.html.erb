@@ -120,28 +120,53 @@
   <br>
   <br>
   <br>
+
+
   <div class="row">
     <i class="fas fa-map-signs fa-2x fa-fw"></i>
     <h2>キャンプ地</h2>
+
+    <% if current_user == @camp.user %>
+          <!--ドロップダウンリスト開始-->
+    <div class="ml-auto">
+      <div class="float-right mx-auto">
+        <div class="dropleft">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-h fa-lg text-right"></i>
+          </button>
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+          <% if @camp.area.present?%>
+            <%= link_to camp_area_path(@camp), method: :delete, data: { confirm: 'キャンプ地を削除しますか？' }, class: 'dropdown-item text-danger doropdown-list-delete' do %>
+              <span><i class="fas fa-trash-alt"></i></span>  キャンプ地を削除
+            <% end %>
+            <% else %>
+              <%= link_to camp_areas_path(@camp), class: 'dropdown-item text-success doropdown-list-delete' do%>
+                <i class="fas fa-plus"></i>  キャンプ地を登録
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--ドロップダウンリスト終わり-->
+  <% end %>
+
+
   </div>
   <div class="col">
     <% if @camp.area.present? %>
       <div id="map" style="height: 300px; width: 500px;"></div>
-      <%= @camp.area.name %><br>
-      <%= @camp.area.address[13..50] %>
-          <% if @camp.area.latlng.present? %>
+      <br>
+      <i class="fas fa-map-marker-alt"></i><%= @camp.area.name %><br>
+      &nbsp;&nbsp;&nbsp;<%= "#{@camp.area.address[13..50]}" %>
+        <% if @camp.area.latlng.present? %>
           <input type="text" id="lat" value="<%= split_lat(@camp.area.latlng)%>" style="display: none;">
           <input type="text" id="lng" value="<%= split_lng(@camp.area.latlng)%>" style="display: none;">
-          <% end %>
+        <% end %>
     <% else %>
       <h3> キャンプ地はまだありません</h3>
     <% end %>
     <br>
-    <% if current_user == @camp.user %>
-      <div class='row justify-content-center'>
-        <a><%= link_to 'キャンプ地を登録', camp_areas_path(camp_id: @camp.id), class: 'btn btn-success mx-2', data: {turbolinks: false} %></a>
-      </div>
-    <% end %>
   </div>
 
   <br>
@@ -159,7 +184,7 @@
   <br>
   <% if current_user == @camp.user %>
     <div class='row justify-content-center'>
-      <a><%= link_to 'キャンプ一覧', camps_path, class: 'btn btn-success'%></a>
+      <a><%= link_to 'マイキャンプへ戻る', camps_path, class: 'btn btn-outline-light'%></a>
     </div>
   <% end %>
 </div>
