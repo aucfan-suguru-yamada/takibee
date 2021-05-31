@@ -1,14 +1,92 @@
-<div class='top-wrapper'>
-  <div class='container'>
-    <h1>Set Camp</h1>
-    <div class='row justify-content-center'>
-      <h1 class='btn btn-success mx-2'>キャンプをハジメル！</h1>
-      <a><%= link_to 'キャンプをキロク！', camps_path, class: 'btn btn-success mx-2' %></a>
+  <div id="headerwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center">
+          <br/>
+          <br/>
+          <h1>あの日の、あの火を。<br/>
+					- さあ、TAKIBee -</h1>
+          <br/>
+          <br/>
+          <div class='text-center'>
+            <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
+          </div>
+          <br>
+          <div class='text-center'>
+            <%= link_to 'ログイン', login_path, class: 'btn btn-outline-warning' %>
+          </div>
+          <br>
+          <div class='text-center'>
+            <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
+          </div>
+        </div>
+        <!-- /col-lg-6 -->
+        <div class="col-lg-6 text-center">
+          <%= image_tag 'camping.png', class: 'img-responsive', style: 'height:500px; width:500px;'%>
+        </div>
+        <!-- /col-lg-6 -->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /headerwrap -->
+
+  <div class="container">
+    <div class="row mt centered">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>キャンプの記録を<br/>TAKIBeeで残そう。</h1>
+        <h3>たき火、ごはん、キャンプギア、<br/>あなたのキャンプを記録できます。</h3>
+      </div>
+    </div>
+    <!-- /row -->
+    <br/>
+    <br/>
+
+
+    <div class="row mt centered">
+      <div class="col-lg-4 text-center">
+        <img src="img/ser01.png" width="180" alt="">
+        <%= image_tag 'item-1.png',style: 'width:180px;'%>
+        <h4>1 - アイテムの登録</h4>
+        <p>キャンプギアを検索して、登録できます。<br/>自分のキャンプギアを整理しよう。</p>
+      </div>
+      <!--/col-lg-4 -->
+
+      <div class="col-lg-4 text-center">
+        <img src="img/ser02.png" width="180" alt="">
+        <%= image_tag 'item-2.png',style: 'width:180px;'%>
+        <h4>2 - キャンプの記録</h4>
+        <p>キャンプの写真や場所、持って行った<br/>キャンプギアを記録しよう。</p>
+
+      </div>
+      <!--/col-lg-4 -->
+
+      <div class="col-lg-4 text-center">
+        <img src="img/ser03.png" width="180" alt="">
+        <%= image_tag 'item-3.png',style: 'width:180px;'%>
+        <h4>3 - 投稿のシェア</h4>
+        <p>記録したキャンプ・アイテムを投稿しよう。<br/>みんなのキャンプを覗いてみよう。</p>
+
+      </div>
+      <!--/col-lg-4 -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+  <br/>
+  <br/>
+
+  <div class="container">
+    <div class='text-center'>
+      <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
     </div>
     <br>
-    <div class='row justify-content-center'>
-      <a><%= link_to 'アイテムをトウロク！', user_items_path, class: 'btn btn-success mx-2' %></a>
-      <a><%= link_to 'みんなのキャンプ！', user_every_camp_index_path(current_user), class: 'btn btn-success mx-2' %></a>
+    <div class='text-center'>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-outline-warning' %>
+    </div>
+    <br>
+    <div class='text-center'>
+      <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
     </div>
   </div>
-</div>

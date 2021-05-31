@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'sample.png')), filename: 'sample.png', content_type: 'image/png') unless @user.avatar.present?
+      @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'sample.jpeg')), filename: 'sample.jpeg', content_type: 'image/jpeg') unless @user.avatar.present?
       redirect_to login_path, flash: {success: t('.success')}
     else
       flash.now[:danger] = t('.fail')

@@ -12,11 +12,14 @@
           <%= f.label :password, User.human_attribute_name(:password) %>
           <input type="password" name="password" id="password" value="" class="form-control" /> </div>
         <div class="actions">
-          <%= f.submit (t 'defaults.login'), class: 'btn btn-primary' %>
+          <%= f.submit (t 'defaults.login'), class: 'btn btn-outline-warning' %>
         </div>
       <% end %>
       <div class='text-center'>
-        <%= link_to (t '.to_register_page'), new_user_path %>
+        <%= link_to (t '.to_register_page'), new_user_path, class: 'btn btn-outline-warning' %>
+      </div>
+      <div class='text-center'>
+        <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
       </div>
     </div>
   </div>
