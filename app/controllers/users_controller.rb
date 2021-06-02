@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     @user = User.find(params[:id])
-    @camps = @user.camps.includes(:area, items: { small_image_attachment: :blob }).with_attached_images.order("camped_on DESC")
+    @camps = @user.camps.includes(:area, items: { small_image_attachment: :blob }).with_attached_images.order("camped_on DESC").page(params[:page])
     @items = @user.items.with_attached_small_image.includes(:maker)
     #レーダーチャートの変数
     @radar_camp = @camps.count
