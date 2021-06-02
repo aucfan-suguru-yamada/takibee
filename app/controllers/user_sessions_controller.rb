@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_to root_path, flash: {success: 'ログインしました'}
+      redirect_to user_every_camp_index_path(@user), flash: {warning: 'ログインしました'}
     else
       flash.now[:danger] = 'ログインに失敗しました'
       render :new
@@ -15,7 +15,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_path, flash: {success: 'ログアウトしました'}
+    redirect_to root_path, flash: {warning: 'ログアウトしました'}
 
   end
 end
