@@ -35,8 +35,13 @@
         <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
       </div>
     <% end %>
-    <%= render partial: 'every_camp/camp_list', locals: {camps: @camps}%>
-    <%= render partial: 'every_camp/modal' %>
+    <div id="camp_list">
+      <%= render partial: 'every_camp/camp_list', locals: {camps: @camps}%>
+      <%= render partial: 'every_camp/modal' %>
+    </div>
+    <div class="insert_pagenation">
+      <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-9", id: 'next', remote: true %>
+    </div>
   </div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     <%if @user == current_user %>
