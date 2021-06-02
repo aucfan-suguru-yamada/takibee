@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a href="/" class="brand-link">
     <%= image_tag 'takibee_icon', class: 'brand-image img-circle elevation-3' %>
     <span class="brand-text font-weight-light">TAKIBee.</span>
   </a>
@@ -14,7 +14,7 @@
           <%= image_tag 'sample', class: 'img-circle elevation-2' %>
       </div>
       <div class="info">
-        <a class="d-block">ゲスト</a>
+        <a class="d-block">ログアウト中</a>
       </div>
     </div>
 
@@ -22,34 +22,42 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to user_every_camp_index_path(1), class: "nav-link" do %>
-            <i class="nav-icon fas fa-hiking"></i>
+          <%= link_to '/', class: "nav-link" do %>
+            <i class="nav-icon fas fa-fire"></i>
             <p>
-              みんなのキャンプ
+              トップ
             </p>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to camps_path, class: "nav-link" do %>
-            <i class="nav-icon fas fa-map-signs"></i>
+          <%= link_to new_user_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-user-plus"></i>
             <p>
-              マイキャンプ
+              新規登録
             </p>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to user_items_path, class: "nav-link" do %>
-            <i class="nav-icon fas fa-campground"></i>
+          <%= link_to login_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-sign-in-alt"></i>
             <p>
-              マイアイテム
+              ログイン
             </p>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to user_path(1), class: "nav-link" do %>
-            <i class="nav-icon far fa-user"></i>
+          <%= link_to 'terms', class: "nav-link" do %>
+            <i class="nav-icon fas fa-book"></i>
             <p>
-              プロフィール
+              利用規約
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'privacy_policy', class: "nav-link" do %>
+            <i class="nav-icon fas fa-key"></i>
+            <p>
+              プライバシーポリシー
             </p>
           <% end %>
         </li>
