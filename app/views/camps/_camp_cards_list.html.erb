@@ -1,0 +1,33 @@
+  <div class='row'>
+    <% @camps.each do |camp|%>
+      <div class="col-md-4 card-group">
+        <div class="card bg-dark border border-secondary">
+          <%= link_to camp_path(camp.id), style:"text-decoration:none; color:black;" do %>
+          <% if camp.images.present? %>
+            <div class="align-items-center js-modal-img">
+              <%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "300x300^", crop:"400x300+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
+              <div class="none" style="display: none;">
+              <%= image_tag(camp.images[0], class: "d-block mx-auto rounded")%>
+              </div>
+            </div>
+          <% end %>
+          <div class="card-body">
+            <h2 class="card-title"><%= camp.title %></h2><br>
+            <p class="text-white-50">
+              <i class="fas fa-calendar-alt"></i>
+              <%= camp.camped_on %>
+            </p>
+            <% if camp.area.present? %>
+              <p class="text-white-50">
+                <i class="fas fa-map-marker-alt"></i>
+                <%= camp.area.name %>
+              </p>
+            <% end %>
+
+            <p class="card-text"><%= camp.note %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
