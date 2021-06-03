@@ -14,8 +14,8 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= image_tag(item['mediumImageUrl'], style: "width: 100px;height: 100px;display: inline-block;") %></td>
-          <td><%= item['productName'] %></td>
-          <td><%= item['makerName'].present? ? item['makerName'] : '-' %></td>
+          <td><%= product_name(item['productName']) %></td>
+          <td><%= item['makerName'].present? ? translate_maker_name(item['makerName']) : '-' %></td>
           <td><%= item['reviewAverage'] %></td>
           <td><%= link_to 'Myアイテムに追加', items_path(name: item['productName'], image_url: item['mediumImageUrl'], user_id: current_user.id, maker_name: item['makerName']), method: :post, class:'btn btn-outline-success' %></td>
         </tr>

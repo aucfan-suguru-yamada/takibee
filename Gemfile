@@ -33,6 +33,7 @@ gem 'bootstrap', '~> 4.3.1'
 # rakuten API
 gem 'rakuten_web_service'
 gem "figaro"
+gem 'draper'
 gem 'mini_magick', '~> 4.8'
 gem 'kaminari'
 
