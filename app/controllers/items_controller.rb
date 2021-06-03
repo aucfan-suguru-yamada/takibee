@@ -19,12 +19,12 @@ class ItemsController < ApplicationController
 
     if Item.find_by(name: params[:name])
       current_user.items << Item.find_by(name: params[:name])
-      redirect_to search_user_items_path, flash: {warning: "#{params[:name][0..20]}...を追加しました"}
+      redirect_to user_items_path, flash: {warning: "#{params[:name][0..20]}...を追加しました"}
 
     elsif current_user.items.create(name: params[:name], maker_id: maker.id)
       current_user.items.last.small_image.attach(io: io, filename: "#{current_user.id}")
 
-      redirect_to search_user_items_path, flash: {warning: "#{params[:name][0..20]}...を追加しました"}
+      redirect_to user_items_path, flash: {warning: "#{params[:name][0..20]}...を追加しました"}
     else
       render 'index'
     end
