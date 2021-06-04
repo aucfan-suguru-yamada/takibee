@@ -4,6 +4,7 @@
           <th>Img</th>
           <th>Name</th>
           <th>Maker</th>
+          <th>Link</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <% end %>
             <td><%= product_name(item.name) %></td>
             <td><%= translate_maker_name(item.maker.name) if item.maker.present? %></td>
+            <td><%= link_to '商品HP', item.product_url, class: 'btn btn-outline-light', target: :_blank, rel: "noopener noreferrer" if item.product_url.present? %></td>
           </tr>
         <% end %>
     </tbody>

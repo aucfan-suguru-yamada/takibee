@@ -16,19 +16,19 @@
             </div>
           </div>
 
-          <div class="form-group col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <div class="preview-box border rounded col-md-12">
-              <%= f.label :image do%>
-                <i class="far fa-images fa-lg"></i>
-                <%= f.file_field :images, multiple: true, id: :camp_image, style: 'display: none;' %>
-              <% end %>
+          <div class="card-body">
+            <div class="form-group col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+              <div class="preview-box border rounded col-md-12">
+                <%= f.label :image do%>
+                  <i class="far fa-images fa-lg"></i>
+                  <%= f.file_field :images, multiple: true, id: :camp_image, style: 'display: none;' %>
+                <% end %>
               <div class="row">
                 <div class="image_box" id='image-box__container'></div>
               </div>
             </div>
           </div>
 
-          <div class="card-body">
             <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
               <%= render 'shared/error_messages', object: f.object %>
             <div class="form-group">
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group">
               <%= f.label '日付' %>
-              <%= f.date_field :camped_on, class: 'form-control bg-dark' %>
+              <%= f.text_field :camped_on, class: 'form-control bg-dark', id: 'datepicker' %>
             </div>
             <div class="form-group">
               <%= f.label '人数' %>
@@ -58,3 +58,9 @@
       </div>
     </div>
 </div>
+
+<script>
+$('#datepicker').datepicker({
+  dateFormat: 'yy-mm-dd'
+});
+</script>
