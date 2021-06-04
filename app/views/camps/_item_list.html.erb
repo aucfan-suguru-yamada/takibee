@@ -2,7 +2,7 @@
 <div class="container container-m">
   <div class="row">
       <% @items.each do |item| %>
-        <div class="col-md-3 col-sm-6 card-group">
+        <div class="col-md-4 col-sm-6 card-group">
           <div class="card justify-content-around bg-dark border border-secondary mb-3">
               <%= link_to camp_camp_item_path(camp_id: @camp.id, item_id: item.id), method: :delete, class: 'item_delete_button', style: "display: none;" do %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" class="bi bi-x-square float-right" viewBox="0 0 16 16" >
@@ -13,8 +13,13 @@
               <%= image_tag(item.small_image, style: "width: 128px;height: 128px;", class: "card-img-top mx-auto d-block") %>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title"><%= "#{item.name[0..20] ...}" %></h5>
-              <p class="card-text"><%= item.maker.name if item.maker.present? %></p>
+              <h5 class="card-title"><%= "#{product_name(item.name)[0..20]}..." %></h5>
+              <p class="card-text text-white-50"><%= translate_maker_name(item.maker.name) if item.maker.present? %></p>
+              <% if item.product_url.present? %>
+                <%= link_to item.product_url, class: 'text-white-50', target: :_blank, rel: "noopener noreferrer" do %>
+                  <i class="fas fa-external-link-alt fa-fw text-white-50"></i>商品HPをみる
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
