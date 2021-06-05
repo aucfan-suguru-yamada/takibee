@@ -3,24 +3,24 @@
 <% end %>
 <div class="container">
   <% if current_user == @user %>
-    <div class='col-md-9'>
+    <div class='col-md-12'>
       <%= link_to "edit profile", edit_user_path(current_user), class: "btn btn-outline-warning"%>
     </div>
   <%end%>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <br>
       <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "rounded-circle mx-auto d-block" %>
       <h3 class="text-center"><%= @user.name %></h3>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
     <br>
       <canvas id="myRaderChart" style="max-width:500px;"></canvas>
     </div>
   </div>
 
 
-<ul class="nav nav-pills nav-justified mb-3 col-md-9" id="pills-tab" role="tablist">
+<ul class="nav nav-pills nav-justified mb-3 col-md-12" id="pills-tab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Camps</a>
   </li>
@@ -31,7 +31,7 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <%if @user == current_user %>
-      <div class='col-md-9'>
+      <div class='col-md-12'>
         <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
       </div>
     <% end %>
@@ -40,12 +40,12 @@
       <%= render partial: 'every_camp/modal' %>
     </div>
     <div class="insert_pagenation">
-      <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-9", id: 'next', remote: true %>
+      <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
     </div>
   </div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     <%if @user == current_user %>
-      <div class='col-md-9'>
+      <div class='col-md-12'>
         <a><%= link_to '＋アイテムを追加', search_user_items_path, class: 'btn btn-outline-warning btn-block'%></a>
       </div>
     <% end %>
