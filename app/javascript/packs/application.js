@@ -6,7 +6,7 @@
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels");
-require("./preview");
+//require("./preview");
 require("./camp_image_preview");
 require("./admin");
 require("admin-lte");

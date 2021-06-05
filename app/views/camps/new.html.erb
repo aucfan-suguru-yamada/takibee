@@ -21,10 +21,11 @@
               <div class="preview-box border rounded col-md-12">
                 <%= f.label :image do%>
                   <i class="far fa-images fa-lg"></i>
-                  <%= f.file_field :images, multiple: true, id: :camp_image, style: 'display: none;' %>
+                  <%= f.file_field :images, multiple: true, id: :camp_image, onchange: "loadImage(this);", style: "display: none;" %>
                 <% end %>
-              <div class="row">
-                <div class="image_box" id='image-box__container'></div>
+              <div class="contain">
+                <p class="btn btn-outline-light" id="preview-delete" style="display: none;">選択をクリア</p>
+                <div class="image_box row" id='image-box__container'></div>
               </div>
             </div>
           </div>
@@ -62,5 +63,35 @@
 <script>
 $('#datepicker').datepicker({
   dateFormat: 'yy-mm-dd'
+});
+
+
+
+var image_box = $('#image-box__container');
+
+function loadImage(obj){
+  $('#preview-delete').toggle();
+	for (i = 0; i < obj.files.length; i++) {
+		var fileReader = new FileReader();
+		fileReader.onload = (function (e) {
+      var html = `<div class="col-md-4 each-image-preview">
+                    <img src="${e.target.result}" style="max-width:90%; max-height:500px;">
+                  </div>`;
+      image_box.append(html);
+		});
+		fileReader.readAsDataURL(obj.files[i]);
+	};
+};
+
+  //削除ボタンをクリックすると発火するイベント
+  $(document).on("click", '#preview-delete', function(){
+  var file_field = document.querySelector('input[type=file]');
+  //削除を押されたプレビュー要素を取得
+  var target_image = $('.each-image-preview');
+  //inputタグに入ったファイルを削除
+  $('input[type=file]').val('');
+  //プレビューを削除
+  target_image.remove();
+  $('#preview-delete').toggle();
 });
 </script>
