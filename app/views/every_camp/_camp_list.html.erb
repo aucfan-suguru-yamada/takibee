@@ -33,7 +33,7 @@
                 <%= camp.area.name %>
               </p>
             <% end%>
-            <p class="card-title"><%= camp.title %></p>
+            <h2 class="card-title text-bold"><%= camp.title %></h2>
             <p class="card-text"><%= camp.note %></p>
             <div class="row">
               <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>

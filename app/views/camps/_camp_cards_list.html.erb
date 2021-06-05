@@ -1,14 +1,11 @@
   <div class='row'>
     <% @camps.each do |camp|%>
-      <div class="col-md-4 card-group">
-        <div class="card bg-dark border border-secondary">
+      <div class="col-lg-3 col-sm-4 card-group shadow-sm mt-3">
+        <div class="card bg-dark border border-secondary ">
           <%= link_to camp_path(camp.id), style:"text-decoration:none; color:black;" do %>
           <% if camp.images.present? %>
-            <div class="align-items-center js-modal-img">
+            <div class="align-items-center">
               <%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "300x300^", crop:"400x300+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
-              <div class="none" style="display: none;">
-              <%= image_tag(camp.images[0], class: "d-block mx-auto rounded")%>
-              </div>
             </div>
           <% end %>
           <div class="card-body">
