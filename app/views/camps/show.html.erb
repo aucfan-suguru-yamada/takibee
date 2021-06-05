@@ -66,16 +66,28 @@
               </div>
             </div>
           </div>
-          <% if @camp.images.present? %>
-            <div class="align-items-center js-modal-img">
-              <%= image_tag(@camp.images[0].variant(combine_options:{gravity: :center, resize: "300x300^", crop:"400x280+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
-              <div class="none" style="display: none;">
-              <%= image_tag(@camp.images[0], class: "d-block mx-auto rounded")%>
-              </div>
-            </div>
-          <% end %>
-          <div class="card-body">
+                <!-- Slider main container -->
+                  <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                      <!-- Slides -->
+                      <% if @camp.images.present? %>
+                        <% @camp.images.each do |image| %>
+                          <div class="align-items-center js-modal-img swiper-slide">
+                            <%= image_tag(image.variant(combine_options:{gravity: :center, resize: "300x300^", crop:"400x280+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination swiper-pagination-white"></div>
 
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                  </div>
+
+          <div class="card-body">
             <% if @camp.area.present? %>
               <p class="text-white-50">
                 <%= link_to "https://www.google.com/maps/search/?api=1&query=#{@camp.area.name}", data: { confirm: 'Google Mapで確認しますか？' }, target: :_blank, rel: "noopener noreferrer", class: "text-white-50" do %>
@@ -162,4 +174,37 @@
       target_image.remove();
       $('#preview-delete').toggle();
 });
+</script>
+
+<script>
+/*
+    var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+*/
+    let mySwiper = new Swiper ('.swiper-container', {
+  // 以下にオプションを設定
+  loop: true, //最後に達したら先頭に戻る
+
+  //ページネーション表示の設定
+  pagination: {
+    el: '.swiper-pagination', //ページネーションの要素
+    type: 'bullets', //ページネーションの種類
+    clickable: true, //クリックに反応させる
+  },
+
+  //ナビゲーションボタン（矢印）表示の設定
+  navigation: {
+    nextEl: '.swiper-button-next', //「次へボタン」要素の指定
+    prevEl: '.swiper-button-prev', //「前へボタン」要素の指定
+  },
+
+  //スクロールバー表示の設定
+  scrollbar: {
+    el: '.swiper-scrollbar', //要素の指定
+  },
+})
 </script>
