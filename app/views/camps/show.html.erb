@@ -43,7 +43,7 @@
                       <i class="fas fa-plus"></i>  写真を追加
                     </a>
                   <% end %>
-                  <%= f.file_field :images, multiple: true, id: :camp_camp_image, style: "display:none;" %>
+                  <%= f.file_field :images, multiple: true, id: :camp_camp_image, onchange: "loadImage(this);", style: "display:none;" %>
                   <p class='dropdown-item text-danger doropdown-list-delete' id="picture_edit_button">
                     <span><i class="fas fa-trash-alt"></i></span>  写真を削除
                   </p>
@@ -59,7 +59,7 @@
               <div class="c-modal_content _md">
                 <div class="c-modal_content_inner">
                   <div class="row">
-                    <div id="modal_image_box">
+                    <div class="row" id="modal_image_box">
                     <!--ここにモーダルウィンドウの内容が入ります-->
                     </div>
                   </div>
@@ -208,4 +208,50 @@
         });
     }
     initMap();
+
+
+
+  function loadImage(obj){
+      //モーダルに画像を追加する
+      var image_box = $('#modal_image_box');
+    console.log('画像追加');
+    console.log(image_box);
+      for (i = 0; i < obj.files.length; i++) {
+          var fileReader = new FileReader();
+          fileReader.onload = (function (e) {
+          var html = `<div class="col-md-4 each-image-preview">
+                      <img src="${e.target.result}" style="max-width:90%; max-height:500px;">
+                      </div>`;
+          image_box.append(html);
+		});
+		fileReader.readAsDataURL(obj.files[i]);
+	};
+    //モーダル使えないかなあ
+    var modal = document.getElementById( 'modal01' );
+    $( modal ).fadeIn( 300 );
+    return false;
+};
+
+
+  // モーダルウィンドウを閉じる
+  $( '.js-modal-close' ).on( 'click', function() {
+    $( '.js-modal' ).fadeOut( 300 );
+    $('input[type=file]').val(null)
+    dataBox.clearData();
+    var target_image = $('.each-image-preview');
+    target_image.remove();
+    return false;
+  });
+
+  //削除ボタンをクリックすると発火するイベント
+  $(document).on("click", '#preview-delete', function(){
+      var file_field = document.querySelector('input[type=file]');
+      //削除を押されたプレビュー要素を取得
+      var target_image = $('.each-image-preview');
+      //inputタグに入ったファイルを削除
+      $('input[type=file]').val('');
+      //プレビューを削除
+      target_image.remove();
+      $('#preview-delete').toggle();
+});
 </script>
