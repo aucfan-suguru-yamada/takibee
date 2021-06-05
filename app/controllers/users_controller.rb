@@ -13,10 +13,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @camps = @user.camps.includes(:area, items: { small_image_attachment: :blob }).with_attached_images.order("camped_on DESC").page(params[:page])
     @items = @user.items.with_attached_small_image.includes(:maker)
+    @favorite_camps = @user.liked_camps.includes(:area, user: { avatar_attachment: :blob}, items: { small_image_attachment: :blob }).with_attached_images.order("camped_on DESC").page(params[:page])
     #レーダーチャートの変数
-    @radar_camp = @camps.count
+    @radar_camp = @user.camps.count
     @radar_item = @user.items.count
-    @radar_favolite_camp = @user.liked_camps.count
+    @radar_favorite_camp = @user.liked_camps.count
+
   end
 
   # GET /users/new

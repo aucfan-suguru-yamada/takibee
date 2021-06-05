@@ -22,12 +22,16 @@
 
 <ul class="nav nav-pills nav-justified mb-3 col-md-12" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Camps</a>
+    <a class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="nav-icon fas fa-map-signs fa-fw"></i> Camps</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Items</a>
+    <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="nav-icon fas fa-campground fa-fw"></i> Items</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" id="pills-likes-tab" data-toggle="pill" href="#pills-likes" role="tab" aria-controls="pills-likes" aria-selected="false"><i class="nav-icon fas fa-fire fa-fw"></i> Likes</a>
   </li>
 </ul>
+
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <%if @user == current_user %>
@@ -36,20 +40,36 @@
       </div>
     <% end %>
     <div id="camp_list">
-      <%= render partial: 'every_camp/camp_list', locals: {camps: @camps}%>
-      <%= render partial: 'every_camp/modal' %>
+      <%= render 'every_camp/camp_list', {camps: @camps}%>
+      <%= render 'every_camp/modal' %>
     </div>
     <div class="insert_pagenation">
       <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
     </div>
   </div>
+
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     <%if @user == current_user %>
       <div class='col-md-12'>
         <a><%= link_to '＋アイテムを追加', search_user_items_path, class: 'btn btn-outline-warning btn-block'%></a>
       </div>
     <% end %>
-    <%= render partial: 'user_items/item_list', locals: {items: @items}%>
+    <%= render 'user_items/item_list', {items: @items}%>
+  </div>
+
+  <div class="tab-pane fade" id="pills-likes" role="tabpanel" aria-labelledby="pills-likes-tab">
+    <%if @user == current_user %>
+      <div class='col-md-12'>
+        <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
+      </div>
+    <% end %>
+    <div>
+      <%= render 'every_camp/camp_list', {camps: @favorite_camps} %>
+      <%= render 'every_camp/modal' %>
+    </div>
+    <div class="insert_pagenation">
+      <%= link_to_next_page @favorite_camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
+    </div>
   </div>
 </div>
 
@@ -67,7 +87,7 @@
             labels: ["キャンプ", "アイテム", "焚き火", "おしゃれ", "ボランティア"],
             datasets: [{
                 label: '',
-                data: [<%= @radar_camp *10 %>, <%= @radar_item %>, <%= @radar_favolite_camp*10 %>, 50, 86],
+                data: [<%= @radar_camp *10 %>, <%= @radar_item %>, <%= @radar_favorite_camp*10 %>, 50, 86],
                 backgroundColor: 'RGBA(255,240,35, 0.6)',
                 borderColor: 'RGBA(255,240,35, 1)',
                 borderWidth: 1,
