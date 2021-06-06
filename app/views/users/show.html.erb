@@ -41,7 +41,6 @@
     <% end %>
     <div id="camp_list">
       <%= render 'every_camp/camp_list', {camps: @camps}%>
-      <%= render 'every_camp/modal' %>
     </div>
     <div class="insert_pagenation">
       <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
@@ -65,14 +64,13 @@
     <% end %>
     <div>
       <%= render 'every_camp/camp_list', {camps: @favorite_camps} %>
-      <%= render 'every_camp/modal' %>
     </div>
     <div class="insert_pagenation">
       <%= link_to_next_page @favorite_camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
     </div>
   </div>
 </div>
-
+<%= render 'every_camp/modal' %>
 
 </div>
 
