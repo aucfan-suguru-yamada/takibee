@@ -2,19 +2,19 @@
 <%= t '.title' %>
 <% end %>
 <div class='container'>
-    <%= form_with model: @search_user_item_form, url: user_items_path, method: :get, html: { class: 'form-inline' } do |f|%>
-      <%= f.select :maker_id, Maker.pluck(:name, :id) , { include_blank: true }, class: 'form-control' %>
-        <span class="input-group-btn">
-          <%= f.submit '検索', class: %w[btn btn-default btn-flat] %>
-        </span>
-    <%end%>
+  <%= form_with model: @search_user_item_form, url: user_items_path, method: :get, html: { class: 'form-inline' } do |f|%>
+    <%= f.select :maker_id, Maker.pluck(:name, :id) , { include_blank: true }, class: 'form-control' %>
+      <span class="input-group-btn">
+        <%= f.submit '検索', class: %w[btn btn-default btn-flat] %>
+      </span>
+  <%end%>
 
-    <!--ドロップダウンリスト-->
-    <div class="float-right mx-auto">
-      <div class="dropleft">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-ellipsis-h fa-lg text-right" id="item_edit_button"></i>
-        </button>
+  <!--ドロップダウンリスト-->
+  <div class="float-right mx-auto">
+    <div class="dropleft">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-ellipsis-h fa-lg text-right" id="item_edit_button"></i>
+      </button>
       <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
         <%= link_to search_user_items_path, class: 'dropdown-item text-success' do %>
           <i class="fas fa-plus"></i> アイテムを追加
@@ -40,5 +40,5 @@
     <% else %>
       <h2> Myアイテムはまだありません</h2>
     <% end %>
-</div>
+
 <%= javascript_pack_tag 'table_checkbox' %>
