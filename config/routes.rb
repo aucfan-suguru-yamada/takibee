@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :user_items, only: %i[index create destroy]
   resources :search_user_items, only: %i[index]
   resources :makers, only: %i[index new create update destroy]
-  resources :camps, only: %i[index new create show update destroy] do
+  resources :camps, only: %i[index new create show edit update destroy] do
     resources :camp_items, only: %i[index new create show destroy]
     get 'search_items', to: 'camp_items#search_items'
     get 'my_items', to: 'camp_items#my_items'

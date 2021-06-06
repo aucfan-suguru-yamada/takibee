@@ -1,4 +1,3 @@
-<% content_for(:title, "#{t '.title'}") %>
 <%= form_with model: @camp, local:true do |f| %>
 <div class="container">
     <div class='content'>
@@ -20,17 +19,31 @@
             <div class="form-group col-md-10 offset-md-1 col-lg-8 offset-lg-2">
               <div class="preview-box border rounded col-md-12">
                 <%= f.label :image do%>
-                  <i class="far fa-images fa-lg" style="display: inline-block;"></i> （5枚まで）
+                  <i class="far fa-images fa-lg" style="display: inline-block;"></i> （合計5枚まで）
                   <%= f.file_field :images, multiple: true, id: :camp_image, onchange: "loadImage(this);", style: "display: none;" %>
                 <% end %>
+              </div>
               <div class="alert alert-warning mt-3" style="display:none;">！画像は合計で5枚以下にしてください！
               </div>
-              <div class="contain">
-                <p class="btn btn-outline-light" id="preview-delete" style="display: none;">選択をクリア</p>
-                <div class="image_box row" id='image-box__container'></div>
+              <label for="camp_キャンプのタイトル" class="mt-3">追加する画像</label>
+              <div class="contain border rounded col-md-12">
+                <p class="btn btn-outline-light" id="preview-delete">選択をクリア</p>
+                <div class="image_box row" id='image-box__container' style="min-height:200px;"></div>
+              </div>
+              <label for="camp_キャンプのタイトル" class="mt-3">登録中の画像</label>
+              <div class="contain preview-box border rounded col-md-12">
+                <div class="row">
+                  <% if @camp.images.present? %>
+                    <% @camp.images.each do |image|%>
+                      <div class="col-md-4 text-center">
+                        <%= image_tag image, style: "max-width:90%; max-height:500px;", class: "mt-3 added-image" %>
+                        <%= link_to '削除', camp_path(camp_id: @camp.id, image_id: image.id), method: :patch, class: 'btn btn-danger mt-2 mb-2', style: "display:inline-block;" %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
 
             <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
               <%= render 'shared/error_messages', object: f.object %>
@@ -74,9 +87,7 @@ var number_of_added_images = $('.added-image').length;
 var submit_button = $('.submit-button');
 var alert_message = $('.alert-warning');
 
-
 function loadImage(obj){
-  $('#preview-delete').show();
   //画像が選択されていれば、プレビューを削除する
   var target_image = $('.each-image-preview');
       target_image.remove();
@@ -92,12 +103,11 @@ function loadImage(obj){
       image_box.append(html);
 		});
 		fileReader.readAsDataURL(obj.files[i]);
-    number_of_add_images += 1;
+    number_of_add_images += 1
 	};
-
     //画像の合計枚数を確認
-    console.log(number_of_add_images);
-    if (number_of_add_images > 5) {
+    console.log(number_of_add_images + number_of_added_images);
+    if (number_of_add_images + number_of_added_images > 5) {
       console.log("画像は合計5枚以下としてください");
       alert_message.fadeIn(300);
       submit_button.prop("disabled", true);
@@ -115,8 +125,10 @@ function loadImage(obj){
   $('input[type=file]').val('');
   //プレビューを削除
   target_image.remove();
-  $('#preview-delete').hide();
-  alert_message.fadeOut(300);
-  submit_button.prop("disabled", false);
+  //画像が5枚以下なら登録可能とする
+  if ( number_of_added_images < 5) {
+    submit_button.prop("disabled", false);
+    alert_message.fadeOut(300);
+  };
 });
 </script>

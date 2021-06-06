@@ -13,13 +13,21 @@ class CampsController < ApplicationController
     @items = @camp.items.includes(:maker).with_attached_small_image
   end
 
+  def edit
+    @camp = Camp.with_attached_images.find(params[:id])
+    if current_user == @camp.user
+    else
+      redirect_to camps_path
+    end
+  end
+
   def create
     @camp = current_user.camps.new(camp_params)
-    if @camp.save
-      redirect_to camps_path
-    else
-      render 'new'
-    end
+      if @camp.save
+        redirect_to camps_path
+      else
+        render 'new'
+      end
   end
 
   def update
@@ -28,7 +36,7 @@ class CampsController < ApplicationController
       image = @camp.images&.find(params[:image_id])
       image.purge
       @items = @camp.items
-      redirect_to camp_path(@camp)
+      redirect_to edit_camp_path(@camp)
     else
       @camp.update(camp_params)
       redirect_to camp_path(@camp)
