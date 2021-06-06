@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   require 'open-uri'
 
   def index
-    @items = Item.all
+    @items = Item.includes(:maker).with_attached_small_image
   end
 
   def create

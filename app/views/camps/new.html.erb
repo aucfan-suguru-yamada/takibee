@@ -20,7 +20,7 @@
             <div class="form-group col-md-10 offset-md-1 col-lg-8 offset-lg-2">
               <div class="preview-box border rounded col-md-12">
                 <%= f.label :image do%>
-                  <i class="far fa-images fa-lg"></i>
+                  <i class="far fa-images fa-lg" style="display: inline-block;"></i> （5枚まで）
                   <%= f.file_field :images, multiple: true, id: :camp_image, onchange: "loadImage(this);", style: "display: none;" %>
                 <% end %>
               <div class="contain">
@@ -70,7 +70,10 @@ $('#datepicker').datepicker({
 var image_box = $('#image-box__container');
 
 function loadImage(obj){
-  $('#preview-delete').toggle();
+  $('#preview-delete').show();
+  //画像が選択されていれば、プレビューを削除する
+  var target_image = $('.each-image-preview');
+      target_image.remove();
 	for (i = 0; i < obj.files.length; i++) {
 		var fileReader = new FileReader();
 		fileReader.onload = (function (e) {
@@ -92,6 +95,6 @@ function loadImage(obj){
   $('input[type=file]').val('');
   //プレビューを削除
   target_image.remove();
-  $('#preview-delete').toggle();
+  $('#preview-delete').hide();
 });
 </script>

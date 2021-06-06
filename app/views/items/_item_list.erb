@@ -5,6 +5,7 @@
           <th>Img</th>
           <th>Name</th>
           <th>Maker</th>
+          <th>URL</th>
           <th>btn</th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
           <% end %>
           <td><%= "#{item.name[0..20] ...}" %></td>
           <td><%= item.maker.name if item.maker.present? %></td>
+          <td><%= link_to '商品HP', item.product_url, class: 'btn btn-outline-light', target: :_blank, rel: "noopener noreferrer" if item.product_url.present? %></td>
           <td><%= link_to '削除', item_path(item.id), method: :delete, class: 'btn btn-danger'%></td>
         </tr>
       <% end %>
