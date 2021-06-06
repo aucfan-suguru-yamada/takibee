@@ -8,3 +8,12 @@ $(document).on("click", '.js-modal-img', function(){
   console.log(modal);
   return false;
 });
+
+  // モーダルウィンドウを閉じる
+
+$(document).on("click", '.js-modal-close', function(){
+    console.log('とじる')
+    var modal = document.getElementById( 'modal01' );
+    $( modal ).fadeOut( 300 );
+    return false;
+  });
