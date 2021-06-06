@@ -33,7 +33,10 @@
                 <i class="far fa-plus-square fa-lg text-light"></i>
               </button>
               <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-                <%= link_to camp_my_items_path(@camp.id), class: 'dropdown-item text-success doropdown-list-delete' do%>
+                <%= link_to edit_camp_path(@camp), class: 'dropdown-item text-success doropdown-list-delete' do%>
+                    <i class="fas fa-plus"></i>  写真を追加・編集
+                <% end %>
+                <%= link_to camp_my_items_path(@camp), class: 'dropdown-item text-success doropdown-list-delete' do%>
                   <i class="fas fa-plus"></i>  アイテムを追加
                 <% end %>
                 <% if @camp.area.blank? %>
@@ -46,6 +49,7 @@
           </div>
         <!--ドロップダウンリスト終わり-->
       <%end%>
+
 
       <!--card形式へ変更-->
       <div class="col col card-group">
@@ -89,14 +93,20 @@
 
           <div class="card-body">
             <% if @camp.area.present? %>
-              <p class="text-white-50">
                 <%= link_to "https://www.google.com/maps/search/?api=1&query=#{@camp.area.name}", data: { confirm: 'Google Mapで確認しますか？' }, target: :_blank, rel: "noopener noreferrer", class: "text-white-50" do %>
+                <p class="text-white-50">
                   <i class="fas fa-map-marker-alt"></i>
                   <%= @camp.area.name %>
                 <% end %>
               </p>
-            <% else%>
-              <p class="text-white-50"><i class="fas fa-map-marker-alt"></i> 未登録です</p>
+            <% else %>
+              <% if @camp.user == current_user %>
+                <%= link_to camp_areas_path(@camp), data: { confirm: 'キャンプ地を登録しますか？' } do%>
+                  <p class="text-white-50"><i class="fas fa-map-marker-alt"></i> 未登録です</p>
+                <% end %>
+              <% else %>
+                <p class="text-white-50"><i class="fas fa-map-marker-alt"></i> 未登録です</p>
+              <% end %>
             <% end%>
             <h2 class="card-title text-bold"><%= @camp.title %></h2><br>
             <p class="card-text"><%= @camp.note %></p>
