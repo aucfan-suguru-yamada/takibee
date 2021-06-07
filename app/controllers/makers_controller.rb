@@ -21,6 +21,8 @@ class MakersController < ApplicationController
   end
 
   def destroy
+    Maker.find_by(params[:id]).destroy
+    redirect_to makers_path
   end
 
   private

@@ -37,7 +37,8 @@ module MakerHelper
                           '新富士バーナー','SOTO','山渓','NANGA','ISUKA','イスカ','ゴールドウイン','THE NORTH FACE',
                           'ノースフェイス','MSR','モンベル','mont-bell','ナニワ','North Eagle','ノースイーグル',
                           'カワセ','BUNDOK','バンドック','ファロスインターナショナル','Tentipi','テンティピ','ランドウェル',
-                          'CHUMS（チャムス）','チャムス','山善','ベルモント','Belmont'
+                          'CHUMS（チャムス）','チャムス','山善','ベルモント','Belmont','Doppelganger OUTDOOR/ドッペルギャンガー',
+                          'ディーオーディー',
                           ]
     for i in 0..product_name_array.count-1
       if name.include?(product_name_array[i])
