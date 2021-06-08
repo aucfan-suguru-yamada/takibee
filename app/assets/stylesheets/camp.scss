@@ -47,6 +47,22 @@
   padding: 24px;
 }
 
+
+@media screen and (max-width: 780px) {
+  .c-modal_content {
+    background: rgba(46, 46, 46, 0.8);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+
+
+
 // 閉じるボタン
 //.c-modal_close {
   //position: absolute;
