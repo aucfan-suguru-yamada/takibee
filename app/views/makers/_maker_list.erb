@@ -3,12 +3,14 @@
     <thead>
         <tr>
           <th>Name</th>
+          <th>Button</th>
         </tr>
     </thead>
     <tbody>
       <% @makers.each do |maker| %>
         <tr>
           <td><%= maker.name %></td>
+          <td><%= link_to '削除', maker_path(maker.id), method: :delete, class: 'btn btn-danger'%></td>
         </tr>
       <% end %>
     </tbody>
