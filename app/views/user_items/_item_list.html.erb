@@ -1,26 +1,27 @@
 <table class="table table-hover col-md-12" id="item_table">
-    <thead>
-        <tr>
-          <th>Img</th>
-          <th>Name</th>
-          <th>Maker</th>
-          <th>Link</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% items.each do |item| %>
-          <tr class="checkbox_row" id="<%=item.id%>">
-            <td class='image_cell'>
-              <i class="fas fa-check-circle fa-2x text-danger" style='display:none;'></i>
-            <% if item.small_image.present? %>
-            <%= image_tag(item.small_image, style: "width: 100px;height: 100px;display: inline-block;") %></td>
-            <% else %>
+  <thead>
+      <tr>
+        <th>Img</th>
+        <th>Product</th>
+        <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% items.each do |item| %>
+      <tr class="checkbox_row" id="<%=item.id%>">
+        <td class='image_cell'>
+          <i class="fas fa-check-circle fa-2x text-danger" style='display:none;'></i>
+          <% if item.small_image.present? %>
+            <%= image_tag(item.small_image, style: "width: 100px;height: 100px;display: inline-block;") %>
+        </td>
+          <% else %>
             <td></td>
-            <% end %>
-            <td><%= product_name(item.name) %></td>
-            <td><%= translate_maker_name(item.maker.name) if item.maker.present? %></td>
-            <td><%= link_to '商品HP', item.product_url, class: 'btn btn-outline-light', target: :_blank, rel: "noopener noreferrer", data: { confirm: '楽天で商品情報を確認しますか？' } if item.product_url.present? %></td>
-          </tr>
-        <% end %>
-    </tbody>
+          <% end %>
+        <td><%= "#{product_name(item.name)[0..15]}.." %><br>
+            <p class='text-white-50'><%= translate_maker_name(item.maker.name) if item.maker.present? %></p>
+        </td>
+        <td><%= link_to '商品HP', item.product_url, class: 'btn btn-outline-light', target: :_blank, rel: "noopener noreferrer", data: { confirm: '楽天で商品情報を確認しますか？' } if item.product_url.present? %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

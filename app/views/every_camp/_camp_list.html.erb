@@ -2,7 +2,7 @@
       <div class="col-12 col card-group">
         <div class="card bg-dark border border-secondary">
           <div class="card-header">
-            <div class="contain">
+            <div class="container">
               <div class="row">
                 <div class="col align-items-center">
                   <%= link_to image_tag(camp.user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"),
@@ -21,13 +21,13 @@
           <% if camp.images.present? %>
           <div class="container">
           <div class="row">
-            <div class="align-items-center js-modal-img col-md-6">
+            <div class="align-items-center js-modal-img col-lg-6 col-sm-12">
               <%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "300x300^", crop:"400x280+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
               <div class="none" style="display: none;">
               <%= image_tag(camp.images[0], class: "d-block mx-auto rounded")%>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6 col-sm-12">
               <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>
             </div>
           </div>
