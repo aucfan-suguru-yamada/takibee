@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  include CampHelper
 
   # GET /users or /users.json
   def index
@@ -15,10 +15,36 @@ class UsersController < ApplicationController
     @items = @user.items.with_attached_small_image.includes(:maker)
     @favorite_camps = @user.liked_camps.includes(:area, user: { avatar_attachment: :blob}, items: { small_image_attachment: :blob }).with_attached_images.order("camped_on DESC").page(params[:page])
     #レーダーチャートの変数
+    #キャンプ数
     @radar_camp = @user.camps.count
+    #アイテム数
     @radar_item = @user.items.count
+    #Likeした数
     @radar_favorite_camp = @user.liked_camps.count
-
+    #Likeされた数
+    @radar_camp_by_liked = 0
+    user_camps = @user.camps
+    user_camps.each do |camp|
+      @radar_camp_by_liked += camp.likes.count
+    end
+    #キャンプ地の範囲
+    user_camps = @user.camps.includes(:area)
+    max_latitude = 0
+    min_latitude = 90
+    max_longitude = 0
+    min_longitude = 180
+    user_camps.each do |camp|
+      if camp.area.present?
+        latitude = split_lat(camp.area.latlng).to_i
+        longitude = split_lng(camp.area.latlng).to_i
+        max_latitude = latitude if latitude > max_latitude
+        max_longitude = longitude if longitude > max_longitude
+        min_latitude = latitude if latitude < min_latitude
+        min_longitude = longitude if longitude < min_longitude
+      end
+      @radar_range_of_area = (((max_latitude - min_latitude)**2 + (max_longitude - min_longitude)**2)**0.5)
+    end
+    @radar_range_of_area = 0 if @radar_range_of_area.nil?
   end
 
   # GET /users/new
@@ -36,7 +62,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'sample.jpeg')), filename: 'sample.jpeg', content_type: 'image/jpeg') unless @user.avatar.present?
-      redirect_to login_path, flash: {success: t('.success')}
+      redirect_to login_path, flash: {warning: t('.success')}
     else
       flash.now[:danger] = t('.fail')
       render :new
