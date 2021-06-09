@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def already_liked?(camp)
     self.likes.exists?(camp_id: camp.id)
   end
+
+  def is_guest_user?
+    self.id == 13
+  end
 end

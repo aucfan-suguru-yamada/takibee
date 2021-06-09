@@ -1,10 +1,23 @@
-<%= link_to user_every_camp_likes_path(current_user,camp),
-            id: "js-like-button-#{camp.id}",
-            method: :post,
-            class: "float-right",
-            remote: true do %>
+<% if current_user.is_guest_user? %>
+  <%= link_to user_every_camp_likes_path(current_user,camp),
+              id: "js-like-button-#{camp.id}",
+              method: :post,
+              class: "float-right",
+              data: { confirm: 'ユーザー登録してください' } do %>
+      <div class="heart">
+      <span class="heart_hover">いいね!の火を灯す</span>
+      <span class="heart_count"><%= camp.likes.count %></span>
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to user_every_camp_likes_path(current_user,camp),
+              id: "js-like-button-#{camp.id}",
+              method: :post,
+              class: "float-right",
+              remote: true do %>
   <div class="heart">
     <span class="heart_hover">いいね!の火を灯す</span>
     <span class="heart_count"><%= camp.likes.count %></span>
   </div>
+  <% end %>
 <% end %>

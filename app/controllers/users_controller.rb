@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   before_action :set_user, only: %i[ show update destroy ]
   before_action :authenticate_user, only: %i[edit destroy]
+  include UsersHelper
+  before_action :require_signup, only: %i[edit]
+
   include CampHelper
 
   # GET /users or /users.json

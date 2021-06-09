@@ -1,8 +1,11 @@
 class LikesController < ApplicationController
-
   def create
-    @camp = Camp.find(params[:every_camp_id])
-    @like = current_user.likes.create(camp_id: params[:every_camp_id])
+    if current_user.is_guest_user?
+      redirect_to new_user_path(current_user)
+    else
+      @camp = Camp.find(params[:every_camp_id])
+      @like = current_user.likes.create(camp_id: params[:every_camp_id])
+    end
   end
 
   def destroy

@@ -2,7 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <p class="text-center text-warning pt-3">ユーザー情報を入力してください</p>
+      <% if current_user.is_guest_user?%>
+        <p class="text-center text-warning pt-3">新規登録してください</p>
+      <% else%>
+        <p class="text-center text-warning pt-3">ユーザー情報を入力してください</p>
+      <% end %>
       <%= form_with model: @user, local:true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div class="form-group justify-content-around">
