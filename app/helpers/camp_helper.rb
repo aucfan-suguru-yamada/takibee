@@ -6,7 +6,4 @@ module CampHelper
   def split_lng(string)
     string[1..-1].chop.split(",")[1]
   end
-
-  def lng()
-  end
 end

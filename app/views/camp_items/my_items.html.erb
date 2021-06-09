@@ -1,15 +1,17 @@
-<h1 class='camp_id' id="<%= @camp.id %>">Myアイテムから追加</h1>
+
 <div class='content'>
   <div id='item_list'>
     <% if @items.present? %>
+      <p class='camp_id text-center text-warning pt-3' id="<%= @camp.id %>">追加するアイテムを選択してください</p>
       <%= render partial: 'my_item_list' %>
+      <div class='row justify-content-center'>
+        <a class='add-item-button btn btn-outline-warning text-warning mx-2'>選択したアイテムを追加</a>
+        <%= link_to 'キャンプ画面へ戻る', camp_path(@camp), class: 'btn btn-outline-light mx-2'%>
+      </div>
     <% else %>
-      <h2> Myアイテムはまだありません</h2>
+      <p class='camp_id text-center text-warning pt-3'>マイアイテムを追加してください</p>
+      <a><%= link_to '＋アイテムを追加', search_user_items_path, class: 'btn btn-outline-warning btn-block col-md-12'%></a>
     <% end %>
-    <div class='row justify-content-center'>
-      <a class='add-item-button btn btn-outline-warning text-warning mx-2'>選択したアイテムを追加</a>
-      <%= link_to 'キャンプ画面へ戻る', camp_path(@camp), class: 'btn btn-outline-light mx-2'%>
-    </div>
   </div>
 </div>
 <%= javascript_pack_tag 'table_add_item_to_camp' %>

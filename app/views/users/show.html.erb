@@ -4,7 +4,7 @@
 <div class="container">
   <% if current_user == @user %>
     <div class='col-md-12'>
-      <%= link_to "edit profile", edit_user_path(current_user), class: "btn btn-outline-warning"%>
+      <%= link_to "edit profile", edit_user_path(current_user), class: "btn btn-outline-warning mt-3"%>
     </div>
   <%end%>
   <div class="row">
@@ -81,10 +81,15 @@
     var myRadarChart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ["キャンプ", "アイテム", "焚き火", "おしゃれ", "ボランティア"],
+            labels: ["キャンプ", "アイテム", "焚き火", "おしゃれ", "生息範囲"],
             datasets: [{
                 label: '',
-                data: [<%= @radar_camp *10 %>, <%= @radar_item %>, <%= @radar_favorite_camp*10 %>, 50, 86],
+                data: [ <%= @radar_camp <= 100 ? @radar_camp : 100 %>,
+                        <%= @radar_item <= 100 ? @radar_item : 100 %>,
+                        <%= @radar_favorite_camp <= 100 ? @radar_favorite_camp : 100 %>,
+                        <%= @radar_camp_by_liked <= 100 ? @radar_camp_by_liked : 100 %>,
+                        <%= @radar_range_of_area*5  <= 100 ? @radar_range_of_area*5 : 100 %>
+                        ],
                 backgroundColor: 'RGBA(255,240,35, 0.6)',
                 borderColor: 'RGBA(255,240,35, 1)',
                 borderWidth: 1,

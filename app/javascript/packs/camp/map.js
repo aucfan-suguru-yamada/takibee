@@ -107,7 +107,7 @@ function result_search(results, status) {
                                     <input type="hidden" name="name" value="${results[i].name}" id="area_name">
                                     <input type="hidden" name="address" value="${results[i].formatted_address}" id="area_address">
                                     <input type="hidden" name="latlng" value="${results[i].geometry.location}" id="area_latlng">
-                                    <input type="submit" name="commit" value="追加" class="btn btn-primary" data-disable-with="追加">
+                                    <input type="submit" name="commit" value="追加" class="btn btn-success" data-disable-with="登録">
                                     </form>`;
         } else {
         var cell_name=rows[i+1].insertCell(0);
@@ -120,7 +120,7 @@ function result_search(results, status) {
                                 <input type="hidden" name="name" value="${results[i].name}" id="area_name">
                                 <input type="hidden" name="address" value="${results[i].formatted_address}" id="area_address">
                                 <input type="hidden" name="latlng" value="${results[i].geometry.location}" id="area_latlng">
-                                <input type="submit" name="commit" value="追加" class="btn btn-primary" data-disable-with="追加">
+                                <input type="submit" name="commit" value="追加" class="btn btn-success" data-disable-with="登録">
                                 </form>`;
         };
     };
