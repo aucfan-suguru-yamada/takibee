@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="text-right">
+    <%= link_to "退会する", user_path(current_user), method: :delete, data: { confirm: '退会するとデータは全て削除されます。本当に退会しますか？' },class: 'btn btn-outline-danger mt-3 mx-auto' %>
+  </div>
   <%= form_with model: @user, local:true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group justify-content-around">
