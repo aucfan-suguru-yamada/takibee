@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   before_action :set_user, only: %i[ show update destroy ]
-  before_action :authenticate_user, only: %i[ edit ]
+  before_action :authenticate_user, only: %i[edit destroy]
   include CampHelper
 
   # GET /users or /users.json
@@ -75,6 +75,10 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def destroy
+    @user = current_user.destroy!
+    redirect_to root_path
+  end
 
 
   private

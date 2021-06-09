@@ -2,7 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :user_items, dependent: :destroy
   has_many :items, class_name: 'Item', foreign_key: 'item_id', through: :user_items, source: 'item'
-  has_many :camps
+  has_many :camps, dependent: :destroy
   has_one_attached :avatar
   has_many :likes, dependent: :destroy
   has_many :liked_camps, through: :likes, source: :camp

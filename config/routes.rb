@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
 
-  resources :users, only: %i[new create show edit update] do
+  resources :users, only: %i[new create show edit update destroy] do
     resources :every_camp, only: %i[index] do
       resources :likes, only: [:create, :destroy]
     end
