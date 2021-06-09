@@ -63,7 +63,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'sample.jpeg')), filename: 'sample.jpeg', content_type: 'image/jpeg') unless @user.avatar.present?
-      redirect_to login_path, flash: {warning: t('.success')}
+      #redirect_to login_path, flash: {warning: t('.success')}
+      #そのままログインする
+      auto_login(@user)
+      redirect_to user_every_camp_index_path(@user), flash: {warning: 'ログインしました'}
     else
       flash.now[:danger] = t('.fail')
       render :new
