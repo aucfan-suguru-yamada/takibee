@@ -1,4 +1,6 @@
 class CampsController < ApplicationController
+  include UsersHelper
+  before_action :require_signup, only: %i[new]
   def index
     @camps = current_user.camps.includes(:area).with_attached_images.order("camped_on DESC")
   end

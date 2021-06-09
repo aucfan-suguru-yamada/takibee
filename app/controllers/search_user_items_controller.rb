@@ -1,4 +1,6 @@
 class SearchUserItemsController < ApplicationController
+  include UsersHelper
+  before_action :require_signup, only: %i[index]
 
   def index
 

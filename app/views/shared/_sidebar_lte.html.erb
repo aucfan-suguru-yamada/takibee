@@ -57,6 +57,17 @@
             </p>
           <% end %>
         </li>
+        <% if current_user.is_guest_user? %>
+          <li class="nav-item">
+            <%= link_to new_user_path, class: "nav-link" do %>
+              <i class="nav-icon fas fa-user-plus"></i>
+              <p>
+                新規登録
+              </p>
+            <% end %>
+          </li>
+        <% end %>
+
         <li class="nav-item">
           <%= link_to logout_path, method: :delete, class: "nav-link", data: { confirm: 'ログアウトしますか？' } do %>
             <i class="nav-icon fas fa-home"></i>
