@@ -21,13 +21,13 @@
           <% if camp.images.present? %>
           <div class="container">
           <div class="row">
-            <div class="align-items-center js-modal-img col-lg-6 col-sm-12">
+            <div class="align-items-center js-modal-img col-lg-6 col-sm-12 mt-2">
               <%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "300x300^", crop:"400x280+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
               <div class="none" style="display: none;">
               <%= image_tag(camp.images[0], class: "d-block mx-auto rounded")%>
               </div>
             </div>
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-6 col-sm-12 mt-2">
               <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>
             </div>
           </div>

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show update destroy ]
+  before_action :authenticate_user, only: %i[ edit ]
   include CampHelper
 
   # GET /users or /users.json
@@ -80,6 +81,12 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def authenticate_user
+      if current_user != User.find(params[:id])
+        redirect_to user_path(current_user)
+      end
     end
 
     # Only allow a list of trusted parameters through.
