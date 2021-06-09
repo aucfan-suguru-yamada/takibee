@@ -11,11 +11,13 @@ class UserSessionsController < ApplicationController
       flash.now[:danger] = 'ログインに失敗しました'
       render :new
     end
+
+    binding.pry
+
   end
 
   def destroy
     logout
     redirect_to root_path, flash: {warning: 'ログアウトしました'}
-
   end
 end
