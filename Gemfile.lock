@@ -116,9 +116,12 @@ GEM
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
     ffi (1.15.1)
+<<<<<<< HEAD
     ffi (1.15.1-java)
     ffi (1.15.1-x64-mingw32)
     ffi (1.15.1-x86-mingw32)
+=======
+>>>>>>> develop
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
     globalid (0.4.2)
@@ -165,6 +168,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.7)
+<<<<<<< HEAD
     nio4r (2.5.7-java)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
@@ -175,6 +179,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.7-x86-mingw32)
       racc (~> 1.4)
+=======
+>>>>>>> develop
     nokogiri (1.11.7-x86_64-darwin)
       racc (~> 1.4)
     oauth (0.5.6)
@@ -338,9 +344,13 @@ GEM
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
+<<<<<<< HEAD
     websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-driver (0.7.4-java)
+=======
+    websocket-driver (0.7.5)
+>>>>>>> develop
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yard (0.9.26)
@@ -383,13 +393,22 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   sorcery
+<<<<<<< HEAD
+=======
+  spring
+  spring-watcher-listen (~> 2.0.0)
+>>>>>>> develop
   sqlite3 (~> 1.4)
   tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
 
 RUBY VERSION
+<<<<<<< HEAD
    ruby 2.7.0p0
+=======
+   ruby 3.0.0p0
+>>>>>>> develop
 
 BUNDLED WITH
    2.2.16
