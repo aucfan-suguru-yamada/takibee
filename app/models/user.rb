@@ -14,12 +14,21 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :name, presence: true
+  validate :avatar_size
 
   def already_liked?(camp)
     self.likes.exists?(camp_id: camp.id)
   end
 
   def is_guest_user?
-    self.id == 13
+    self.email == 'guest_user@example.com'
+  end
+
+  def avatar_size
+    if avatar.present?
+      if avatar.blob.byte_size > 5.megabytes
+        errors.add(:avatar, "は1つのファイル5MB以内にしてください")
+      end
+    end
   end
 end

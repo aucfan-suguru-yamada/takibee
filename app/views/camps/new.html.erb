@@ -7,7 +7,7 @@
             <div class="contain">
               <div class="row">
                 <div class="col align-items-center">
-                  <%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"),
+                  <%= link_to image_tag(current_user.avatar.variant(gravity: :center, resize: "50x50^", crop:"50x50+0+0"), class: "rounded-circle"),
                               user_path(current_user), style: "display: inline-block;" %>
                   <%= current_user.name%>
                 </div>
@@ -20,7 +20,7 @@
               <div class="preview-box border rounded col-md-12">
                 <%= f.label :image do%>
                   <i class="far fa-images fa-lg" style="display: inline-block;"></i> （5枚まで）
-                  <%= f.file_field :images, multiple: true, id: :camp_image, onchange: "loadImage(this);", style: "display: none;" %>
+                  <%= f.file_field :images, multiple: true, id: :camp_image, accept: '.jpeg, .jpg, .png', onchange: "loadImage(this);", style: "display: none;" %>
                 <% end %>
               <div class="alert alert-warning mt-3" style="display:none;">！画像は合計で5枚以下にしてください！
               </div>

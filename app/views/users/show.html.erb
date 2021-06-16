@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-md-6">
       <br>
-      <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize: "200x200^", crop:"200x200+0+0"}), class: "rounded-circle mx-auto d-block" %>
+      <%= image_tag @user.avatar.variant(gravity: :center, resize: "200x200^", crop:"200x200+0+0"), class: "rounded-circle mx-auto d-block" %>
       <h3 class="text-center mt-3"><%= @user.name %></h3>
     </div>
     <div class="col-md-6">
@@ -88,7 +88,7 @@
                         <%= @radar_item <= 100 ? @radar_item : 100 %>,
                         <%= @radar_favorite_camp <= 100 ? @radar_favorite_camp : 100 %>,
                         <%= @radar_camp_by_liked <= 100 ? @radar_camp_by_liked : 100 %>,
-                        <%= @radar_range_of_area*5  <= 100 ? @radar_range_of_area.round(1)*5 : 100 %>
+                        <%= @radar_range_of_area <= 100 ? @radar_range_of_area.round(1)*5 : 100 %>
                         ],
                 backgroundColor: 'RGBA(255,240,35, 0.6)',
                 borderColor: 'RGBA(255,240,35, 1)',

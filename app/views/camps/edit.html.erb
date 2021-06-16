@@ -7,7 +7,7 @@
             <div class="contain">
               <div class="row">
                 <div class="col align-items-center">
-                  <%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize: "50x50^", crop:"50x50+0+0"}), class: "rounded-circle"),
+                  <%= link_to image_tag(current_user.avatar.variant(gravity: :center, resize: "50x50^", crop:"50x50+0+0"), class: "rounded-circle"),
                               user_path(current_user), style: "display: inline-block;" %>
                   <%= current_user.name%>
                 </div>
