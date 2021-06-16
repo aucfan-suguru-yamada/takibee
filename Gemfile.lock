@@ -169,6 +169,8 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
+    meta-tags (2.14.0)
+      actionpack (>= 3.2.0, < 6.2)
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.0)
@@ -354,6 +356,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)
+  meta-tags
   mini_magick (~> 4.8)
   pg
   pry
