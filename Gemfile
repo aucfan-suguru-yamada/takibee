@@ -39,6 +39,7 @@ gem 'kaminari'
 gem 'font-awesome-sass'
 gem 'aws-sdk-s3', require: false
 gem 'google-analytics-rails'
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
