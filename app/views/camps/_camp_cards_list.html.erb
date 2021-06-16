@@ -5,7 +5,7 @@
           <%= link_to camp_path(camp.id), style:"text-decoration:none; color:black;" do %>
           <% if camp.images.present? %>
             <div class="align-items-center">
-              <%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "300x300^", crop:"300x300+0+0"}),class: "d-block mx-auto rounded img-fluid")%>
+              <%= image_tag(camp.images[0].variant(gravity: :center, resize: "300x300^", crop:"300x300+0+0"),class: "d-block mx-auto rounded img-fluid")%>
             </div>
           <% end %>
           <div class="card-body">

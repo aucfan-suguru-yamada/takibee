@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def create
 
-    io = open(params[:image_url])
+    io = URI.open(params[:image_url])
 
     params[:maker_name] = '-' unless params[:maker_name].present?
     if Maker.find_by(name: params[:maker_name])

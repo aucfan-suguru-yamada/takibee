@@ -9,4 +9,13 @@ class Camp < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
 
   validates :title, presence: true
+  validate :images_size
+
+  def images_size
+    images.each do |image|
+      if image.blob.byte_size > 5.megabytes
+        errors.add(:avatars, "は1つのファイル5MB以内にしてください")
+      end
+    end
+  end
 end

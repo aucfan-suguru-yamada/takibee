@@ -13,7 +13,7 @@
       <% @camps.each do |camp| %>
         <tr class="clickable-row", data-link="<%= camp_path(camp) %>">
           <% if camp.images.present? %>
-          <td><%= image_tag(camp.images[0].variant(combine_options:{gravity: :center, resize: "100x100^", crop:"100x100+0+0"})) %></td>
+          <td><%= image_tag(camp.images[0].variant(gravity: :center, resize: "100x100^", crop:"100x100+0+0")) %></td>
           <% else %>
           <td></td>
           <% end %>

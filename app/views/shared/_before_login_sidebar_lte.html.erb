@@ -22,7 +22,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to '/', class: "nav-link" do %>
+          <%= link_to '/', class: "nav-link #{before_login_active_if('static_pages', 'top')}" do %>
             <i class="nav-icon fas fa-fire"></i>
             <p>
               トップ
@@ -30,7 +30,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to new_user_path, class: "nav-link" do %>
+          <%= link_to new_user_path, class: "nav-link #{active_if('users')}" do %>
             <i class="nav-icon fas fa-user-plus"></i>
             <p>
               新規登録
@@ -38,7 +38,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to login_path, class: "nav-link" do %>
+          <%= link_to login_path, class: "nav-link #{before_login_active_if('user_sessions', 'new')}" do %>
             <i class="nav-icon fas fa-sign-in-alt"></i>
             <p>
               ログイン
@@ -46,7 +46,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to 'terms', class: "nav-link" do %>
+          <%= link_to 'terms', class: "nav-link #{before_login_active_if('static_pages', 'terms')}" do %>
             <i class="nav-icon fas fa-book"></i>
             <p>
               利用規約
@@ -54,7 +54,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to 'privacy_policy', class: "nav-link" do %>
+          <%= link_to 'privacy_policy', class: "nav-link #{before_login_active_if('static_pages', 'privacy_policy')}" do %>
             <i class="nav-icon fas fa-key"></i>
             <p>
               プライバシーポリシー

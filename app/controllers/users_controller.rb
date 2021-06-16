@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       end
       @radar_range_of_area = (((max_latitude - min_latitude)**2 + (max_longitude - min_longitude)**2)**0.5)
     end
-    @radar_range_of_area = 0 if @radar_range_of_area.nil?
+    @radar_range_of_area = 0 if max_latitude == 0
   end
 
   # GET /users/new

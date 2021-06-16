@@ -13,7 +13,7 @@
       <div class="image">
       <% if current_user.avatar.present? %>
         <%= link_to user_path(current_user) do %>
-          <%= image_tag current_user.avatar, class: 'img-circle elevation-2' %>
+          <%= image_tag current_user.avatar.variant(gravity: :center, resize: "200x200^", crop:"200x200+0+0"), class: "rounded-circle mx-auto d-block elevation-2" %>
         <% end %>
       <% end %>
       </div>
@@ -26,7 +26,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to user_every_camp_index_path(current_user), class: "nav-link" do %>
+          <%= link_to user_every_camp_index_path(current_user), class: "nav-link #{active_if("every_camp")}" do %>
             <i class="nav-icon fas fa-hiking"></i>
             <p>
               みんなのキャンプ
@@ -34,7 +34,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to camps_path, class: "nav-link" do %>
+          <%= link_to camps_path, class: "nav-link #{active_if('camps')}" do %>
             <i class="nav-icon fas fa-map-signs"></i>
             <p>
               マイキャンプ
@@ -42,7 +42,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to user_items_path, class: "nav-link" do %>
+          <%= link_to user_items_path, class: "nav-link #{active_if('user_items', 'search_user_items')}" do %>
             <i class="nav-icon fas fa-campground"></i>
             <p>
               マイアイテム
@@ -50,7 +50,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to user_path(current_user), class: "nav-link" do %>
+          <%= link_to user_path(current_user), class: "nav-link #{active_if('users')}" do %>
             <i class="nav-icon far fa-user"></i>
             <p>
               プロフィール
