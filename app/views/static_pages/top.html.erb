@@ -8,17 +8,24 @@
 					- さあ、TAKiBee -</h2>
           <br/>
           <br/>
-          <div class='text-center'>
-            <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
-          </div>
-          <br>
-          <div class='text-center'>
-            <%= link_to 'ログイン', login_path, class: 'btn btn-outline-warning' %>
-          </div>
-          <br>
-          <div class='text-center'>
-            <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
-          </div>
+          <% if logged_in? %>
+            <div class='text-center'>
+              <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'ログアウトしますか？' } %>
+            </div>
+            <br>
+          <% else %>
+            <div class='text-center'>
+              <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
+            </div>
+            <br>
+            <div class='text-center'>
+              <%= link_to 'ログイン', login_path, class: 'btn btn-outline-warning' %>
+            </div>
+            <br>
+            <div class='text-center'>
+              <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
+            </div>
+          <% end %>
         </div>
         <!-- /col-lg-6 -->
         <div class="col-lg-6 text-center">
@@ -75,16 +82,19 @@
   <br/>
 
   <div class="container">
-    <div class='text-center'>
-      <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
-    </div>
-    <br>
-    <div class='text-center'>
-      <%= link_to 'ログイン', login_path, class: 'btn btn-outline-warning' %>
-    </div>
-    <br>
-    <div class='text-center'>
-      <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
-    </div>
+          <% if logged_in? %>
+          <% else %>
+            <div class='text-center'>
+              <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
+            </div>
+            <br>
+            <div class='text-center'>
+              <%= link_to 'ログイン', login_path, class: 'btn btn-outline-warning' %>
+            </div>
+            <br>
+            <div class='text-center'>
+              <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
+            </div>
+          <% end %>
   </div>
   <%= render "/shared/footer" %>
