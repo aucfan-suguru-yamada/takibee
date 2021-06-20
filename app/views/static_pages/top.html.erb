@@ -83,6 +83,10 @@
 
   <div class="container">
           <% if logged_in? %>
+            <div class='text-center'>
+              <%= link_to "http://twitter.com/share?url=https://www.takibee.net/&text=TAKiBEEでキャンプの記録を残そう！/&hashtags=TAKiBEE", title: 'Twitter', target: '_blank' do %>
+                <i class="fab fa-twitter btn btn-info"></i>
+              <% end %>
           <% else %>
             <div class='text-center'>
               <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-warning' %>
@@ -95,6 +99,12 @@
             <div class='text-center'>
               <%= link_to 'ゲストユーザーでログイン', login_path(email: 'guest_user@example.com', password: 'password'), method: :post, class: 'btn btn-outline-warning' %>
             </div>
-          <% end %>
+            <br>
+            <div class='text-center'>
+              <%= link_to "http://twitter.com/share?url=https://www.takibee.net/&text=TAKiBEEでキャンプの記録を残そう！/&hashtags=TAKiBEE", title: 'Twitter', target: '_blank' do %>
+                <i class="fab fa-twitter btn btn-info"></i>
+              <% end %>
+            <% end %>
+            </div>
   </div>
   <%= render "/shared/footer" %>
