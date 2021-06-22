@@ -1,0 +1,12 @@
+<div class='container'>
+  <div class=" col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <p class='text-center text-warning pt-5'>メールアドレスを入力してください</p>
+    <%= form_with url: password_resets_path, method: :post, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :email %><br/>
+        <input type="text" name="email" id="email" value="" class="form-control" />
+        <%= f.submit 'メールを送信', class: 'btn btn-outline-warning mt-3' %>
+      </div>
+    <% end %>
+  </div>
+</div>

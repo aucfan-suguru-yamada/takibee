@@ -16,6 +16,7 @@
         <%= check_box_tag :remember, params[:remember], true %>
         <%= label_tag :remember, ' 次回から自動でログインする' %>
         </div>
+        <%= link_to 'パスワードを忘れた方はこちら', new_password_reset_path, class: 'text-warning'  %>
         <div class="actions mt-3">
           <%= f.submit (t 'defaults.login'), class: 'btn btn-outline-warning' %>
         </div>

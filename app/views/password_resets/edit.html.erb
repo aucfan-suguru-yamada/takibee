@@ -1,0 +1,31 @@
+<div class='container'>
+  <div class=" col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <p class='text-center text-warning pt-5'>パスワードを再設定してください</p>
+    <%= form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+        <%= f.label :email %><br />
+        <%= @user.email %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+        <%= f.submit '更新する', class: 'btn btn-outline-warning mt-3'%>
+    <% end %>
+  <div>
+<div>

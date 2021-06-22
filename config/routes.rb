@@ -25,4 +25,5 @@ Rails.application.routes.draw do
     post 'add_my_items', to: 'camp_items#add_my_items'
     resources :areas, only: %i[index create destroy]
   end
+  resources :password_resets, only: %i[new create edit update]
 end
