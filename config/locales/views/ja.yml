@@ -56,9 +56,14 @@ ja:
   camps:
     index:
       title: 'マイキャンプ'
+    new:
+      title: 'キャンプ記録'
   user_items:
     index:
       title: 'マイアイテム'
+  search_user_items:
+    index:
+      title: 'アイテム検索'
   user_sessions:
     new:
       title: 'ログイン'
