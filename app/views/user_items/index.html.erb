@@ -6,7 +6,7 @@
   <%= form_with model: @search_user_item_form, url: user_items_path, method: :get, html: { class: 'form-inline' } do |f|%>
   <%= f.select :id, @maker_name_array, { include_blank: true }, class: 'form-control mt-3' %>
       <span class="input-group-btn mt-2">
-        <%= f.submit '検索', class: %w[btn btn-default btn-flat mt-2] %>
+        <%= f.submit '検索', class: %w[btn btn-outline-warning mt-2 ml-2] %>
       </span>
   <%end%>
 

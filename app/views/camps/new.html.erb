@@ -20,7 +20,7 @@
             <div class="form-group col-md-10 offset-md-1 col-lg-8 offset-lg-2">
               <div class="preview-box border rounded col-md-12">
                 <%= f.label :image do%>
-                  <i class="far fa-images fa-lg" style="display: inline-block;"></i> （5枚まで）
+                  <i class="far fa-images fa-lg" style="display: inline-block;">（5枚まで・5MB/枚）</i>
                   <%= f.file_field :images, multiple: true, id: :camp_image, accept: '.jpeg, .jpg, .png', onchange: "loadImage(this);", style: "display: none;" %>
                 <% end %>
               <div class="alert alert-warning mt-3" style="display:none;">！画像は合計で5枚以下にしてください！

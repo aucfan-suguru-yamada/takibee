@@ -21,9 +21,9 @@
   </div>
 
 
-  <ul class="nav nav-pills nav-justified mb-3 mt-3 col-md-12" id="pills-tab" role="tablist">
+  <ul class="nav nav-pills nav-justified mb-3 mt-5 border border-warning rounded" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="nav-icon fas fa-map-signs fa-fw"></i> Camps</a>
+      <a class="nav-link active text-white " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="nav-icon fas fa-map-signs fa-fw"></i> Camps</a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="nav-icon fas fa-campground fa-fw"></i> Items</a>
@@ -37,7 +37,7 @@
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <%if @user == current_user %>
         <div class='col-md-12'>
-          <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
+          <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block mb-3'%></a>
         </div>
       <% end %>
       <div id="camp_list">
@@ -60,7 +60,7 @@
     <div class="tab-pane fade" id="pills-likes" role="tabpanel" aria-labelledby="pills-likes-tab">
       <%if @user == current_user %>
         <div class='col-md-12'>
-          <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
+          <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block mb-3'%></a>
         </div>
       <% end %>
       <div>
