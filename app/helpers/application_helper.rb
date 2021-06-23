@@ -1,6 +1,6 @@
 module ApplicationHelper
   def active_if(*path)
-    active_menu?(*path) ? 'active-nav-item' : ''
+    active_menu?(*path) ? 'active-nav-item text-dark' : ''
   end
 
   def active_menu?(*path)
@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def before_login_active_if(path, action)
-    path == controller_path && action == action_name ? 'active-nav-item' : ''
+    path == controller_path && action == action_name ? 'active-nav-item text-dark' : ''
   end
 
   # meta-tagの設定

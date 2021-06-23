@@ -7,7 +7,8 @@
                 <div class="col align-items-center">
                   <%= link_to image_tag(camp.user.avatar.variant(gravity: :center, resize: "50x50^", crop:"50x50+0+0"), class: "rounded-circle"),
                               user_path(camp.user), style: "display: inline-block;" %>
-                  <%= camp.user.name%><span class="text-white-50"><%= "・#{camp.camped_on}"%></span>
+                  <span class="ml-2"><%= camp.user.name%></span>
+                  <span class="text-white-50"><%= "・#{camp.camped_on}"%></span>
                   <% if current_user.already_liked?(camp) %>
                     <%= render partial: 'every_camp/unlike', locals: {camp: camp} %>
                   <% else %>
