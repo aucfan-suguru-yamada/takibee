@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'admin_camps', to: 'camps#admin_index'
 
-  resources :users, only: %i[new create show edit update destroy] do
+  resources :users, only: %i[new index create show edit update destroy] do
     resources :every_camp, only: %i[index] do
       resources :likes, only: [:create, :destroy]
     end

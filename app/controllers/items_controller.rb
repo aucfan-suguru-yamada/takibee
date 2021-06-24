@@ -3,7 +3,11 @@ class ItemsController < ApplicationController
   require 'open-uri'
 
   def index
-    @items = Item.includes(:maker).with_attached_small_image
+    if current_user.is_admin_user?
+      @items = Item.includes(:maker).with_attached_small_image
+    else
+      redirect_to user_every_camp_index_path(current_user)
+    end
   end
 
   def create

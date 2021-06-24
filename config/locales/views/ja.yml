@@ -32,6 +32,8 @@
 ja:
   defaults:
     login: 'ログイン'
+    email: 'メールアドレス'
+    password: 'パスワード'
     register: '登録'
     logout: 'ログアウト'
     post: '投稿'

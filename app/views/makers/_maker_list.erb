@@ -10,7 +10,7 @@
       <% @makers.each do |maker| %>
         <tr>
           <td><%= maker.name %></td>
-          <td><%= link_to '削除', maker_path(maker.id), method: :delete, class: 'btn btn-danger'%></td>
+          <td><%= link_to '削除', maker_path(maker.id), method: :delete, class: 'btn btn-danger', data: { confirm: '退会するとデータは全て削除されます。本当に退会しますか？' }%></td>
         </tr>
       <% end %>
     </tbody>

@@ -4,7 +4,7 @@
 <% end %>
   <div class='container'>
 
-    <div id='camp_list'>
+    <div id='camp_list' class='pb-5'>
       <% if @camps.present? %>
         <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block'%></a>
         <%= render partial: 'camp_cards_list' %>
