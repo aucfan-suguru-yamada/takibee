@@ -40,7 +40,7 @@
           <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block mb-3'%></a>
         </div>
       <% end %>
-      <div id="camp_list">
+      <div id="camp_list" class='pb-5'>
         <%= render 'every_camp/camp_list', {camps: @camps}%>
       </div>
       <div class="insert_pagenation">
@@ -54,7 +54,9 @@
           <a><%= link_to '＋アイテムを追加', search_user_items_path, class: 'btn btn-outline-warning btn-block'%></a>
         </div>
       <% end %>
-      <%= render 'user_items/item_list', {items: @items}%>
+      <div class='pb-5'>
+        <%= render 'user_items/item_list', {items: @items}%>
+      </div>
     </div>
 
     <div class="tab-pane fade" id="pills-likes" role="tabpanel" aria-labelledby="pills-likes-tab">
@@ -63,7 +65,7 @@
           <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block mb-3'%></a>
         </div>
       <% end %>
-      <div>
+      <div class='pb-5'>
         <%= render 'every_camp/camp_list', {camps: @favorite_camps} %>
       </div>
       <div class="insert_pagenation">

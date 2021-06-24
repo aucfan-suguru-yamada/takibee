@@ -14,6 +14,7 @@
         <%= image_tag @user.avatar.variant(gravity: :center, resize: "200x200^", crop:"200x200+0+0"), class: "rounded-circle", id: :preview_avatar, style:"height: 200px; width: 200px;" %>
       <% end %>
     </div>
+    <p class='text-warning mt-3'>画像サイズは5MB以下にしてください</p>
   </div>
   <div class="form-group">
     <%= f.label :name %>
