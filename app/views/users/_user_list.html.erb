@@ -1,0 +1,35 @@
+<div class='pt-3 pb-5'>
+  <table class="table table-hover col-md-12 mt-3" id="item_table">
+    <thead>
+        <tr>
+          <th>Img</th>
+          <th>Name</th>
+          <th>Camps</th>
+          <th>Btn</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td class='image_cell'>
+            <% if user.avatar.present? %>
+              <%= link_to image_tag(user.avatar.variant(gravity: :center, resize: "50x50^", crop:"50x50+0+0"), class: "rounded-circle"),
+                              user_path(user.id), style: "display: inline-block;" %>
+          </td>
+            <% else %>
+              <td></td>
+            <% end %>
+          <td>
+            <%= user.name %>
+          </td>
+          <td>
+            <%= user.camps.count%>
+          </td>
+          <td>
+            <%= link_to '削除', user_path(user.id), method: :delete, class: 'btn btn-danger', data: { confirm: '本当にこのユーザーを削除しますか？' }%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

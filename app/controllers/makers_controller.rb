@@ -1,6 +1,10 @@
 class MakersController < ApplicationController
   def index
-    @makers = Maker.all
+    if current_user.is_admin_user?
+      @makers = Maker.all
+    else
+      redirect_to user_every_camp_index_path(current_user)
+    end
   end
 
   def new

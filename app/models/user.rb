@@ -24,6 +24,10 @@ class User < ApplicationRecord
     self.email == 'guest_user@example.com'
   end
 
+  def is_admin_user?
+    self.id == 1
+  end
+
   def avatar_size
     if avatar.present?
       if avatar.blob.byte_size > 5.megabytes

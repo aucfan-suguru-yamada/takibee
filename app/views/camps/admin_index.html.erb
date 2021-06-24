@@ -1,0 +1,9 @@
+<div class='container'>
+    <div id='camp_list' class='pb-5'>
+      <% if @camps.present? %>
+        <%= render partial: 'admin_camp_list' %>
+      <% else %>
+        <p class='text-center text-warning pt-3'>キャンプのキロクはまだありません</p>
+      <% end %>
+    </div>
+  </div>

@@ -4,7 +4,7 @@ class Camp < ApplicationRecord
   has_many :camp_items, dependent: :destroy
   has_many :items, class_name: 'Item', foreign_key: 'item_id', through: :camp_items, source: 'item'
   has_many_attached :images
-  has_one :area, dependent: :destroy
+  has_one :area
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 

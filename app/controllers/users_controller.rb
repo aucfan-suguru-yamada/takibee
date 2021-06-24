@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    if current_user.is_admin_user?
+      @users = User.with_attached_avatar
+    else
+      redirect_to user_every_camp_index_path(current_user)
+    end
   end
 
   # GET /users/1 or /users/1.json

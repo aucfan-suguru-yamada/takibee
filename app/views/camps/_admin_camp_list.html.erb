@@ -1,17 +1,33 @@
 <% if @camps.present? %>
+<p class='pt-3 text-warning'><%= "投稿数：#{@camps.count}" %></p>
 <table class="table table-hover">
     <thead>
         <tr>
+          <th>Camp_id</th>
+          <th>User</th>
           <th>Img</th>
           <th>Title</th>
           <th>Area</th>
           <th>Date</th>
           <th>Comment</th>
+          <th>Items</th>
+          <th>Btn</th>
         </tr>
     </thead>
     <tbody>
       <% @camps.each do |camp| %>
         <tr class="clickable-row", data-link="<%= camp_path(camp) %>">
+          <td><%= camp.id %></td>
+          <% if camp.user.avatar.present? %>
+          <td>
+          <%= link_to image_tag(camp.user.avatar.variant(gravity: :center, resize: "50x50^", crop:"50x50+0+0"), class: "rounded-circle"),
+                              user_path(camp.user), style: "display: inline-block;" %>
+          <br>
+              <%= camp.user.name %>
+          </td>
+          <% else %>
+          <td></td>
+          <% end %>
           <% if camp.images.present? %>
           <td><%= image_tag(camp.images[0].variant(gravity: :center, resize: "100x100^", crop:"100x100+0+0")) %></td>
           <% else %>
@@ -25,6 +41,10 @@
           <% end %>
           <td><%= camp.camped_on %></td>
           <td><%= camp.note %></td>
+          <td><%= camp.items.count%></td>
+          <td>
+            <%= link_to '削除', camp_path(camp.id), method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' }%>
+          </td>
         </tr>
       <% end %>
     </tbody>
