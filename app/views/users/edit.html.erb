@@ -5,7 +5,7 @@
   <%= form_with model: @user, local:true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group justify-content-around">
-    <div class="image-box">
+    <div class="avatar-image-box">
       <%= f.label :avatar do %>
         <i class="fas fa-camera avatar-edit rounded-circle fa-border text-dark"></i>
         <%= f.file_field :avatar, id: :user_avatar, accept: '.jpeg, .jpg, .png', onChange:"imgPreView(event)", style: "display: none;" %>
@@ -25,6 +25,7 @@
     <input class="form-control bg-dark" type="email" name="user[email]" id="user_email" value="<%=@user.email%>" />
   </div>
   <%= f.submit "更新", class: 'btn btn-outline-warning' %>
+  <%= link_to 'キャンセル', user_path(current_user), class: 'btn btn-outline-light ml-3' %>
   <% end %>
 </div>
 
