@@ -25,7 +25,7 @@
                 <!-- 画像1枚のとき-->
                 <% if camp.images.count == 1 %>
                   <div class="align-items-center js-modal-img col-lg-6 col-sm-12 mt-2">
-                    <%= image_tag(camp.images[0].variant(gravity: :center, resize: "300x300^", crop:"400x280+0+0"),class: "d-block mx-auto rounded img-fluid", id: "camp_id_#{camp.id}_image_id_0")%>
+                    <%= image_tag(camp.images[0].variant(gravity: :center, resize: "300x300^", crop:"400x290+0+0"),class: "d-block mx-auto rounded img-fluid", id: "camp_id_#{camp.id}_image_id_0")%>
                     <div class="none" style="display: none;">
                       <%= image_tag(camp.images[0], class: "d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_0")%>
                     </div>
@@ -38,7 +38,7 @@
                     <div class='row'>
                       <% for i in 0..1 %>
                         <div class='js-modal-img col-6'>
-                          <%= image_tag(camp.images[i].variant(gravity: :center, resize: "300x300^", crop:"200x280+0+0"),class: "mx-auto d-block rounded img-fluid", id: "camp_id_#{camp.id}_image_id_#{i}")%>
+                          <%= image_tag(camp.images[i].variant(gravity: :center, resize: "300x300^", crop:"200x290+0+0"),class: "mx-auto d-block rounded img-fluid", id: "camp_id_#{camp.id}_image_id_#{i}")%>
                             <div class="none" style="display: none;">
                               <%= image_tag(camp.images[i], class: "image d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_#{i}")%>
                             </div>
@@ -55,7 +55,7 @@
                       <% for i in 0..1 %>
                         <% if i == 0 %>
                           <div class='js-modal-img col-6'>
-                            <%= image_tag(camp.images[i].variant(gravity: :center, resize: "300x300^", crop:"200x280+0+0"),class: "mx-auto d-block rounded img-fluid", id: "camp_id_#{camp.id}_image_id_#{i}")%>
+                            <%= image_tag(camp.images[i].variant(gravity: :center, resize: "300x300^", crop:"200x290+0+0"),class: "mx-auto d-block rounded img-fluid", id: "camp_id_#{camp.id}_image_id_#{i}")%>
                             <div class="none" style="display: none;">
                               <%= image_tag(camp.images[i], class: "image d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_#{i}")%>
                             </div>
@@ -63,7 +63,7 @@
                         <% else %>
                           <div class='js-modal-img col-6'>
                             <%= image_tag(camp.images[i].variant(gravity: :center, resize: "200x200^", crop:"200x140+0+0"),class: "mx-auto d-block rounded img-fluid", id: "camp_id_#{camp.id}_image_id_#{i}")%>
-                            <%= image_tag(camp.images[i+1].variant(gravity: :center, resize: "200x200^", crop:"200x140+0+0"),class: "mx-auto d-block rounded img-fluid", id: "camp_id_#{camp.id}_image_id_#{i+1}")%>
+                            <%= image_tag(camp.images[i+1].variant(gravity: :center, resize: "200x200^", crop:"200x140+0+0"),class: "mx-auto d-block rounded img-fluid mt-2", id: "camp_id_#{camp.id}_image_id_#{i+1}")%>
                             <div class="none" style="display: none;">
                               <%= image_tag(camp.images[i], class: "image d-block mx-auto rounded", id: "mx-auto d-block rounded img-fluid", id: "modal_camp_id_#{camp.id}_image_id_#{i}")%>
                               <%= image_tag(camp.images[i+1], class: "image d-block mx-auto rounded", id: "mx-auto d-block rounded img-fluid", id: "modal_camp_id_#{camp.id}_image_id_#{i+1}")%>
