@@ -69,6 +69,7 @@ group :development do
   #gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
   gem 'sqlite3', '~> 1.4'
+  gem 'rails-erd'
   #gem 'mysql2', '>= 0.4.4'
 end
 

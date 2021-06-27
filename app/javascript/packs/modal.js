@@ -1,5 +1,5 @@
 //モーダル使えないかなあ
-$(document).on("click", 'img', function(){
+$(document).on("click", '.js-modal-img', function(){
   //var src = $(this).children().children().attr('src');
   //var src = $(this).children().children().attr('src');
   var img_id = $(this).attr('id');
