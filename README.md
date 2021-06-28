@@ -22,3 +22,10 @@
 | --------------------- | ------------------- |
 |<img width="1440" alt="スクリーンショット 2021-06-23 18 39 21" src="https://user-images.githubusercontent.com/67957898/123074672-7af1b600-d452-11eb-956c-95bae0702f66.png">|<img width="1440" alt="スクリーンショット 2021-06-23 18 41 47" src="https://user-images.githubusercontent.com/67957898/123074952-b9877080-d452-11eb-8227-d50354863369.png">|
 |作成したキャンプを一覧で確認できる。日付/キャンプ場/写真/コメントの表示 |すべての写真/キャンプ場/アイテムを表示・編集を行う。|
+
+### ER図
+![erd](https://user-images.githubusercontent.com/67957898/123559729-c7355100-d7d8-11eb-9667-3a710b2145f2.png)
+
+
+### インフラ構成図
+![image](https://user-images.githubusercontent.com/67957898/123647030-b4fff500-d862-11eb-8c84-a2c25a5fabd7.png)
