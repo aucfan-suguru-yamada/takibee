@@ -5,15 +5,14 @@ class CampsController < ApplicationController
   def admin_index
     if current_user.is_admin_user?
       @camps = Camp.includes(:area,
-                user: { avatar_attachment: :blob },
-              ).with_attached_images.order("created_at DESC")
+                             user: { avatar_attachment: :blob }).with_attached_images.order('created_at DESC')
     else
       redirect_to user_every_camp_index_path(current_user)
     end
   end
 
   def index
-    @camps = current_user.camps.includes(:area).with_attached_images.order("camped_on DESC")
+    @camps = current_user.camps.includes(:area).with_attached_images.order('camped_on DESC')
   end
 
   def new
@@ -27,19 +26,16 @@ class CampsController < ApplicationController
 
   def edit
     @camp = Camp.with_attached_images.find(params[:id])
-    if current_user == @camp.user
-    else
-      redirect_to camps_path
-    end
+    redirect_to camps_path unless current_user == @camp.user
   end
 
   def create
     @camp = current_user.camps.new(camp_params)
-      if @camp.save
-        redirect_to camps_path
-      else
-        render 'new'
-      end
+    if @camp.save
+      redirect_to camps_path
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -63,7 +59,7 @@ class CampsController < ApplicationController
 
   private
 
-  def camp_params
-    params.require(:camp).permit(:title, :camped_on, :number_of_people, :note, images:[])
-  end
+    def camp_params
+      params.require(:camp).permit(:title, :camped_on, :number_of_people, :note, images: [])
+    end
 end

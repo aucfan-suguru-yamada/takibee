@@ -24,7 +24,7 @@ module ApplicationHelper
       separator: '|',
       icon: [
         { href: image_url('favicon.ico') },
-        { href: image_url('apple-touch-icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+        { href: image_url('apple-touch-icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
       ],
       og: {
         site_name: :site, # もしくは site_name: :site
@@ -33,11 +33,11 @@ module ApplicationHelper
         type: 'website',
         url: request.original_url,
         image: image_url('takibee_icon.png'),
-        locale: 'ja_JP',
+        locale: 'ja_JP'
       },
       twitter: {
         card: 'summary',
-        site: '@Soogle_1729',
+        site: '@Soogle_1729'
       }
     }
   end

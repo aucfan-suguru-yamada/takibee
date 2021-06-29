@@ -31,21 +31,23 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.3.1'
 
 # rakuten API
-gem 'rakuten_web_service'
-gem "figaro"
-gem 'draper'
-gem 'mini_magick', '~> 4.8'
-gem 'kaminari'
-gem 'font-awesome-sass'
 gem 'aws-sdk-s3', require: false
+gem 'draper'
+gem 'figaro'
+gem 'font-awesome-sass'
 gem 'google-analytics-rails'
+gem 'kaminari'
 gem 'meta-tags'
+gem 'mini_magick', '~> 4.8'
+gem 'rakuten_web_service'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rubocop', require:false
-  gem 'rubocop-rails', require:false
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 
     # Debugger
   gem 'better_errors'
@@ -55,26 +57,26 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-rails'
 
-  gem "rspec-rails"
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
   gem 'letter_opener'
+  gem 'rspec-rails'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  #gem 'spring'
-  #gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
-  gem 'sqlite3', '~> 1.4'
   gem 'rails-erd'
-  #gem 'mysql2', '>= 0.4.4'
+  gem 'sqlite3', '~> 1.4'
+  # gem 'mysql2', '>= 0.4.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # 本番環境用のgemグループを新しく作成しPostgresを指定
 group :production do

@@ -26,6 +26,7 @@ AllCops:
     - 'tmp/**/*'
     - 'node_modules/**/*'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'config/**/*'
 
 Rails:
   Enabled: true
@@ -34,6 +35,12 @@ Rails/FilePath:
   Exclude:
     - 'lib/tasks/dev.rake'
     - 'spec/rails_helper.rb'
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
 
 ## `and return` の形式を利用できるようにします。基本的には、&& と || を使います。
 Style/AndOr:
@@ -75,6 +82,7 @@ Layout/LineLength:
 Metrics/AbcSize:
   Exclude:
     - 'lib/tasks/dev.rake'
+  Max: 100
 
 Metrics/BlockLength:
   CountComments: false
@@ -88,9 +96,15 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   CountComments: false
 
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
 Metrics/MethodLength:
   CountComments: false
-  Max: 15
+  Max: 35
   Exclude:
     - 'lib/tasks/dev.rake'
 
@@ -104,6 +118,9 @@ Naming/FileName:
 
 Naming/MethodParameterName:
   AllowedNames: [e]
+
+Naming/PredicateName:
+  Enabled: false
 
 RSpec/ContextWording:
   Enabled: false
@@ -130,6 +147,9 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 5
 
+Security/Open:
+  Enabled: false
+
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
@@ -149,6 +169,9 @@ Style/Documentation:
 # https://rubocop.readthedocs.io/en/stable/cops_style/#styleexponentialnotation
 Style/ExponentialNotation:
   Enabled: true
+
+Style/GuardClause:
+  Enabled: false
 
 # https://rubocop.readthedocs.io/en/stable/cops_style/#stylehasheachmethods
 Style/HashEachMethods:
@@ -173,4 +196,8 @@ Style/RegexpLiteral:
 
 # https://rubocop.readthedocs.io/en/stable/cops_style/#styleslicingwithrange
 Style/SlicingWithRange:
-  Enabled: true
+  Enabled: false
+
+# 文字列をfreezeさせるか
+Style/FrozenStringLiteralComment:
+  Enabled: false
