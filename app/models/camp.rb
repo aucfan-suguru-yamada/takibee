@@ -14,7 +14,7 @@ class Camp < ApplicationRecord
   def images_size
     images.each do |image|
       if image.blob.byte_size > 5.megabytes
-        errors.add(:avatars, "は1つのファイル5MB以内にしてください")
+        errors.add(:avatars, 'は1つのファイル5MB以内にしてください')
       end
     end
   end

@@ -1,5 +1,4 @@
 module CampItemsHelper
-
   def already_owned?(item)
     if @camp.items.find_by(id: item.id)
       '登録済み'

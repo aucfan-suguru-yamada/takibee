@@ -17,22 +17,20 @@ class User < ApplicationRecord
   validate :avatar_size
 
   def already_liked?(camp)
-    self.likes.exists?(camp_id: camp.id)
+    likes.exists?(camp_id: camp.id)
   end
 
   def is_guest_user?
-    self.email == 'guest_user@example.com'
+    email == 'guest_user@example.com'
   end
 
   def is_admin_user?
-    self.id == 1
+    id == 1
   end
 
   def avatar_size
-    if avatar.present?
-      if avatar.blob.byte_size > 5.megabytes
-        errors.add(:avatar, "は1つのファイル5MB以内にしてください")
-      end
+    if avatar.present? && (avatar.blob.byte_size > 5.megabytes)
+      errors.add(:avatar, 'は1つのファイル5MB以内にしてください')
     end
   end
 end
