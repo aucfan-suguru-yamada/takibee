@@ -1,0 +1,3 @@
+$('#camp_list_favorite').append("<%= j(render 'every_camp/favorite_camp_list') %>");
+$('#next_favorite').remove();
+$('.insert_pagenation_favorite').append("<%= j(link_to_next_page @favorite_camps, '＋もっとみる', class: 'next btn btn-outline-warning col-md-12', id: 'next_favorite', remote: true, params: { type: :favorite_camp }) %>");

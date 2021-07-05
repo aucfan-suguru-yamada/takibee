@@ -56,6 +56,12 @@ class UsersController < ApplicationController
       @radar_range_of_area = (((max_latitude - min_latitude)**2 + (max_longitude - min_longitude)**2)**0.5)
     end
     @radar_range_of_area = 0 if max_latitude.zero?
+
+    return unless request.xhr?
+    case params[:type]
+    when 'camp', 'favorite_camp'
+      render "#{params[:type]}"
+    end
   end
 
   # GET /users/new
