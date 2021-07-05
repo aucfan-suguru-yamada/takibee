@@ -44,7 +44,7 @@
         <%= render 'every_camp/camp_list', {camps: @camps}%>
       </div>
       <div class="insert_pagenation">
-        <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
+        <%= link_to_next_page @camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true, params: { type: :camp }  %>
       </div>
     </div>
 
@@ -65,11 +65,11 @@
           <a><%= link_to '＋キャンプを記録', new_camp_path, class: 'btn btn-outline-warning btn-block mb-3'%></a>
         </div>
       <% end %>
-      <div class='pb-5'>
-        <%= render 'every_camp/camp_list', {camps: @favorite_camps} %>
+      <div id="camp_list_favorite"class='pb-5'>
+        <%= render 'every_camp/favorite_camp_list', {camps: @favorite_camps} %>
       </div>
-      <div class="insert_pagenation">
-        <%= link_to_next_page @favorite_camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next', remote: true %>
+      <div class="insert_pagenation_favorite">
+        <%= link_to_next_page @favorite_camps , '＋もっと見る', class: "next btn btn-outline-warning col-md-12", id: 'next_favorite', remote: true, params: { type: :favorite_camp } %>
       </div>
     </div>
   </div>
