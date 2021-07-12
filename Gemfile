@@ -60,6 +60,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'letter_opener'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  # gem 'capybara-webkit'
 end
 
 group :development do

@@ -46,8 +46,11 @@ class CampsController < ApplicationController
       @items = @camp.items
       redirect_to edit_camp_path(@camp)
     else
-      @camp.update(camp_params)
-      redirect_to camp_path(@camp)
+      if @camp.update(camp_params)
+        redirect_to camp_path(@camp)
+      else
+        render 'edit'
+      end
     end
   end
 
