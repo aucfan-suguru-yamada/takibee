@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :camp do
-    title { 'MyString' }
-    note { 'MyText' }
-    number_of_people { 1 }
+    sequence(:title) { |n| "title-#{n}" }
+    sequence(:note) {|n| "note-#{n}"}
+    sequence(:number_of_people) {|n| n}
   end
 end
