@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Camp, type: :model do
+RSpec.describe User, type: :model do
   describe 'validation' do
     it 'is valid with all attributes' do
       user = build(:user)
