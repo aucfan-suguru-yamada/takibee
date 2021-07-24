@@ -1,5 +1,5 @@
 # TAKiBee
-[https://takibee.net](https://takibee.net)
+[https://www.takibee.net](https://www.takibee.net)
 
 # サービス概要
   キャンプの記録ができるサービス。
