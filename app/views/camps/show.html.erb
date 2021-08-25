@@ -120,82 +120,8 @@
 
 
 <%= javascript_pack_tag 'camp/button_display' %>
-<script>
-  /*
-    var map;
-    function initMap() {
-        var lat_value = document.getElementById('lat').value;
-        var lng_value = document.getElementById('lng').value;
-        var latlng = new google.maps.LatLng(lat_value, lng_value);
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: latlng,
-            zoom: 15
-        });
-        console.log("map");
-
-        var marker = new google.maps.Marker({
-        position: latlng,
-        map: map
-        });
-    }
-    initMap();
-  */
-
-
-  function loadImage(obj){
-      //モーダルに画像を追加する
-      var image_box = $('#modal_image_box');
-    console.log('画像追加');
-    console.log(image_box);
-      for (i = 0; i < obj.files.length; i++) {
-          var fileReader = new FileReader();
-          fileReader.onload = (function (e) {
-          var html = `<div class="col-md-4 each-image-preview">
-                      <img src="${e.target.result}" style="max-width:90%; max-height:500px;">
-                      </div>`;
-          image_box.append(html);
-		});
-		fileReader.readAsDataURL(obj.files[i]);
-	};
-    //モーダル使えないかなあ
-    var modal = document.getElementById( 'modal01' );
-    $( modal ).fadeIn( 300 );
-    return false;
-};
-
-
-  // モーダルウィンドウを閉じる
-  $( '.js-modal-close' ).on( 'click', function() {
-    $( '.js-modal' ).fadeOut( 300 );
-    $('input[type=file]').val(null)
-    dataBox.clearData();
-    var target_image = $('.each-image-preview');
-    target_image.remove();
-    return false;
-  });
-
-  //削除ボタンをクリックすると発火するイベント
-  $(document).on("click", '#preview-delete', function(){
-      var file_field = document.querySelector('input[type=file]');
-      //削除を押されたプレビュー要素を取得
-      var target_image = $('.each-image-preview');
-      //inputタグに入ったファイルを削除
-      $('input[type=file]').val('');
-      //プレビューを削除
-      target_image.remove();
-      $('#preview-delete').toggle();
-});
-</script>
 
 <script>
-/*
-    var swiper = new Swiper('.swiper-container', {
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-*/
     let mySwiper = new Swiper ('.swiper-container', {
   // 以下にオプションを設定
   loop: false, //最後に達したら先頭に戻る

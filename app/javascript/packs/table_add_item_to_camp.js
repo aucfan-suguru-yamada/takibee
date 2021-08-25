@@ -1,3 +1,4 @@
+//  view/camp_items/my_itemsで使用
 var item_ids_array = [];
 var camp_id = $('.camp_id').attr('id');
 $('.add-item-button').prop("disabled", true);

@@ -1,4 +1,4 @@
-//モーダル使えないかなあ
+//  view/every_camp/indexで使用
 $(document).on("click", '.js-modal-img', function(){
   //var src = $(this).children().children().attr('src');
   //var src = $(this).children().children().attr('src');
