@@ -1,3 +1,5 @@
+//  view/user_itemsで使用
+
 var select_flag = 0;
 var item_ids_array = [];
 

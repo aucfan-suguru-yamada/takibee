@@ -1,3 +1,4 @@
+//  view/camps/showで使用
 $(function () {
     $('#picture_edit_button').on('click', () => {
         $('.picture_delete_button').slideToggle(500);
