@@ -28,7 +28,7 @@ module ApplicationHelper
       ],
       og: {
         site_name: :site, # もしくは site_name: :site
-        title: :title, # もしくは title: :title
+        title: 'TAKiBEE.', # もしくは title: :title
         description: :description, # もしくは description: :description
         type: 'website',
         url: request.original_url,
