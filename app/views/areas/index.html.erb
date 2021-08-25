@@ -3,3 +3,5 @@
   <div id="camp_id" data-camp-id="<%= @camp.id %>"></div>
   <%= render partial: 'map' %>
 </div>
+
+<script src=<%="https://maps.google.com/maps/api/js?key=#{ENV["google_api_key"]}&libraries=places&language=ja"%>></script>
