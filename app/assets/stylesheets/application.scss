@@ -33,7 +33,25 @@ body {
 .swiper-container {
   max-width: 100%;
   height: 330px;
-  //  margin: 100px 0;
+  position: relative;
+}
+
+.swiper-button-prev{
+  position: absolute;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    --swiper-navigation-color: white; //ここに変更する色を指定
+}
+
+/* 全体のスタイル */
+.swiper-pagination-bullet {
+	--swiper-theme-color: white;
+}
+/* 現在のスライドのスタイル */
+.swiper-pagination-bullet-active {
+  --swiper-theme-color: white;
 }
 
 /* サイドバーactiveタブの色変更 */
