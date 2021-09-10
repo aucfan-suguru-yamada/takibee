@@ -14,8 +14,8 @@ module ApplicationHelper
   # meta-tagの設定
   def default_meta_tags
     {
-      site: 'TAKiBEE.',
-      title: 'TAKiBEE.',
+      site: 'TAKiBee.',
+      title: 'TAKiBee.',
       reverse: true,
       charset: 'utf-8',
       description: 'キャンプを記録するサービスです。キャンプ地・アイテム・写真の記録を残そう。',
@@ -28,7 +28,7 @@ module ApplicationHelper
       ],
       og: {
         site_name: :site, # もしくは site_name: :site
-        title: 'TAKiBEE.', # もしくは title: :title
+        title: 'TAKiBee.', # もしくは title: :title
         description: :description, # もしくは description: :description
         type: 'website',
         url: request.original_url,
