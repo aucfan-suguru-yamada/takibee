@@ -114,6 +114,9 @@
             <p class="card-text"><%= @camp.note %></p>
             <div class="row">
               <%= render partial: 'item_list', locals: {camp: @camp} %>
+              <% if @camp.user == current_user && @camp.items[0].nil? %>
+                <a><%= link_to '＋アイテムを追加', camp_my_items_path(@camp), class: 'btn btn-outline-warning btn-block col-md-12 mt-5'%></a>
+              <% end %>
             </div>
           </div>
         </div>

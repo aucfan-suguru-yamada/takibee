@@ -77,7 +77,11 @@
 
 
                 <div class="col-lg-6 col-sm-12 mt-2">
-                  <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>
+                  <% if camp.items[0].present?%>
+                    <%= render partial: 'every_camp/camp_item_list', locals: {camp: camp} %>
+                  <% else %>
+                    <div class="text-white-50 d-flex align-items-center justify-content-center" style="height:300px;">アイテムは未登録です</div>
+                  <% end %>
                 </div>
               </div>
             </div>
