@@ -113,7 +113,11 @@
     <div class="col-12 text-center">
         <h4>ー 最新の投稿 ー</h4>
     </div>
-    <%= render "camp_list" %>
+    <% if current_user.present? %>
+      <%= render "camp_list" %>
+    <% else %>
+      <%= render "not_login_camp_list"%>
+    <% end %>
   </div>
   <div class="row mt centered mt-5">
     <div class="col-12 text-center">

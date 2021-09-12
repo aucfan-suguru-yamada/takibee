@@ -1,0 +1,89 @@
+    <% @camps.each do |camp| %>
+      <div class="col-lg-6 col-sm-12 card-group mt-3">
+        <div class="card bg-dark border border-secondary">
+          <div class="card-header">
+            <div class="container">
+              <div class="row">
+                <div class="col align-items-center">
+                  <%= link_to image_tag(camp.user.avatar.variant(gravity: :center, resize: "50x50^", crop:"50x50+0+0"), class: "rounded-circle"),
+                              login_path(email: 'guest_user@example.com', password: 'password'), method: :post, data: { confirm: 'ゲストユーザーでログインしますか？' }, style: "display: inline-block;" %>
+                  <span class="ml-2"><%= camp.user.name%></span>
+                  <span class="text-white-50"><%= "・#{camp.camped_on}"%></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%= link_to login_path(email: 'guest_user@example.com', password: 'password'), method: :post, data: { confirm: 'ゲストユーザーでログインしますか？' }, style:"text-decoration:none; color:black;" do %>
+          <% if camp.images.present? %>
+            <div class="container">
+              <div class="row">
+                <!-- 画像1枚のとき-->
+                <% if camp.images.count == 1 %>
+                  <div class="align-items-center col-lg-12 col-sm-12 mt-2">
+                    <%= image_tag(camp.images[0].variant(gravity: :center, resize: "300x300^", crop:"400x290+0+0"),class: "d-block mx-auto rounded img-fluid js-modal-img", id: "camp_id_#{camp.id}_image_id_0")%>
+                    <div class="none" style="display: none;">
+                      <%= image_tag(camp.images[0], class: "d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_0")%>
+                    </div>
+                  </div>
+                <% end %>
+
+                <!-- 画像2枚のとき-->
+                <% if camp.images.count == 2 %>
+                  <div class="align-items-center col-lg-12 col-sm-12 mt-2">
+                    <div class='row'>
+                      <% for i in 0..1 %>
+                        <div class='col-6'>
+                          <%= image_tag(camp.images[i].variant(gravity: :center, resize: "300x300^", crop:"200x290+0+0"),class: "mx-auto d-block rounded img-fluid js-modal-img", id: "camp_id_#{camp.id}_image_id_#{i}")%>
+                            <div class="none" style="display: none;">
+                              <%= image_tag(camp.images[i], class: "image d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_#{i}")%>
+                            </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <%end%>
+
+                <!-- 画像3枚のとき-->
+                <% if camp.images.count >= 3 %>
+                  <div class="align-items-center col-lg-12 col-sm-12 mt-2">
+                    <div class='row'>
+                      <% for i in 0..1 %>
+                        <% if i == 0 %>
+                          <div class='col-6'>
+                            <%= image_tag(camp.images[i].variant(gravity: :center, resize: "300x300^", crop:"200x290+0+0"),class: "mx-auto d-block rounded img-fluid js-modal-img", id: "camp_id_#{camp.id}_image_id_#{i}")%>
+                            <div class="none" style="display: none;">
+                              <%= image_tag(camp.images[i], class: "image d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_#{i}")%>
+                            </div>
+                          </div>
+                        <% else %>
+                          <div class='col-6'>
+                            <%= image_tag(camp.images[i].variant(gravity: :center, resize: "200x200^", crop:"200x140+0+0"),class: "mx-auto d-block rounded img-fluid js-modal-img", id: "camp_id_#{camp.id}_image_id_#{i}")%>
+                            <%= image_tag(camp.images[i+1].variant(gravity: :center, resize: "200x200^", crop:"200x140+0+0"),class: "mx-auto d-block rounded img-fluid js-modal-img mt-2", id: "camp_id_#{camp.id}_image_id_#{i+1}")%>
+                            <div class="none" style="display: none;">
+                              <%= image_tag(camp.images[i], class: "image d-block mx-auto rounded", id: "modal_camp_id_#{camp.id}_image_id_#{i}")%>
+                              <%= image_tag(camp.images[i+1], class: "image d-block mx-auto rounded",id: "modal_camp_id_#{camp.id}_image_id_#{i+1}")%>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          <% end %>
+          <div class="card-body">
+            <% if camp.area.present? %>
+              <p class="text-white-50"><i class="fas fa-map-marker-alt"></i>
+                <%= camp.area.name %>
+              </p>
+            <% else %>
+              <p class="text-white-50"><i class="fas fa-map-marker-alt"></i> 未登録です</p>
+            <% end%>
+            <h2 class="card-title text-bold"><%= camp.title %></h2>
+            <p class="card-text"><%= camp.note %></p>
+          </div>
+          <%end%>
+        </div>
+      </div>
+    <% end %>
