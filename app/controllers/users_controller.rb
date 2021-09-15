@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   before_action :set_user, only: %i[show update destroy]
   before_action :authenticate_user, only: %i[edit destroy]
-  include UsersHelper
   before_action :require_signup, only: %i[edit]
-
+  include UsersHelper
   include CampHelper
 
   def index
@@ -24,37 +23,8 @@ class UsersController < ApplicationController
                            .with_attached_images.order('created_at DESC')
                            .page(params[:page])
     # レーダーチャートの変数
-    # キャンプ数
-    @radar_camp = @user.camps.count
-    # アイテム数
-    @radar_item = @user.items.count
-    # Likeした数
-    @radar_favorite_camp = @user.liked_camps.count
-    # Likeされた数
-    @radar_camp_by_liked = 0
-    user_camps = @user.camps
-    user_camps.each do |camp|
-      @radar_camp_by_liked += camp.likes.count
-    end
-    # キャンプ地の範囲
-    user_camps = @user.camps.includes(:area)
-    max_latitude = 0
-    min_latitude = 90
-    max_longitude = 0
-    min_longitude = 180
-    user_camps.each do |camp|
-      if camp.area.present?
-        latitude = split_lat(camp.area.latlng).to_i
-        longitude = split_lng(camp.area.latlng).to_i
-        max_latitude = latitude if latitude > max_latitude
-        max_longitude = longitude if longitude > max_longitude
-        min_latitude = latitude if latitude < min_latitude
-        min_longitude = longitude if longitude < min_longitude
-      end
-      @radar_range_of_area = (((max_latitude - min_latitude)**2 + (max_longitude - min_longitude)**2)**0.5)
-    end
-    @radar_range_of_area = 0 if max_latitude.zero?
-
+    get_radar_chart(@user)
+    # タブの切り替えajax
     return unless request.xhr?
     case params[:type]
     when 'camp', 'favorite_camp'
@@ -62,17 +32,14 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
     @user = current_user
   end
 
-  # POST /users or /users.json
   def create
     @user = User.new(user_params)
     if @user.save
@@ -106,14 +73,12 @@ class UsersController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
     def authenticate_user
       return if current_user == User.find(params[:id])
-
       redirect_to user_path(current_user)
     end
 
