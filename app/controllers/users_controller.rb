@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   include CampHelper
 
-  # GET /users or /users.json
   def index
     if current_user.is_admin_user?
       @users = User.with_attached_avatar
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1 or /users/1.json
   def show
     @user = User.find(params[:id])
     @camps = @user.camps.includes(:area, items: { small_image_attachment: :blob }).with_attached_images.order('created_at DESC').page(params[:page])
