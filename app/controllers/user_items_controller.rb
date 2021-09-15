@@ -1,8 +1,6 @@
 class UserItemsController < ApplicationController
   include MakerHelper
   def index
-    # @search_items_form = SearchUserItemForm.new(maker_id: params[:id], user_id: current_user.id)
-    # @items = @search_items_form.search.includes(:maker).with_attached_small_image
     add_maker_name_to_array
     @items = if params[:id].present?
                current_user.items.by_maker(params[:id])
@@ -10,7 +8,6 @@ class UserItemsController < ApplicationController
                current_user.items
              end
   end
-    # <%= f.select :maker_id, Maker.pluck(:name, :id), { include_blank: true }, class: 'form-control' %>
 
   def destroy
     @item_ids = params[:item_ids]
