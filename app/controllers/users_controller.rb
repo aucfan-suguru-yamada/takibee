@@ -23,7 +23,16 @@ class UsersController < ApplicationController
                            .with_attached_images.order('created_at DESC')
                            .page(params[:page])
     # レーダーチャートの変数
-    get_radar_chart(@user)
+    # キャンプ数
+    @radar_camp = @user.camps.count
+    # アイテム数
+    @radar_item = @user.items.count
+    # Likeした数
+    @radar_favorite_camp = @user.liked_camps.count
+    # Likeされた数
+    @radar_camp_by_liked = @user.get_camp_by_liked
+    # キャンプ範囲
+    @radar_range_of_area = @user.get_range_of_camparea
     # タブの切り替えajax
     return unless request.xhr?
     case params[:type]
