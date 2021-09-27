@@ -14,15 +14,13 @@ class ItemsController < ApplicationController
     io = URI.open(params[:image_url])
 
     params[:maker_name] = '-' if params[:maker_name].blank?
-    maker = Maker.find_by(name: params[:maker_name]) || Maker.create(name: params[:maker_name])
+    maker = Maker.find_or_create_by(name: params[:maker_name])
 
     if Item.find_by(name: params[:name])
       current_user.items << Item.find_by(name: params[:name])
       redirect_to user_items_path, flash: { warning: "#{params[:name][0..20]}...を追加しました" }
-
     elsif current_user.items.create(name: params[:name], maker_id: maker.id, product_url: params[:product_url])
       current_user.items.last.small_image.attach(io: io, filename: current_user.id.to_s)
-
       redirect_to user_items_path, flash: { warning: "#{params[:name][0..20]}...を追加しました" }
     else
       render 'index'
